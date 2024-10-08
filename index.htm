@@ -31,13 +31,23 @@
             <li><a href="#">FAQ</a></li>
             <li><a href="#">About Us</a></li>
         </ul>
-        <div class="user-icon">
-            <i class="bi bi-person-circle"></i>
-            <select name="icon" id="">"<i class=" bi bi-person-circle"></i>"
-                <option value=""></option>
-                <option value="my profile">My Profile</option>
-                <option value="logout">logout</option>
-            </select>
+        <div class="user-icon" onclick="profile.htm">
+            <div class="user-icon">
+                <div class="dropdown">
+                    <!-- Profile image and dropdown symbol container -->
+                    <div class="profile-container" id="profileContainer">
+                        <img src="./assets/images/ppsize.webp" alt="Profile" class="profile-img">
+                        <!-- Unicode dropdown icon -->
+                        <span class="dropdown-icon"><i class="bi bi-chevron-down"></i></span>
+                        <!-- This is a down arrow -->
+                    </div>
+                    <!-- Dropdown menu -->
+                    <div class="dropdown-content" id="dropdownMenu">
+                        <a href="#mypf">My Profile</a>
+                        <a href="#logout">Logout</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </nav>
 
@@ -89,6 +99,7 @@
             </div>
         </div>
     </footer>
+    <script src="./assets/js/index.js"></script>
 </body>
 
 </html>

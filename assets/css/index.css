@@ -38,30 +38,37 @@ body {
   font-size: 16px;
 }
 
-.user-icon i {
-  color: #fff;
-  font-size: 28px;
-  margin: 0 50px;
+.user-icon {
+  position: relative;
+  width: 10%;
 }
+/* Profile image styling */
+.profile-container {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
 .profile-img {
   border-radius: 50%;
   height: 40px;
   width: 40px;
   object-fit: cover;
-  cursor: pointer;
+}
+
+/* Dropdown icon */
+.dropdown-icon {
+  margin-left: 10px;
+  font-size: 16px;
+  color: white;
 }
 
 /* Dropdown menu styling */
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
 .dropdown-content {
   display: none;
   position: absolute;
   right: 0;
-  background-color: #f9f9f9;
+  background-color: #f5f5f5;
   min-width: 120px;
   box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
   z-index: 1;
@@ -73,10 +80,10 @@ body {
   text-decoration: none;
   display: block;
 }
-
 .dropdown-content a:hover {
-  background-color: #f1f1f1;
+  background-color: #ddd; /* Highlight on hover */
 }
+
 /* Header Section */
 .header-section {
   background: url("../images/heroStudents.jpg") no-repeat center center/cover;
