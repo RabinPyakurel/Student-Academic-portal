@@ -36,7 +36,6 @@
     </ul>
     <div class="user-icon">
       <div class="dropdown">
-        <!-- Profile image and dropdown symbol container -->
         <div class="profile-container" id="profileContainer">
           <img src="./assets/images/ppsize.webp" alt="Profile" class="profile-img">
           <!-- Unicode dropdown icon -->
@@ -51,8 +50,39 @@
     </div>
   </nav>
   <section id="mypf" class="myprofile">
-    <img src="./assets/images/defaultimg.png" alt="default profile">
+    <div class="profile-container">
+      <img id="userImage" src="./assets/images/ppsize.webp" alt="User Photo">
+      <label for="photoUpload" class="custom-file-upload">Add Profile Picture</label>
+      <input type="file" id="photoUpload" accept="image/*" style="display:none;">
+    </div>
+    <div class="userinfo">
+      <h2 id="fullname">Full Name</h2>
+      <p>Program: <span id="program"></span></p>
+      <p>Batch: <span id="batch"></span></p>
+    </div>
+    </div>
 
+    <!-- Update Information Section -->
+    <div class="update-section">
+      <h3>Update Information</h3>
+      <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" value="" readonly />
+      </div>
+      <div>
+        <label for="semester">Semester:</label>
+        <input type="text" id="semester" value="" readonly />
+      </div>
+      <button id="editBtn">Edit</button>
+      <div id="editSection" style="display:none;">
+        <label for="newEmail">New Email:</label>
+        <input type="email" id="newEmail">
+        <label for="newSemester">New Semester:</label>
+        <input type="text" id="newSemester">
+        <button id="saveBtn">Save Changes</button>
+      </div>
+
+    </div>
   </section>
 
   <!-- Footer Section -->
@@ -76,6 +106,52 @@
       </div>
     </div>
   </footer>
+  <script>
+    // User information (from signup)
+    const userData = {
+      fullname: "Username",
+      email: "username@example.com",
+      program: "BCA",
+      batch: "2024",
+      semester: "1st"
+    };
+
+    // Load user data on page load
+    window.onload = function () {
+      document.getElementById('fullname').innerText = userData.fullname;
+      document.getElementById('email').value = userData.email;
+      document.getElementById('program').innerText = userData.program;
+      document.getElementById('batch').innerText = userData.batch;
+      document.getElementById('semester').value = userData.semester;
+    };
+
+    // Update profile picture
+    document.getElementById('photoUpload').addEventListener('change', function () {
+      const file = this.files[0];
+      if (file) {
+        const reader = new FileReader();
+
+        reader.onload = function (event) {
+          document.getElementById('userImage').setAttribute('src', event.target.result);
+        };
+
+        reader.readAsDataURL(file);
+      }
+    });
+
+    // Save changes (email and semester updates)
+    document.getElementById('saveBtn').addEventListener('click', function () {
+      const updatedEmail = document.getElementById('email').value;
+      const updatedSemester = document.getElementById('semester').value;
+
+      // Update userData object
+      userData.email = updatedEmail;
+      userData.semester = updatedSemester;
+
+      alert('Profile updated successfully!');
+    });
+
+  </script>
   <script src="./assets/js/index.js"></script>
 </body>
 
