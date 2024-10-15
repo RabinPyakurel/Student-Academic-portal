@@ -40,7 +40,7 @@ body {
 
 .user-icon {
   position: relative;
-  width: 10%;
+  width: q5%;
 }
 /* Profile image styling */
 
@@ -97,7 +97,6 @@ button:hover {
 input[readonly] {
   background-color: #e0e0e0;
 }
-
 
 /* Dropdown icon */
 .dropdown-icon {
