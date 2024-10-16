@@ -21,3 +21,23 @@ window.onclick = function (event) {
     dropdownMenu.style.display = "none";
   }
 };
+
+// user profile
+document.getElementById("photoUpload").addEventListener("change", function () {
+  const file = this.files[0];
+  if (file) {
+    const reader = new FileReader();
+
+    reader.onload = function (event) {
+      document
+        .getElementById("userImage")
+        .setAttribute("src", event.target.result);
+    };
+
+    reader.readAsDataURL(file);
+  }
+});
+
+document.getElementById("editBtn").addEventListener("click", function () {
+  alert("Edit functionality is not implemented yet.");
+});

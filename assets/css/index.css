@@ -57,6 +57,54 @@ body {
     object-fit: cover;
 }
 
+/* Hide default file input */
+.custom-file-upload {
+    display: inline-block;
+    cursor: pointer;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.profile-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    cursor: pointer;
+    padding: 20px;
+}
+
+.user-photo img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.update-section {
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+input[readonly] {
+    background-color: #e0e0e0;
+}
+
 /* Dropdown icon */
 .dropdown-icon {
     margin-left: 10px;
