@@ -1,71 +1,45 @@
-/* Modal CSS */
 .modal {
     display: none;
-    /* Hidden by default */
     position: fixed;
-    /* Stay in place */
     z-index: 1000;
-    /* Sit on top */
     left: 0;
     top: 0;
     width: 100%;
-    /* Full width */
     height: 100%;
-    /* Full height */
     background-color: rgba(0, 0, 0, 0.5);
-    /* Semi-transparent background */
     justify-content: center;
-    /* Center horizontally */
     align-items: center;
-    /* Center vertically */
 }
 
 .modal-content {
     position: relative;
-    /* Position relative to the modal */
     margin: auto;
-    /* Center modal */
     width: 80%;
-    /* Width of the modal */
     max-width: 600px;
-    /* Maximum width */
     height: 80%;
-    /* Set height to cover the login form */
     background: white;
-    /* Background color for the modal content */
     overflow: hidden;
-    /* Prevent scrollbars on modal content */
 }
 
-/* Ensure the iframe covers the modal content area */
+
 iframe {
     width: 100%;
-    /* Full width */
     height: calc(100% - 40px);
-    /* Full height minus space for the close button */
     border: none;
-    /* Remove border */
 }
 
 .close-btn {
     position: absolute;
-    /* Position the close button in the modal */
     top: 10px;
     right: 15px;
     color: #aaa;
-    /* Color of the close button */
     font-size: 28px;
-    /* Size of the close button */
     font-weight: bold;
-    /* Bold text for the close button */
 }
 
 .close-btn:hover,
 .close-btn:focus {
     color: black;
-    /* Change color on hover */
     text-decoration: none;
-    /* Remove underline on hover */
     cursor: pointer;
-    /* Pointer cursor on hover */
 }
