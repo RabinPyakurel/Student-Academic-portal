@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In</title>
+    <link rel="stylesheet" href="../assets/css/form.css">
+    <link rel="stylesheet" href="../assets/css/terms.css">
+
+</head>
+
+<body>
+    <form action="#" class="form">
+        <h1 class="text-center">Login Form</h1>
+        <div class="input-group">
+            <input type="text" name="username" id="username" required placeholder="">
+            <label for="username">Username/Email</label><br>
+            <span id="userMsg"></span>
+        </div>
+        <div class="input-group">
+            <input type="password" name="password" id="pass" required placeholder="">
+            <label for="pass">Password</label><br>
+            <span id="passMsg"></span>
+        </div>
+        <div class="terms">
+            <input type="checkbox" name="terms" id="terms" required>
+            <a href="#" class="link" id="openTermsModal">I accept the terms and conditions</a>
+        </div>
+
+        <div>
+            <input type="submit" class="btn ml-auto" value="Login">
+        </div>
+        <div class="link text-center">
+            Don't have an account? <a href="./sign-up.htm"> Register here</a>
+        </div>
+    </form>
+
+    <div id="termsModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <iframe src="terms.htm"></iframe>
+        </div>
+    </div>
+
+    <script src="../assets/js/terms.js"></script>
+</body>
+
+</html>
