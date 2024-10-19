@@ -5,7 +5,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="./assets/css/index.css">
+  <link rel="stylesheet" href="../assets/css/index.css">
+  <link rel="stylesheet" href="../assets/css/navdropdown.css">
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"
     integrity="sha512-Pf1vFl/rZQeq3CMoWx2hfLVRMt2E+nQJbSHyRHjRdyJwD+XZz+aR1i45I+9vE7DJeA9VXNGDsvm4P6xNFFUqg=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -30,25 +32,36 @@
       <li><a href="#">FAQ</a></li>
       <li><a href="#">About Us</a></li>
     </ul>
-    <div class="user-icon" onclick="profile.htm">
-      <div class="user-icon">
-        <div class="dropdown">
-          <!-- Profile image and dropdown symbol container -->
-          <div class="profile-container" id="profileContainer">
-            <img src="../assets/images/ppsize.webp" alt="Profile" class="profile-img">
-            <!-- Unicode dropdown icon -->
-            <span class="dropdown-icon"><i class="bi bi-chevron-down"></i></span>
-            <!-- This is a down arrow -->
-          </div>
-          <!-- Dropdown menu -->
-          <div class="dropdown-content" id="dropdownMenu">
-            <a href="../user-profile/profile.htm">My Profile</a>
-            <a href="#logout">Logout</a>
-          </div>
+    <img src="../assets/images/profile-pic.png" alt="" class="user-pic" onclick="toggleMenu()">
+
+    <div class="sub-menu-wrap" id="subMenu">
+      <div class="sub-menu">
+        <div class="user-info">
+          <img src="../assets/images/profile-pic.png" alt="">
+          <h3>Ritika Suwal</h3>
         </div>
+        <hr>
+
+        <a href="#" class="sub-menu-link">
+          <img src="../assets/images/profile.png" alt="">
+          <p>My Profile</p>
+          <span>></span>
+        </a>
+        <a href="#" class="sub-menu-link">
+          <img src="../assets/images/help.png" alt="">
+          <p>Help & Support</p>
+          <span>></span>
+        </a>
+        <a href="#" class="sub-menu-link">
+          <img src="../assets/images/logout.png" alt="">
+          <p>Logout</p>
+          <span>></span>
+        </a>
       </div>
     </div>
   </nav>
+  <script src="../assets/js/navdropdow.js"></script>
 </body>
+
 
 </html>
