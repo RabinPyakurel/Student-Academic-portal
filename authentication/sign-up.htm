@@ -5,12 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
-    <link rel="stylesheet" href="../assets/css/form.css">
-    <link rel="stylesheet" href="../assets/css/terms.css">
+    <link rel="preload" href="../assets/css/form.css" as="style" onload="this.rel='stylesheet'">
+    <link rel="preload" href="../assets/css/terms.css" as="style" onload="this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="styles.css">
+    </noscript>
+
 </head>
 
 <body>
-    <form action="./sign-in.htm" class="form">
+    <form action="./sign-in.htm" class="form" onsubmit="return validation()">
         <h1 class="text-center">Registration Form</h1>
         <div class="progressbar">
             <div class="progress" id="progress"></div>
@@ -24,12 +28,12 @@
             <div class="input-group">
                 <input type="text" name="full_name" id="fname" placeholder="" required>
                 <label for="fname">Full Name <span class="necessary">*</span></label>
-                <span id="nameMsg"></span>
+                <span class="error" id="nameMsg"></span>
             </div>
             <div class="input-group">
                 <input type="date" name="dob" id="dob" placeholder="" required>
                 <label for="dob">Date of Birth <span class="necessary">*</span></label>
-                <span id="dobMsg"></span>
+                <span class="error" id=" dobMsg"></span>
             </div>
             <div class="input-group">
                 <select name="course" id="course" required>
@@ -40,12 +44,12 @@
                     <option value="csit">BSC.CSIT</option>
                 </select>
                 <label for="course">Program/Course <span class="necessary">*</span></label>
-                <span id="courseMsg"></span>
+                <span class="error" id="courseMsg"></span>
             </div>
             <div class="input-group">
                 <input type="text" name="enroll_year" id="enroll" placeholder="" required>
                 <label for="enroll">Enrollment Year <span class="necessary">*</span></label>
-                <span id="enrMsg"></span>
+                <span class="error" id="enrMsg"></span>
             </div>
             <div>
                 <a href="#" class="btn btn-next width-50 ml-auto">Next</a>
@@ -59,12 +63,12 @@
             <div class="input-group">
                 <input type="tel" name="phone" id="phone" placeholder="">
                 <label for="phone">Phone Number </label>
-                <span id="numMsg"></span>
+                <span class="error" id="numMsg"></span>
             </div>
             <div class="input-group">
                 <input type="email" name="personal_email" id="p_email" placeholder="">
                 <label for="p_email">Personal Email </label>
-                <span id="emailMsg"></span>
+                <span class="error" id="emailMsg"></span>
             </div>
             <div class="btns-group">
                 <a href="#" class="btn btn-prev">Previous</a>
@@ -76,12 +80,12 @@
             <div class="input-group">
                 <input type="text" name="email" id="email" placeholder="" required>
                 <label for="email">College Email <span class="necessary">*</span></label>
-                <span id="mailMsg"></span>
+                <span class="error" id="mailMsg"></span>
             </div>
             <div class="input-group">
                 <input type="text" name="id_num" id="id" placeholder="" required>
                 <label for="id">Id Card Number <span class="necessary">*</span></label>
-                <span id="idMsg"></span>
+                <span class="error id=" idMsg"></span>
             </div>
             <div class="btns-group">
                 <a href="#" class="btn btn-prev">Previous</a>
@@ -93,12 +97,12 @@
             <div class="input-group">
                 <input type="password" name="password" id="password" placeholder="" required>
                 <label for="password">Password <span class="necessary">*</span></label>
-                <span id="pwMsg"></span>
+                <span class="error" id="pwMsg"></span>
             </div>
             <div class="input-group">
                 <input type="password" name="confirm_password" id="cpass" placeholder="" required>
                 <label for="cpass">Confirm Password <span class="necessary">*</span></label>
-                <span id="cmpwMsg"></span>
+                <span class="error" id="cmpwMsg"></span>
             </div>
             <div class="terms">
                 <input type="checkbox" name="terms" id="terms" required>
@@ -119,6 +123,7 @@
     </div>
     <script src="../assets/js/terms.js"></script>
     <script src="../assets/js/form.js"></script>
+    <script src="../assets/js/formValidation.js"></script>
 </body>
 
 </html>

@@ -30,7 +30,7 @@ select {
     padding: 0.75rem;
     border: 1px solid #ccc;
     border-radius: 0.25rem;
-    font-size: 1.15em;
+    font-size: 1em;
     outline: none;
     transition: border-color 0.3s ease, background-color 0.3s ease;
     background-color: white;
@@ -38,12 +38,12 @@ select {
 
 .input-group label {
     position: absolute;
-    top: 25%;
+    top: 21%;
     left: 12px;
     background-color: white;
     padding: 0 5px;
     color: #999;
-    font-size: 1.15em;
+    font-size: 1em;
     pointer-events: none;
     transition: 0.3s ease all;
 }
@@ -54,9 +54,8 @@ select {
 .input-group select:not(:placeholder-shown)+label {
     top: -8px;
     left: 12px;
-    font-size: 12px;
+    font-size: 0.75em;
     color: var(--primary-color);
-
 }
 
 .input-group input:focus,
@@ -68,7 +67,6 @@ select {
 .input-group input::placeholder,
 .input-group select::placeholder {
     opacity: 0;
-
 }
 
 .width-50 {
@@ -79,8 +77,20 @@ select {
     margin-left: auto;
 }
 
-.terms {
+.terms-and-forgot {
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
     padding-bottom: 20px;
+}
+
+.terms {
+    margin-right: 20px;
+    margin-bottom: 1rem;
+}
+
+.forgot_password {
+    margin-left: auto;
 }
 
 .text-center {
@@ -103,6 +113,17 @@ select {
 
 .necessary {
     color: red;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.error {
+    color: red;
+    font-style: italic;
+    min-height: 1.13rem;
+    display: block;
 }
 
 .progressbar::before,
@@ -153,10 +174,10 @@ select {
 }
 
 .form {
-    width: clamp(320px, 30%, 430px);
+    width: clamp(320px, 90%, 430px);
     margin: 0 auto;
     border: 1px solid #ccc;
-    border-radius: .35rem;
+    border-radius: 0.35rem;
     padding: 2rem;
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
     transform: translateY(-10px);
@@ -179,11 +200,6 @@ select {
     display: block;
 }
 
-.input-group {
-    margin: 2rem 0;
-    position: relative;
-}
-
 @keyframes animate {
     from {
         transform: scale(1, 0);
@@ -199,7 +215,7 @@ select {
 .btns-group {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
+    gap: 1rem;
 }
 
 .btn {
@@ -217,4 +233,64 @@ select {
 .btn:hover {
     box-shadow: 0 0 0 2px #fff, 0 0 0 3px var(--hover-color);
     background-color: var(--hover-color);
+    text-decoration: none;
+}
+
+@media (max-width: 600px) {
+
+
+    .error {
+        font-size: 0.9rem;
+        min-height: 1.2rem;
+    }
+
+    .btns-group {
+        grid-template-columns: 1fr;
+    }
+
+    .form {
+        width: 85%;
+        padding: 1.5rem;
+    }
+
+    .input-group {
+        margin: 1.5rem 0;
+    }
+
+    .terms-and-forgot {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .terms {
+        margin-right: 0;
+        margin-bottom: 1rem;
+
+    }
+
+    .forgot_password {
+        margin-left: 10%;
+        margin-top: 1.5rem;
+    }
+
+    .input-group label {
+        font-size: 0.8rem;
+        top: 15%;
+    }
+}
+
+@media (max-width: 360px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .terms {
+        font-size: 0.7rem;
+    }
+}
+
+@media(max-width:325px) {
+    .progressbar {
+        display: none;
+    }
 }
