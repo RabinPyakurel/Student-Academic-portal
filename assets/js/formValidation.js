@@ -1,3 +1,4 @@
+//for registration validation 
 let error = document.getElementsByClassName('error');
 const name = document.getElementById('fname');
 const dob = document.getElementById('dob');
@@ -10,7 +11,9 @@ const id = document.getElementById('id');
 const password = document.getElementById('password');
 const cpass = document.getElementById('cpass');
 
-const require = "This field must be filled";
+const require = "This field is required";
+
+
 
 const validateName = () => {
     const namePattern = /^[A-Za-z ]+$/;
@@ -28,8 +31,13 @@ const validateName = () => {
 
 const validateDob = () => {
     const currDate = new Date();
-    if (new Date(dob.value) > currDate) {
+    const minAge = 16;
+    const dateOfBirth = new Date(dob.value);
+    if (dateOfBirth > currDate) {
         error[1].innerHTML = 'invalid date';
+        return false;
+    } else if ((currDate.getFullYear() - dateOfBirth.getFullYear()) < minAge) {
+        error[1].innerHTML = 'age must be atleast 16 years';
         return false;
     } else {
         error[1].innerHTML = '';
@@ -56,7 +64,7 @@ const validateYear = () => {
 }
 
 const validateContact = () => {
-    contact.value = contact.value.replace(/\s+/g, '');  // Remove spaces
+    contact.value = contact.value.replace(/\s+/g, '');
     error[4].innerHTML = '';
     if (contact.value === '') {
         return true;
@@ -117,7 +125,6 @@ const validateIdNumber = () => {
 }
 const validatePassword = () => {
     password.value = password.value.replace(/\s+/g, '');
-
     if (/([a-zA-Z0-9!@#$%^&*(),.?":{}|<>])\1{1,}/.test(password.value)) {
         error[8].innerHTML = 'Must not contain repeated characters sequentially';
         return false;
@@ -130,11 +137,11 @@ const validatePassword = () => {
     } else if (!/[a-z]/.test(password.value)) {
         error[8].innerHTML = 'Must contain at least one lowercase letter';
         return false;
-    } else if (!/[0-9]/.test(password.value)) {
-        error[8].innerHTML = 'Must contain at least one number';
-        return false;
     } else if (!/[!@#$%^&*(),.?":{}|<>]/.test(password.value)) {
         error[8].innerHTML = 'Must contain at least one special character';
+        return false;
+    } else if (!/[0-9]/.test(password.value)) {
+        error[8].innerHTML = 'Must contain at least one number';
         return false;
     } else if (password.value.length < 8) {
         error[8].innerHTML = 'Must be 8 character long';
@@ -189,3 +196,34 @@ const validStep3 = () => {
 const validation = () => {
     return validStep0() && validStep1() && validStep2() && validStep3();
 }
+
+
+$(document).ready(function () {
+    $(".form").submit(function (event) {
+        event.preventDefault();
+        if (validation()) {
+            var formData = $(this).serialize();
+            $("#loader-container").show();
+            $.ajax({
+                type: "POST",
+                url: "/backend/registration.php",
+                data: formData,
+                success: function (response) {
+                    $("#loader-container").hide();
+                    alert(response);
+                    $("#password").val("");
+                    $("#cpass").val("");
+                    if (response.includes("Registration successful.")) {
+                        window.location.href = "sign-in.htm";
+                    }
+                },
+                error: function (xhr, status, error) {
+                    $("#loader-container").hide();
+                    alert("Error occurred while processing your data");
+                    console.error("Status:", status, "Error:", error, "Response:", xhr.responseText);
+                }
+            });
+        }
+    });
+});
+

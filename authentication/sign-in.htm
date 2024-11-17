@@ -7,17 +7,26 @@
     <title>Sign In</title>
     <link rel="stylesheet" href="../assets/css/form.css">
     <link rel="stylesheet" href="../assets/css/terms.css">
+    <link rel="stylesheet" href="../assets/css/loader.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 </head>
 
 <body>
-    <form action="#" class="form">
+    <div id="loader-container" style="display: none;">
+        <div class="loader">
+            <img src="../assets/images/loging_in.gif" alt="Loading...">
+        </div>
+    </div>
+    <form class="form" method="post">
+
         <h1 class="text-center">Login Form</h1>
         <div class="input-group">
-            <input type="text" name="username" id="username" required placeholder="">
-            <label for="username">Username/Email</label><br>
+            <input type="text" name="username" id="username" placeholder="">
+            <label for="username">Id card num/college email</label><br>
+            <span class="error" id="usernameMsg"></span>
         </div>
         <div class="input-group">
-            <input type="password" name="password" id="pass" required placeholder="">
+            <input type="password" name="password" id="pass" placeholder="">
             <label for="pass">Password</label><br>
             <span class="error" id="passMsg"></span>
         </div>
@@ -45,8 +54,8 @@
             <iframe src="terms.htm"></iframe>
         </div>
     </div>
-
     <script src="../assets/js/terms.js"></script>
+    <script src="../assets/js/loginValidation.js"></script>
 </body>
 
 </html>

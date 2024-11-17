@@ -7,14 +7,17 @@
     <title>Sign Up</title>
     <link rel="preload" href="../assets/css/form.css" as="style" onload="this.rel='stylesheet'">
     <link rel="preload" href="../assets/css/terms.css" as="style" onload="this.rel='stylesheet'">
-    <noscript>
-        <link rel="stylesheet" href="styles.css">
-    </noscript>
-
+    <link rel="stylesheet" href="../assets/css/loader.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 </head>
 
 <body>
-    <form action="./sign-in.htm" class="form" onsubmit="return validation()">
+    <div id="loader-container" style="display: none;">
+        <div class="loader">
+            <img src="../assets/images/loader.gif" alt="Loading...">
+        </div>
+    </div>
+    <form class="form"  method="post">
         <h1 class="text-center">Registration Form</h1>
         <div class="progressbar">
             <div class="progress" id="progress"></div>
@@ -36,12 +39,12 @@
                 <span class="error" id=" dobMsg"></span>
             </div>
             <div class="input-group">
-                <select name="course" id="course" required>
+                <select name="program" id="course" required>
                     <option value="" selected hidden disabled>Select your course</option>
-                    <option value="bca">BCA</option>
-                    <option value="bba">BBA</option>
-                    <option value="bbm">BBM</option>
-                    <option value="csit">BSC.CSIT</option>
+                    <option value="101">BCA</option>
+                    <option value="102">BBA</option>
+                    <option value="103">BBM</option>
+                    <option value="104">BSC.CSIT</option>
                 </select>
                 <label for="course">Program/Course <span class="necessary">*</span></label>
                 <span class="error" id="courseMsg"></span>
@@ -114,7 +117,9 @@
             </div>
 
         </div>
+
     </form>
+
     <div id="termsModal" class="modal">
         <div class="modal-content">
             <span class="close-btn">&times;</span>
@@ -124,6 +129,7 @@
     <script src="../assets/js/terms.js"></script>
     <script src="../assets/js/form.js"></script>
     <script src="../assets/js/formValidation.js"></script>
+   
 </body>
 
 </html>
