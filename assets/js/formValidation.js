@@ -12,7 +12,6 @@ const password = document.getElementById("password");
 const cpass = document.getElementById("cpass");
 
 const require = "This field is required";
-
 const validateName = () => {
   const namePattern = /^[A-Za-z ]+$/;
   if (!name.value.match(namePattern)) {
@@ -198,37 +197,32 @@ const validation = () => {
 };
 
 $(document).ready(function () {
-  $(".form").submit(function (event) {
-    event.preventDefault();
-    if (validation()) {
-      var formData = $(this).serialize();
-      $("#loader-container").show();
-      $.ajax({
-        type: "POST",
-        url: "/backend/registration.php",
-        data: formData,
-        success: function (response) {
-          $("#loader-container").hide();
-          alert(response);
-          $("#password").val("");
-          $("#cpass").val("");
-          if (response.includes("Registration successful.")) {
-            window.location.href = "sign-in.htm";
-          }
-        },
-        error: function (xhr, status, error) {
-          $("#loader-container").hide();
-          alert("Error occurred while processing your data");
-          console.error(
-            "Status:",
-            status,
-            "Error:",
-            error,
-            "Response:",
-            xhr.responseText
-          );
-        },
-      });
-    }
-  });
+    $(".form").submit(function (event) {
+        event.preventDefault();
+        if (validation()) {
+            var formData = $(this).serialize();
+            $("#loader-container").show();
+            $.ajax({
+                type: "POST",
+                url: "/backend/registration.php",
+                data: formData,
+                success: function (response) {
+                    $("#loader-container").hide();
+                    alert(response);
+                    $("#password").val("");
+                    $("#cpass").val("");
+                    if (response.includes("Registration successful.")) {
+                        window.location.href = "sign-in.htm";
+                    }
+                },
+                error: function (xhr, status, error) {
+                    $("#loader-container").hide();
+                    $("#password").val("");
+                    $("#cpass").val("");
+                    alert("Error occurred while processing your data");
+                    console.error("Status:", status, "Error:", error, "Response:", xhr.responseText);
+                }
+            });
+        }
+    });
 });

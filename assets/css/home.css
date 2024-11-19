@@ -1,0 +1,268 @@
+/* General Styles */
+* {
+  margin: 0;
+  padding: 0;
+  
+  font-family: sans-serif;
+}
+
+body {
+  background-color: #f5f5f5;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #2f2771;
+  padding: 10px 30px;
+}
+
+.navbar .logo img {
+  width: 120px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+}
+
+.nav-links li {
+  margin: 0 15px;
+}
+
+.nav-links li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.user-icon {
+  position: relative;
+  width: 10%;
+}
+
+/* Profile image styling */
+.profile-container {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.profile-img {
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  object-fit: cover;
+}
+
+/* Hide default file input */
+.custom-file-upload {
+  display: inline-block;
+  cursor: pointer;
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #333;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.profile-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  cursor: pointer;
+  padding: 20px;
+}
+
+.user-photo img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.update-section {
+  margin-top: 20px;
+}
+
+button {
+  padding: 10px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #555;
+}
+
+input[readonly] {
+  background-color: #e0e0e0;
+}
+
+/* Dropdown icon */
+.dropdown-icon {
+  margin-left: 10px;
+  font-size: 16px;
+  color: white;
+}
+
+/* Dropdown menu styling */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: #f5f5f5;
+  min-width: 120px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+  /* Highlight on hover */
+}
+
+/* Header Section */
+.header-section {
+  background: url("../images/heroStudents.jpg") no-repeat center center/cover;
+  height: 400px;
+  color: #fff;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.header-section h1 {
+  font-size: 40px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.header-section p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.header-section .btn {
+  background-color: #6b38fb;
+  color: #fff;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.header-section .btn:hover {
+  background-color: #532cc3;
+}
+
+/* Introduction Section */
+.introduction-section {
+  padding: 50px 0;
+  text-align: center;
+}
+
+.introduction-section h2 {
+  color: #ffa500;
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.introduction-section p {
+  color: #333;
+  font-size: 16px;
+  margin-bottom: 30px;
+}
+
+.button-group .btn {
+  background-color: #6b38fb;
+  color: #fff;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  margin: 0 10px;
+}
+
+.button-group .btn:hover {
+  background-color: #532cc3;
+}
+
+/* Attendance Section */
+.attendance-section {
+  background-color: #f5f5f5;
+  padding: 50px 0;
+  text-align: center;
+}
+
+.attendance-section h2 {
+  color: #6b38fb;
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.attendance-section p {
+  color: #333;
+  font-size: 16px;
+  margin-bottom: 30px;
+}
+
+.attendance-section .btn {
+  background-color: #6b38fb;
+  color: #fff;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.attendance-section .btn:hover {
+  background-color: #532cc3;
+}
+
+/* Footer */
+.footer {
+  background-color: #2f2771;
+  color: #fff;
+  padding: 60px;
+  text-align: center;
+}
+
+.footer .footer-links {
+  list-style: none;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.footer .footer-links li {
+  margin: 0 10px;
+}
+
+.footer .footer-links li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer .social-media a {
+  margin: 0 10px;
+  color: #fff;
+  font-size: 20px;
+}
+
+.footer .social-media a:hover {
+  color: #ffa500;
+}
