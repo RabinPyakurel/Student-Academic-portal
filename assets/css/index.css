@@ -1,268 +1,193 @@
-/* General Styles */
+/* Reset default styles */
 * {
-  margin: 0;
-  padding: 0;
-  
-  font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
+/* General body and text styles */
 body {
-  background-color: #f5f5f5;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f5f5f5;
 }
 
-/* Navbar */
+/* Navigation Bar Styles */
 .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #2f2771;
-  padding: 10px 30px;
+    background-color: #2f2771;
+    /* Dark Purple */
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
-.navbar .logo img {
-  width: 120px;
+.navbar .logo a {
+    color: #fff;
+    font-size: 24px;
+    text-decoration: none;
 }
 
 .nav-links {
-  list-style: none;
-  display: flex;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .nav-links li {
-  margin: 0 15px;
+    margin-left: 20px;
 }
 
-.nav-links li a {
-  color: #fff;
-  text-decoration: none;
-  font-size: 16px;
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
 }
 
-.user-icon {
-  position: relative;
-  width: 10%;
+.nav-links a:hover {
+    text-decoration: underline;
 }
 
-/* Profile image styling */
-.profile-container {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
+/* Hero Section Styles */
+.hero {
+    background: url('../images/heroStudents.jpg') no-repeat center center/cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
 }
 
-.profile-img {
-  border-radius: 50%;
-  height: 40px;
-  width: 40px;
-  object-fit: cover;
+.hero-content h1 {
+    font-size: 50px;
 }
 
-/* Hide default file input */
-.custom-file-upload {
-  display: inline-block;
-  cursor: pointer;
-  margin-top: 10px;
-  padding: 10px;
-  background-color: #333;
-  color: white;
-  border-radius: 5px;
-  cursor: pointer;
+.hero-content p {
+    font-size: 20px;
+    margin: 20px 0;
 }
 
-.profile-container {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  cursor: pointer;
-  padding: 20px;
+.cta-buttons .btn {
+    background-color: #ff6600;
+    color: white;
+    padding: 15px 30px;
+    margin: 10px;
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
 }
 
-.user-photo img {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  object-fit: cover;
+.cta-buttons .btn:hover {
+    background-color: #ff4500;
 }
 
-.update-section {
-  margin-top: 20px;
+/* Section Styles */
+.section {
+    padding: 60px 20px;
+    text-align: center;
 }
 
-button {
-  padding: 10px;
-  background-color: #333;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+h2 {
+    font-size: 30px;
+    margin-bottom: 20px;
 }
 
-button:hover {
-  background-color: #555;
+.program-cards {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
 }
 
-input[readonly] {
-  background-color: #e0e0e0;
+.program-card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 250px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    text-align: center;
 }
 
-/* Dropdown icon */
-.dropdown-icon {
-  margin-left: 10px;
-  font-size: 16px;
-  color: white;
+.program-card h3 {
+    font-size: 22px;
+    margin-bottom: 15px;
 }
 
-/* Dropdown menu styling */
-.dropdown-content {
-  display: none;
-  position: absolute;
-  right: 0;
-  background-color: #f5f5f5;
-  min-width: 120px;
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-  z-index: 1;
+.program-card ul {
+    text-align: left;
 }
 
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
+.program-card li {
+    font-size: 14px;
+    margin-bottom: 5px;
 }
 
-.dropdown-content a:hover {
-  background-color: #ddd;
-  /* Highlight on hover */
+/* Footer Styles */
+footer {
+    background-color: #2f2771;
+    /* Dark Purple */
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
 }
 
-/* Header Section */
-.header-section {
-  background: url("../images/heroStudents.jpg") no-repeat center center/cover;
-  height: 400px;
-  color: #fff;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+/* Responsive Design for Mobile */
+@media (max-width: 768px) {
+    .navbar {
+        justify-content: space-between;
+        padding: 10px;
+    }
+
+    .hero-content h1 {
+        font-size: 40px;
+    }
+
+    .hero-content p {
+        font-size: 18px;
+    }
+
+    .cta-buttons .btn {
+        font-size: 16px;
+        padding: 12px 25px;
+    }
+
+    .section {
+        padding: 40px 20px;
+    }
+
+    .program-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .program-card {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    footer {
+        padding: 20px 0;
+    }
 }
 
-.header-section h1 {
-  font-size: 40px;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
+/* Smaller devices (phones in portrait mode) */
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 30px;
+    }
 
-.header-section p {
-  font-size: 18px;
-  margin-bottom: 20px;
-}
+    .cta-buttons .btn {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
 
-.header-section .btn {
-  background-color: #6b38fb;
-  color: #fff;
-  padding: 10px 20px;
-  text-decoration: none;
-  border-radius: 5px;
-}
-
-.header-section .btn:hover {
-  background-color: #532cc3;
-}
-
-/* Introduction Section */
-.introduction-section {
-  padding: 50px 0;
-  text-align: center;
-}
-
-.introduction-section h2 {
-  color: #ffa500;
-  font-size: 28px;
-  margin-bottom: 20px;
-}
-
-.introduction-section p {
-  color: #333;
-  font-size: 16px;
-  margin-bottom: 30px;
-}
-
-.button-group .btn {
-  background-color: #6b38fb;
-  color: #fff;
-  padding: 10px 20px;
-  text-decoration: none;
-  border-radius: 5px;
-  margin: 0 10px;
-}
-
-.button-group .btn:hover {
-  background-color: #532cc3;
-}
-
-/* Attendance Section */
-.attendance-section {
-  background-color: #f5f5f5;
-  padding: 50px 0;
-  text-align: center;
-}
-
-.attendance-section h2 {
-  color: #6b38fb;
-  font-size: 28px;
-  margin-bottom: 20px;
-}
-
-.attendance-section p {
-  color: #333;
-  font-size: 16px;
-  margin-bottom: 30px;
-}
-
-.attendance-section .btn {
-  background-color: #6b38fb;
-  color: #fff;
-  padding: 10px 20px;
-  text-decoration: none;
-  border-radius: 5px;
-}
-
-.attendance-section .btn:hover {
-  background-color: #532cc3;
-}
-
-/* Footer */
-.footer {
-  background-color: #2f2771;
-  color: #fff;
-  padding: 60px;
-  text-align: center;
-}
-
-.footer .footer-links {
-  list-style: none;
-  padding: 10px;
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-
-.footer .footer-links li {
-  margin: 0 10px;
-}
-
-.footer .footer-links li a {
-  color: #fff;
-  text-decoration: none;
-}
-
-.footer .social-media a {
-  margin: 0 10px;
-  color: #fff;
-  font-size: 20px;
-}
-
-.footer .social-media a:hover {
-  color: #ffa500;
+    .program-card h3 {
+        font-size: 20px;
+    }
 }

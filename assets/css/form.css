@@ -175,7 +175,6 @@ a:hover {
 
 .form {
     width: clamp(320px, 90%, 430px);
-    margin: 0 auto;
     border: 1px solid #ccc;
     border-radius: 0.35rem;
     padding: 2rem;
@@ -183,6 +182,8 @@ a:hover {
     transform: translateY(-10px);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     background-color: white;
+    /* margin: auto;
+    margin-right: 20%; */
 }
 
 .form:hover {

@@ -39,7 +39,7 @@ $(document).ready(function () {
                     $("#loader-container").hide();
 
                     if (response.includes("login successful")) {
-                        window.location.href = "/index.htm";
+                        window.location.href = "/home.htm";
                     } else {
                         $("#pass").val("");
                         $("#passMsg").html(response);

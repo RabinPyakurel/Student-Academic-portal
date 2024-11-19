@@ -6,9 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign In</title>
     <link rel="stylesheet" href="../assets/css/form.css">
-    <link rel="stylesheet" href="../assets/css/terms.css">
     <link rel="stylesheet" href="../assets/css/loader.css">
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <style>
+        .forgot_password {
+            padding-bottom: 1.5rem;
+        }
+    </style>
 </head>
 
 <body>
@@ -30,16 +34,10 @@
             <label for="pass">Password</label><br>
             <span class="error" id="passMsg"></span>
         </div>
-        <div class="terms-and-forgot">
-            <div>
-                <input type="checkbox" name="terms" id="terms" required>
-                <a href="#" class="link" id="openTermsModal">I accept the terms and conditions</a>
-            </div>
-
-            <div class="forgot_password">
-                <a href="#" class="link" id="forgotpass">Forgot password?</a>
-            </div>
+        <div class="forgot_password">
+            <a href="#" class="link" id="forgotpass">Forgot password?</a>
         </div>
+
         <div>
             <input type="submit" class="btn ml-auto" value="Login">
         </div>
@@ -47,14 +45,6 @@
             Don't have an account? <a href="./sign-up.htm"> Register here</a>
         </div>
     </form>
-
-    <div id="termsModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn">&times;</span>
-            <iframe src="terms.htm"></iframe>
-        </div>
-    </div>
-    <script src="../assets/js/terms.js"></script>
     <script src="../assets/js/loginValidation.js"></script>
 </body>
 

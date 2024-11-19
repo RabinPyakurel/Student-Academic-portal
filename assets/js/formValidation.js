@@ -12,9 +12,6 @@ const password = document.getElementById('password');
 const cpass = document.getElementById('cpass');
 
 const require = "This field is required";
-
-
-
 const validateName = () => {
     const namePattern = /^[A-Za-z ]+$/;
     if (!name.value.match(namePattern)) {
@@ -219,6 +216,8 @@ $(document).ready(function () {
                 },
                 error: function (xhr, status, error) {
                     $("#loader-container").hide();
+                    $("#password").val("");
+                    $("#cpass").val("");
                     alert("Error occurred while processing your data");
                     console.error("Status:", status, "Error:", error, "Response:", xhr.responseText);
                 }

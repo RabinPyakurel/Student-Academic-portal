@@ -3,8 +3,14 @@ const nextBtns = document.querySelectorAll(".btn-next");
 const progress = document.getElementById("progress");
 const formSteps = document.querySelectorAll(".form-step");
 const progressSteps = document.querySelectorAll(".progress-step");
-
+const form = document.querySelector(".form")
 let step = 0;
+window.addEventListener("load", () => {
+    step = 0;
+    updateFormSteps();
+    updateProgressbar();
+    form.reset();
+});
 
 nextBtns.forEach(btn => {
     btn.addEventListener("click", (e) => {
