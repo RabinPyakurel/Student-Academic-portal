@@ -1,0 +1,97 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9;
+  color: #333;
+}
+
+.about-banner {
+  background-image: url("images/banner.jpg");
+  background-size: cover;
+  background-position: center;
+  color: white;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.about-banner h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.about-banner p {
+  font-size: 1.2rem;
+  margin-bottom: 0;
+}
+
+.about-page {
+  max-width: 1000px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+.about-section {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.section-image {
+  flex: 1;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.section-content {
+  flex: 1;
+  padding: 20px;
+}
+
+h2 {
+  color: #0056b3;
+  margin-bottom: 10px;
+}
+
+p,
+ul {
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+.reverse {
+  flex-direction: row-reverse;
+}
+
+.contact-link {
+  text-align: center;
+  padding: 20px;
+  background-color: #0056b3;
+  color: white;
+  font-size: 1.2rem;
+}
+
+.contact-link a {
+  color: #ffdd57;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.contact-link a:hover {
+  text-decoration: underline;
+}
