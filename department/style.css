@@ -1,0 +1,155 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #eeeeee;
+    color: #333333;
+}
+
+header {
+    background-color: #ffffff;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #cccccc;
+}
+
+header .logo {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+header nav a {
+    text-decoration: none;
+    color: #333333;
+    margin: 0 10px;
+    font-size: 14px;
+}
+
+header nav a:hover {
+    text-decoration: underline;
+}
+
+main {
+    padding: 20px;
+    max-width: 900px;
+    margin: 20px auto;
+    background-color: #ffffff;
+    border: 2px solid #cccccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.attendance-summary {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.user-photo {
+    width: 80px;
+    height: 80px;
+    background-color: #cccccc;
+    border-radius: 50%;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.attendance-circle {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin: 20px auto;
+    position: relative;
+    text-align: center;
+    background-color: #f9f9f9;
+    border: 10px solid transparent;
+    background-image: conic-gradient(#4caf50 0%, #cccccc 0%);
+}
+
+.attendance-circle span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.calendar {
+    margin: 20px 0;
+    text-align: center;
+    font-size: 16px;
+}
+
+.calendar h3 {
+    margin: 10px 0;
+}
+
+.calendar table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.calendar td,
+.calendar th {
+    border: 1px solid #cccccc;
+    padding: 5px;
+    text-align: center;
+}
+
+.calendar th {
+    background-color: #f0f0f0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    text-align: left;
+}
+
+table th,
+table td {
+    border: 1px solid #cccccc;
+    padding: 10px;
+}
+
+table th {
+    background-color: #f7f7f7;
+    font-weight: bold;
+}
+
+table a {
+    color: #0073e6;
+    text-decoration: none;
+}
+
+table a:hover {
+    text-decoration: underline;
+}
+
+footer {
+    text-align: center;
+    font-size: 12px;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-top: 2px solid #cccccc;
+}
+
+footer .contact-info,
+footer .social-media {
+    margin: 10px 0;
+}
+
+footer .social-media a {
+    margin: 0 5px;
+    text-decoration: none;
+    color: #0073e6;
+}
+
+footer .social-media a:hover {
+    text-decoration: underline;
+}

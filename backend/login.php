@@ -1,6 +1,8 @@
 <?php
 include 'db_connection.php';
 
+session_start();
+
 $user_input = $_POST['username'];
 $password = $_POST['password'];
 
@@ -22,6 +24,7 @@ $stmt->execute();
 $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if ($user && password_verify($password, $user['password'])) {
+    $_SESSION['user_id'] = $user['user_id'];
     echo 'login successful';
 } else {
     echo "Invalid credentials";
