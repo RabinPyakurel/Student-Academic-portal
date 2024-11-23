@@ -6,9 +6,8 @@
 
 .hero {
   width: 100%;
-  min-height: 10vh;
-  background: #eceaff;
-  color: #525252;
+  min-height: 30vh;
+  color: black;
 }
 
 /* Navbar styles */

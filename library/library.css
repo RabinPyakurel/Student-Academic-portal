@@ -5,29 +5,45 @@
   max-width: 1200px;
   margin: auto;
 }
+.container h2 {
+  font-family: "Alegreya SC";
+  margin-top: 15px;
 
+}
+
+.navbar {
+  font-family: "Alegreya SC";
+  height: 12vh;
+}
 .nav-links li a {
   text-decoration: none;
 }
 
-.menu-toggle {
-  display: none;
-  background: none;
+.action-button {
+  font-size: 10px;
+  padding: 6px 15px;
   border: none;
-
-  font-size: 24px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: linear-gradient(45deg, #557bcd, hsl(203, 72%, 47%));
+  color: white;
+  border: 2px solid transparent;
+  text-transform: uppercase;
 }
-
+.action-button hover {
+  background: linear-gradient(45deg, #4cadce, #5778bf);
+}
 /* Hero Section */
 .hero {
-  background: url("https://via.placeholder.com/1500x500") no-repeat center/cover;
-  padding: 80px 0;
+  background: url("../assets/images/im.webp") no-repeat center/cover;
+  padding: 50px 0;
   text-align: center;
 }
 
 .hero h1 {
   font-size: 48px;
-  margin-bottom: 10px;
+  margin-top: 50px;
 }
 
 .hero p {
@@ -58,7 +74,9 @@
 .search-bar button:hover {
   background-color: #f0efec;
   color: #1b7895;
-  
+  border: 2px solid #1b7895;
+
+  cursor: pointer;
 }
 
 /* Featured Section */
@@ -66,10 +84,11 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 20px;
+  
 }
 
 .featured .book-card {
-  background-color: #fff;
+  background-color: #f3fefe;
   text-align: center;
   padding: 10px;
   border: 1px solid #ddd;
@@ -91,8 +110,8 @@
 }
 
 .categories .category-card {
-  padding: 20px;
-  background-color: #004aad;
+  padding: 10px;
+  background-color: #095c78;
   color: #fff;
   text-align: center;
   border-radius: 5px;
@@ -100,8 +119,8 @@
 }
 
 .categories .category-card:hover {
-  background-color: #f7c04a;
-  color: #004aad;
+  background-color: #6db3c0;
+  color: white;
 }
 
 /* Footer */

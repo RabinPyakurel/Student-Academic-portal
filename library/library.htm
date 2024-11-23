@@ -7,8 +7,9 @@
   <title>Library</title>
   <link rel="stylesheet" href="./library.css">
   <link rel="stylesheet" href="../assets/css/nav.css">
-  <link rel="stylesheet" href="../assets/css/navdropdown.css">
+  <link r#f2ececlesheet" href="../assets/css/navdropdown.css">
 
+  <link href='https://fonts.googleapis.com/css?family=Alegreya SC' rel='stylesheet'>
 
 </head>
 
@@ -28,13 +29,39 @@
       <li><a href="../about us/aboutus.htm">About Us</a></li>
       <!-- Login link -->
     </ul>
+    <img src="../assets/images/profile-pic.png" alt="" class="user-pic" onclick="toggleSubMenu()">
+    <div class="sub-menu-wrap" id="subMenu">
+      <div class="sub-menu">
+        <div class="user-info">
+          <img src="../assets/images/defaultimg.png" alt="">
+          <h3>Ritika Suwal</h3>
+        </div>
+        <hr>
+
+        <a href="../user-profile/userprofile.htm" class="sub-menu-link">
+          <img src="../assets/images/profile.png" alt="">
+          <p>My Profile</p>
+          <span>></span>
+        </a>
+        <a href="#" class="sub-menu-link">
+          <img src="../assets/images/help.png" alt="">
+          <p>Help & Support</p>
+          <span>></span>
+        </a>
+        <a href="../authentication/sign-in.htm" class="sub-menu-link">
+          <img src="../assets/images/logout.png" alt="">
+          <p>Logout</p>
+          <span>></span>
+        </a>
+      </div>
+    </div>
   </nav>
 
   <!-- Hero Section -->
   <section class="hero">
     <div class="hero-content">
-      <h1>Kun kitab chahiyo</h1>
-      <p>afno itchya sari kitab khojnu hos</p>
+      <h1>डिजिटल उपन्यासहरूको संसार</h1>
+      <p>The World of Novels: Now in Your Library</p>
       <div class="search-bar">
         <input type="text" placeholder="Search for books, authors, or categories...">
         <button>Search</button>
@@ -48,24 +75,32 @@
       <h2>Featured Books</h2>
       <div class="book-grid">
         <div class="book-card">
-          <img src="../assets/images/1stlib.jpeg" alt="Book Cover">
-          <h3>Book Title</h3>
-          <p>Author Name</p>
+          <img src="../assets/images/images (1).jpeg" alt="Book Cover">
+          <h3>Life in woods</h3>
+          <p>Author : Henry David Thoreau</p>
+          <button class="action-button">Borrow</button>
+          <button class="action-button">Check Availability</button>
         </div>
         <div class="book-card">
           <img src="../assets/images/2ndlib.jpeg" alt="Book Cover">
-          <h3>Book Title</h3>
-          <p>Author Name</p>
+          <h3>Eklo</h3>
+          <p>Author : Buddhi Sagar</p>
+          <button class="action-button">Borrow</button>
+          <button class="action-button">Check Availability</button>
         </div>
         <div class="book-card">
           <img src="../assets/images/3rdlib.jpeg" alt="Book Cover">
-          <h3>Book Title</h3>
-          <p>Author Name</p>
+          <h3>Mochan</h3>
+          <p>Author : Tulasi Acharya</p>
+          <button class="action-button">Borrow</button>
+          <button class="action-button">Check Availability</button>
         </div>
         <div class="book-card">
           <img src="../assets/images/4thlib.jpeg" alt="Book Cover">
-          <h3>Book Title</h3>
-          <p>Author Name</p>
+          <h3>Ijoriya</h3>
+          <p>Author : Subin Bhattarai</p>
+          <button class="action-button">Borrow</button>
+          <button class="action-button">Check Availability</button>
         </div>
       </div>
     </div>
@@ -97,7 +132,7 @@
       </div>
     </div>
   </footer>
-
+  <script src="../assets/js/navdropdow.js"></script>
   <script>
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');

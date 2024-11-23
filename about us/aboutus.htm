@@ -7,6 +7,7 @@
   <title>About Us</title>
   <link rel="stylesheet" href="aboutus.css">
   <link rel="stylesheet" href="../assets/css/nav.css">
+  <link rel="stylesheet" href="../assets/css/navdropdown.css">
   <link href='https://fonts.googleapis.com/css?family=Alegreya SC' rel='stylesheet'>
 
 </head>
@@ -26,6 +27,32 @@
       <li><a href="../about us/aboutus.htm">About Us</a></li>
       <!-- Login link -->
     </ul>
+    <img src="../assets/images/profile-pic.png" alt="" class="user-pic" onclick="toggleSubMenu()">
+    <div class="sub-menu-wrap" id="subMenu">
+      <div class="sub-menu">
+        <div class="user-info">
+          <img src="../assets/images/defaultimg.png" alt="">
+          <h3>Ritika Suwal</h3>
+        </div>
+        <hr>
+
+        <a href="../user-profile/userprofile.htm" class="sub-menu-link">
+          <img src="../assets/images/profile.png" alt="">
+          <p>My Profile</p>
+          <span>></span>
+        </a>
+        <a href="#" class="sub-menu-link">
+          <img src="../assets/images/help.png" alt="">
+          <p>Help & Support</p>
+          <span>></span>
+        </a>
+        <a href="../authentication/sign-in.htm" class="sub-menu-link">
+          <img src="../assets/images/logout.png" alt="">
+          <p>Logout</p>
+          <span>></span>
+        </a>
+      </div>
+    </div>
   </nav>
 
   <section class="about-banner">
@@ -82,6 +109,7 @@
     <p>&copy; 2024 StudentAcademicPortal. All Rights Reserved.</p>
     <p>Have questions or suggestions? <a href="contact.html">Contact Us</a></p>
   </section>
+  <script src="../assets/js/navdropdow.js"></script>
 </body>
 
 </html>
