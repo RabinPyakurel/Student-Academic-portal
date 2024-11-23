@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us</title>
+  <link rel="stylesheet" href="./contactform.css">
+</head>
+
+<body>
+  <header>
+    <h1>Student Academic Portal</h1>
+    <p>Your gateway to Academic Excellence</p>
+  </header>
+
+  <section id="contact-us">
+    <button id="contact-button">Contact Us</button>
+  </section>
+
+  <section id="introduction">
+    <h2>Website Introduction</h2>
+    <p>
+      Welcome to the Student Academic Portal, where you can effortlessly track attendance,
+      view results, access previous year questions, and manage your academic journey with ease.
+    </p>
+  </section>
+
+  <section id="blogs">
+    <h2>Blogs</h2>
+    <div class="blog-container">
+      <div class="blog">
+        <div class="blog-image">Blog 1</div>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit...</p>
+      </div>
+      <div class="blog">
+        <div class="blog-image">Blog 2</div>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit...</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-section">
+      <h3>Contact Information</h3>
+      <p>Faculty of Engineering</p>
+      <p>01-5201241</p>
+      <p>info@college.edu.np</p>
+      <p>Location</p>
+    </div>
+    <div class="footer-section">
+      <h3>Information</h3>
+      <p>About Us</p>
+      <p>Events</p>
+    </div>
+    <div class="footer-section">
+      <h3>Follow Us</h3>
+      <p>Facebook | Instagram | Twitter</p>
+    </div>
+    <p>&copy; 2024 All rights reserved | Privacy - Terms and Conditions</p>
+  </footer>
+
+  <!-- Modal Contact Form -->
+  <div id="contact-modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Contact Us</h2>
+      <form id="contact-form">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="subject">Subject:</label>
+        <input type="text" id="subject" name="subject" required>
+
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="scripts.js"></script>
+</body>
+
+</html>
