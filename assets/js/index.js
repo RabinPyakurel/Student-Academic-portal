@@ -1,43 +1,75 @@
-// Get the profile image and dropdown menu elements
-const profileContainer = document.getElementById("profileContainer");
-const dropdownMenu = document.getElementById("dropdownMenu");
+const track = document.querySelector('.carousel-track');
+const items = document.querySelectorAll('.carousel-item');
+const prevButton = document.getElementById('prev-btn');
+const nextButton = document.getElementById('next-btn');
 
-// Toggle the dropdown menu visibility on image click
-profileContainer.addEventListener("click", function () {
-  if (dropdownMenu.style.display === "block") {
-    dropdownMenu.style.display = "none"; // Hide the menu
+let currentIndex = 0;
+let itemsPerView = 1;
+
+
+const updateItemsPerView = () => {
+  const screenWidth = window.innerWidth;
+
+  if (screenWidth > 1200) {
+    itemsPerView = 3;
+  } else if (screenWidth > 768) {
+    itemsPerView = 2;
   } else {
-    dropdownMenu.style.display = "block"; // Show the menu
-  }
-});
-
-// Close the dropdown if the user clicks outside the menu
-window.onclick = function (event) {
-  if (
-    !event.target.matches(".profile-img") &&
-    !event.target.matches(".dropdown-icon") &&
-    !event.target.matches("#profileContainer")
-  ) {
-    dropdownMenu.style.display = "none";
+    itemsPerView = 1;
   }
 };
 
-// user profile
-document.getElementById("photoUpload").addEventListener("change", function () {
-  const file = this.files[0];
-  if (file) {
-    const reader = new FileReader();
 
-    reader.onload = function (event) {
-      document
-        .getElementById("userImage")
-        .setAttribute("src", event.target.result);
-    };
+const updateCarousel = () => {
+  const itemWidth = items[0].offsetWidth + 32;
+  track.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+};
 
-    reader.readAsDataURL(file);
+
+nextButton.addEventListener('click', () => {
+  const maxIndex = items.length - itemsPerView;
+
+  if (currentIndex < maxIndex) {
+    currentIndex++;
+  } else {
+    currentIndex = 0;
   }
+  updateCarousel();
 });
 
-document.getElementById("editBtn").addEventListener("click", function () {
-  alert("Edit functionality is not implemented yet.");
+
+prevButton.addEventListener('click', () => {
+  if (currentIndex > 0) {
+    currentIndex--;
+  } else {
+    currentIndex = items.length - itemsPerView;
+  }
+  updateCarousel();
+});
+
+window.addEventListener('resize', () => {
+  updateItemsPerView();
+  updateCarousel();
+});
+
+
+updateItemsPerView();
+updateCarousel();
+
+//redirect to register page
+const register = document.getElementById('register');
+register.addEventListener('click', () => {
+  window.location.href = "authentication/sign-up.htm";
+});
+//redirect to login page for admin
+const login_admin = document.getElementById('login-admin');
+login_admin.addEventListener('click', () => {
+  window.location.href = "admin/login.htm";
+});
+
+
+const login_user = document.getElementById('login-user');
+
+login_user.addEventListener('click', () => {
+  window.location.href = "authentication/sign-in.htm";
 });

@@ -1,193 +1,237 @@
-/* Reset default styles */
+:root {
+    --footer-color: #25314a;
+    --btn-color: #095c78
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-/* General body and text styles */
-body {
     font-family: Arial, sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background-color: #f5f5f5;
 }
 
-/* Navigation Bar Styles */
-.navbar {
-    background-color: #2f2771;
-    /* Dark Purple */
-    padding: 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-}
 
-.navbar .logo a {
-    color: #fff;
-    font-size: 24px;
-    text-decoration: none;
-}
-
-.nav-links {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.nav-links li {
-    margin-left: 20px;
-}
-
-.nav-links a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 18px;
-}
-
-.nav-links a:hover {
-    text-decoration: underline;
-}
-
-/* Hero Section Styles */
 .hero {
-    background: url('../images/heroStudents.jpg') no-repeat center center/cover;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    position: relative;
     color: white;
     text-align: center;
+    min-height: 86.9vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)),
+        url(../images/hero.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    transition: background-attachment 0.3s ease;
 }
 
-.hero-content h1 {
-    font-size: 50px;
+.hero-content {
+    max-width: 600px;
 }
 
-.hero-content p {
-    font-size: 20px;
-    margin: 20px 0;
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
 }
 
-.cta-buttons .btn {
-    background-color: #ff6600;
-    color: white;
-    padding: 15px 30px;
-    margin: 10px;
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.hero .btn {
+    padding: 0.8rem 2rem;
+    background-color: #fff;
+    color: var(--btn-color);
     text-decoration: none;
-    font-size: 18px;
+    
     border-radius: 5px;
     transition: background-color 0.3s ease;
 }
 
-.cta-buttons .btn:hover {
-    background-color: #ff4500;
-}
-
-/* Section Styles */
-.section {
-    padding: 60px 20px;
-    text-align: center;
-}
-
-h2 {
-    font-size: 30px;
-    margin-bottom: 20px;
-}
-
-.program-cards {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap;
-}
-
-.program-card {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    width: 250px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 10px;
-    text-align: center;
-}
-
-.program-card h3 {
-    font-size: 22px;
-    margin-bottom: 15px;
-}
-
-.program-card ul {
-    text-align: left;
-}
-
-.program-card li {
-    font-size: 14px;
-    margin-bottom: 5px;
-}
-
-/* Footer Styles */
-footer {
-    background-color: #2f2771;
-    /* Dark Purple */
+.hero .btn:hover {
+    background-color: var(--btn-color);
     color: white;
+}
+
+.about {
+    padding: 4rem 1rem;
+    background-color: #f9f9f9;
     text-align: center;
-    padding: 10px 0;
+}
+
+
+.features {
+    padding: 4rem 1rem;
+    background-color: #fff;
+    text-align: center;
+}
+
+.card-container {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.container h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+
+.card {
+    background: #f4f4f4;
+    border-radius: 10px;
+    padding: 1.5rem;
+    text-align: center;
+    width: 300px;
+    height: 300px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card img {
+    width: 100%;
+    margin-bottom: 0.7rem;
+    height: 60%;
+}
+
+.card h3 {
+    font-size: 1.5rem;
+    margin: 0.5rem 0;
+    color: #333;
+}
+
+.card h3:hover {
+    color: #095c78;
+    transition: color 0.3s ease;
+}
+
+
+.contact {
+    background-color: #25314a;
+    color: white;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+
+.program-carousel {
+    padding: 4rem 1rem;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.program-carousel h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: #333;
+}
+
+
+.carousel {
     position: relative;
+    overflow: hidden;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-/* Responsive Design for Mobile */
+.carousel-track {
+    display: flex;
+    gap: 2rem;
+    transition: transform 0.5s ease;
+
+}
+
+.carousel-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    flex: 0 0 calc(100% / 3 - 2rem);
+
+}
+
+.carousel-item img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+}
+
+
+
+.carousel-item h3 {
+    font-size: 1.5rem;
+    margin: 1rem 0;
+    color: #333;
+    transition: color 0.3s ease;
+
+}
+
+.carousel-item:hover h3 {
+    color: #095c78;
+
+}
+
+
+.carousel-item p {
+    font-size: 1rem;
+    color: #666;
+}
+
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #095c78;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    font-size: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+.carousel-btn:hover {
+    background-color: #084053;
+}
+
+.carousel-btn.prev {
+    left: 1rem;
+}
+
+.carousel-btn.next {
+    right: 1rem;
+}
+
+
 @media (max-width: 768px) {
-    .navbar {
-        justify-content: space-between;
-        padding: 10px;
+    .hero {
+        background-attachment: scroll;
     }
 
-    .hero-content h1 {
-        font-size: 40px;
+    .carousel-item {
+        flex: 0 0 100%;
     }
 
-    .hero-content p {
-        font-size: 18px;
+    .card {
+        height: 450px;
     }
 
-    .cta-buttons .btn {
-        font-size: 16px;
-        padding: 12px 25px;
-    }
-
-    .section {
-        padding: 40px 20px;
-    }
-
-    .program-cards {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .program-card {
-        width: 100%;
-        margin-bottom: 20px;
-    }
-
-    footer {
-        padding: 20px 0;
-    }
-}
-
-/* Smaller devices (phones in portrait mode) */
-@media (max-width: 480px) {
-    .hero-content h1 {
-        font-size: 30px;
-    }
-
-    .cta-buttons .btn {
-        font-size: 14px;
-        padding: 10px 20px;
-    }
-
-    .program-card h3 {
-        font-size: 20px;
-    }
 }

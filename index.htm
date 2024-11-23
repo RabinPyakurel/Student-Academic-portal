@@ -6,101 +6,142 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Academic Portal</title>
     <link rel="stylesheet" href="./assets/css/index.css">
+    <link rel="stylesheet" href="./assets/css/nav.css">
 </head>
 
 <body>
 
-    <!-- Navigation Bar -->
     <nav class="navbar">
-        <div class="logo">
-            <a href="#">StudentPortal</a> <!-- Default Text Logo -->
+        <div class="container">
+            <div class="logo">
+                <a href="#" class="logo">
+                    <img src="./assets/images/Student.png" alt="Student Academic Portal">
+                </a>
+            </div>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#program">Programs</a></li>
+                <li>
+                    <a id="register" class="register-btn">Register</a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="login-dropdown">Login</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="register-btn" id="login-admin">Login as Admin</a></li>
+                        <li><a class="register-btn" id="login-user">Login as Student</a></li>
+                    </ul>
+                </li>
+            </ul>
         </div>
-        <ul class="nav-links">
-            <li><a href="#programs">Our Programs</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="./authentication/sign-in.htm">Login</a></li> <!-- Login link -->
-        </ul>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
+
+
+    <section id="home" class="hero">
         <div class="hero-content">
-            <h1>Welcome to Our Student Portal</h1>
-            <p>Your gateway to a successful academic journey. Explore our programs, services, and more.</p>
-            <div class="cta-buttons">
-                <a href="./authentication/sign-in.htm" class="btn">Login</a>
-                <a href="./authentication/sign-up.htm" class="btn">Sign Up</a>
+            <h1>Streamline Academics with SAPO</h1>
+            <p>Your academic life, simplified and organized.</p>
+            <a href="#features" class="btn">View Services</a>
+        </div>
+    </section>
+
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2>Streamlining Your Academic Journey</h2>
+            <p>
+                Student Academic Portal (SAPO) is a secure platform developed exclusively for Kathford International
+                College.
+                Our mission is to simplify your academic processes and provide features like marks tracking, event
+                notifications, and online exam registration.
+            </p>
+        </div>
+    </section>
+
+
+    <section id="features" class="features">
+        <div class="container">
+            <h2>Our Features</h2>
+            <div class="card-container">
+                <div class="card">
+                    <img src="/assets/images/marks.jpeg" alt="Marks Tracking">
+                    <h3>Marks Tracking</h3>
+                    <p>Easily monitor your academic progress.</p>
+                </div>
+                <div class="card">
+                    <img src="/assets/images/attendance.jpg" alt="Event Notifications">
+                    <h3>Attendance Tracking</h3>
+                    <p>Track your Attendance on regular basis.</p>
+                </div>
+                <div class="card">
+                    <img src="/assets/images/exam-form.jpeg" alt="Online Exam Registration">
+                    <h3>Online Exam Registration</h3>
+                    <p>Register for exams from the comfort of your home.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Programs Section -->
-    <section id="programs" class="section">
-        <h2>Our Programs</h2>
-        <div class="program-cards">
-            <div class="program-card">
-                <h3>BCA - Bachelor of Computer Applications</h3>
-                <p>Learn the fundamentals of computer science and programming, preparing you for the tech industry.</p>
-                <ul>
-                    <li>Duration: 4 years</li>
-                    <li>Focus: Software Development, IT Solutions</li>
-                    <li>Fact: BCA graduates are in high demand in the tech industry.</li>
-                </ul>
-            </div>
-            <div class="program-card">
-                <h3>BBM - Bachelor of Business Management</h3>
-                <p>Develop your leadership, managerial, and entrepreneurial skills with a focus on business operations.
-                </p>
-                <ul>
-                    <li>Duration: 4 years</li>
-                    <li>Focus: Business Strategy, Marketing, Finance</li>
-                    <li>Fact: BBM grads often secure managerial roles in top companies.</li>
-                </ul>
-            </div>
-            <div class="program-card">
-                <h3>BBA - Bachelor of Business Administration</h3>
-                <p>Get equipped with essential business skills such as marketing, finance, and human resource
-                    management.</p>
-                <ul>
-                    <li>Duration: 4 years</li>
-                    <li>Focus: Corporate Management, Operations</li>
-                    <li>Fact: BBA graduates are the future leaders of global corporations.</li>
-                </ul>
-            </div>
-            <div class="program-card">
-                <h3>BSc. CSIT - Bachelor of Science in Computer Science and Information Technology</h3>
-                <p>A comprehensive program blending computer science with information technology concepts, ideal for a
-                    tech career.</p>
-                <ul>
-                    <li>Duration: 4 years</li>
-                    <li>Focus: Programming, Database Management, Networking</li>
-                    <li>Fact: BSc. CSIT is one of the most sought-after degrees in IT.</li>
-                </ul>
+    <section id="program" class="program-carousel">
+        <div class="container">
+            <h2>Our Programs</h2>
+            <div class="carousel">
+                <div class="carousel-track">
+                    <div class="carousel-item">
+                        <img src="./assets/images/bca.jpg" alt="bca">
+                        <h3>BCA</h3>
+                        <p>Stay updated with your academic progress effortlessly.</p>
+                    </div>
+
+                    <div class="carousel-item">
+                        <img src="./assets/images/bba.jpg" alt="bba">
+                        <h3>BBA</h3>
+                        <p>Never miss out on important academic events.</p>
+                    </div>
+
+                    <div class="carousel-item">
+                        <img src="./assets/images/csit.jpg" alt="bsc csit">
+                        <h3>Bsc CSIT</h3>
+                        <p>Register for exams from the comfort of your home.</p>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="./assets/images/bbm.jpg" alt="bbm">
+                        <h3>BBM</h3>
+                        <p>Register for exams from the comfort of your home.</p>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="./assets/images/civil.jpeg" alt="be civil">
+                        <h3>BE Civil</h3>
+                        <p>Register for exams from the comfort of your home.</p>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="./assets/images/computer-engineering.jpg" alt="be computer">
+                        <h3>BE Computer</h3>
+                        <p>Register for exams from the comfort of your home.</p>
+                    </div>
+                </div>
+
+                <button class="carousel-btn prev" id="prev-btn">&lt;</button>
+                <button class="carousel-btn next" id="next-btn">&gt;</button>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="section">
-        <h2>About Us</h2>
-        <p>Our platform is designed to provide students with easy access to resources, information, and academic
-            services. We focus on empowering students through quality education and support.</p>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="section">
-        <h2>Contact Us</h2>
-        <p>If you have any questions, feel free to reach out to us.</p>
-        <p>Email: support@studentportal.com</p>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2024 StudentPortal. All rights reserved.</p>
+    <footer id="contact" class="contact">
+        <div class="container">
+            <p>&copy; 2024 Student Academic Portal. All Rights Reserved.</p>
+        </div>
     </footer>
 
-    <script src="scripts.js"></script> <!-- Link to your JavaScript file if needed -->
+    <script src="./assets/js/index.js"></script>
+    <script src="./assets/js/nav.js"></script>
 </body>
 
 </html>

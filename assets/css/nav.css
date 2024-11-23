@@ -1,164 +1,186 @@
-/* Common styles */
-* {
-  margin: 0;
-  padding: 0;
-  font-family: sans-serif;
-  
-}
-
-.hero {
-  width: 100%;
-  min-height: 100vh;
-  background: #eceaff;
-  color: #525252;
-}
-
-/* Navbar styles */
-nav {
-  background: #1a1a1a;
-  width: 100%;
-  padding: 10px 10%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: relative;
-}
-
-.logo {
-  width: 120px;
-}
-
-.user-pic {
-  width: 40px;
-  border-radius: 50%;
-  cursor: pointer;
-  position: relative;
-  left: -20px;
-}
-
-/* Full-screen navigation links */
-nav ul {
-  display: flex;
-  text-align: right;
-}
-
-nav ul li {
-  display: inline-block;
-  list-style: none;
-  margin: 10px 20px;
-}
-
-nav ul li a {
-  color: #fff;
-  text-decoration: none;
-}
-
-/* Sub-menu styles */
-.sub-menu-wrap {
-  position: absolute;
-  top: 80%;
-  right: 10px;
-  width: 320px;
-  max-height: 0px;
-  overflow: hidden;
-  transition: max-height 0.5s;
+.navbar {
+  background-color: #F6F4F1;
+  color: black;
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
   z-index: 1000;
 }
 
-.sub-menu-wrap.open-menu {
-  max-height: 400px;
-}
-
-.sub-menu {
-  background-color: #fff;
-  padding: 20px;
-  margin: 10px;
-}
-
-.user-info {
+.navbar .container {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-}
-
-.user-info h3 {
-  font-weight: 500;
-  margin: 0;
-  line-height: 1;
-}
-
-.user-info img {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
   height: 60px;
-  width: 60px;
-  border-radius: 50%;
-  margin-right: 15px;
-  display: inline-block;
 }
 
-.sub-menu hr {
-  border: 0;
-  height: 1px;
-  width: 100%;
-  background: #ccc;
-  margin: 15px 0 10px;
+.navbar .logo img {
+  height: 95px;
+  width: auto;
+  mix-blend-mode: normal;
 }
 
-.sub-menu-link {
-  display: flex;
-  align-items: center;
+.navbar .dropdown {
+  position: relative;
+  top: -8px;
+}
+
+.navbar .dropdown .login-dropdown {
   text-decoration: none;
-  color: #525252;
-  margin: 12px 0;
-}
-
-.sub-menu-link p {
-  width: 100%;
-  margin: 0;
-  line-height: 1;
-  font-size: 15px;
-}
-
-.sub-menu-link img {
-  width: 40px;
-  height: 40px;
-  background: #e5e5e5;
-  border-radius: 50%;
-  padding: 8px;
-  margin-right: 15px;
+  font-size: 1rem;
+  color: #333;
+  padding: 0.5rem 1rem;
   display: inline-block;
+  cursor: pointer;
 }
 
-.sub-menu-link span {
-  font-size: 22px;
+.navbar .dropdown:hover .dropdown-menu {
+  display: block;
 }
 
-.sub-menu-link:hover span {
-  transform: translateX(5px);
-}
-
-.sub-menu-link:hover p {
-  font-weight: 600;
-}
-
-/* Responsive styles */
-.menu-toggle {
+.navbar .dropdown-menu {
   display: none;
-  font-size: 28px;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  z-index: 1000;
+  width: 100px;
+}
+
+.navbar .dropdown-menu li {
+  padding: 0.5rem 1rem;
+}
+
+.navbar .dropdown-menu li a {
+  text-decoration: none;
+  color: #333;
+  font-size: 0.9rem;
+  display: block;
+  transition: background-color 0.3s;
+}
+
+.navbar .dropdown-menu li a:hover {
+  background-color: #095c78;
+  color: #fff;
+}
+
+.nav-links {
+  margin-left: auto;
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: black;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #095c78;
+  background-color: white;
+}
+
+.nav-links .register {
+  padding: 10px;
+  border-radius: 7px;
+  background-color: #095c78;
+}
+
+.nav-links .register:hover {
+  border: 1px solid rgb(1, 48, 65);
+  color: #095c78;
+  background-color: #fdfeff;
+}
+
+/* Separate Auth Links (Login/Register) */
+.auth-links {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.auth-links .register-btn,
+.auth-links .login-dropdown {
+  padding: 10px 20px;
+  background-color: #4CAF50;
   color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.auth-links .login-dropdown:hover,
+.auth-links .register-btn:hover {
+  background-color: white;
+  color: #4CAF50;
+  border: 1px solid #4CAF50;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 0.4rem;
+  cursor: pointer;
+}
+
+.hamburger span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background: black;
+  border-radius: 2px;
+}
+
+.register-btn {
   cursor: pointer;
 }
 
 @media (max-width: 768px) {
-  nav ul {
+  .nav-links {
     display: none;
     flex-direction: column;
-    width: 100%;
+    gap: 1rem;
+    background-color: white;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    padding: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
 
-  nav ul.show {
+  .nav-links.active {
     display: flex;
   }
 
-  .menu-toggle {
+  .hamburger {
+    display: flex;
+  }
+
+  .navbar .container {
+    height: 30px;
+  }
+
+  .navbar .logo img {
+    height: 45px;
+  }
+
+  /* Hide Auth Links on Mobile */
+  .auth-links {
+    display: none;
+  }
+
+  .auth-links.active {
     display: block;
+    margin-top: 20px;
   }
 }
