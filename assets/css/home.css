@@ -2,7 +2,7 @@
 * {
   margin: 0;
   padding: 0;
-  
+
   font-family: sans-serif;
 }
 
@@ -15,8 +15,9 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #2f2771;
+  background-color: #25314a;
   padding: 10px 30px;
+  
 }
 
 .navbar .logo img {

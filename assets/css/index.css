@@ -1,193 +1,193 @@
 /* Reset default styles */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 /* General body and text styles */
 body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background-color: #f5f5f5;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f5f5f5;
 }
 
 /* Navigation Bar Styles */
 .navbar {
-    background-color: #2f2771;
-    /* Dark Purple */
-    padding: 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
+  background-color: #25314a;
+  /* Dark Purple */
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .navbar .logo a {
-    color: #fff;
-    font-size: 24px;
-    text-decoration: none;
+  color: #fff;
+  font-size: 24px;
+  text-decoration: none;
 }
 
 .nav-links {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .nav-links li {
-    margin-left: 20px;
+  margin-left: 20px;
 }
 
 .nav-links a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 18px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
 }
 
 .nav-links a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 /* Hero Section Styles */
 .hero {
-    background: url('../images/heroStudents.jpg') no-repeat center center/cover;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    text-align: center;
+  background: url("../images/heroStudents.jpg") no-repeat center center/cover;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
 }
 
 .hero-content h1 {
-    font-size: 50px;
+  font-size: 50px;
 }
 
 .hero-content p {
-    font-size: 20px;
-    margin: 20px 0;
+  font-size: 20px;
+  margin: 20px 0;
 }
 
 .cta-buttons .btn {
-    background-color: #ff6600;
-    color: white;
-    padding: 15px 30px;
-    margin: 10px;
-    text-decoration: none;
-    font-size: 18px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
+  background-color: #ff6600;
+  color: white;
+  padding: 15px 30px;
+  margin: 10px;
+  text-decoration: none;
+  font-size: 18px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
 }
 
 .cta-buttons .btn:hover {
-    background-color: #ff4500;
+  background-color: #ff4500;
 }
 
 /* Section Styles */
 .section {
-    padding: 60px 20px;
-    text-align: center;
+  padding: 60px 20px;
+  text-align: center;
 }
 
 h2 {
-    font-size: 30px;
-    margin-bottom: 20px;
+  font-size: 30px;
+  margin-bottom: 20px;
 }
 
 .program-cards {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
 }
 
 .program-card {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    width: 250px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 10px;
-    text-align: center;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  width: 250px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 10px;
+  text-align: center;
 }
 
 .program-card h3 {
-    font-size: 22px;
-    margin-bottom: 15px;
+  font-size: 22px;
+  margin-bottom: 15px;
 }
 
 .program-card ul {
-    text-align: left;
+  text-align: left;
 }
 
 .program-card li {
-    font-size: 14px;
-    margin-bottom: 5px;
+  font-size: 14px;
+  margin-bottom: 5px;
 }
 
 /* Footer Styles */
 footer {
-    background-color: #2f2771;
-    /* Dark Purple */
-    color: white;
-    text-align: center;
-    padding: 10px 0;
-    position: relative;
+  background-color: #2f2771;
+  /* Dark Purple */
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  position: relative;
 }
 
 /* Responsive Design for Mobile */
 @media (max-width: 768px) {
-    .navbar {
-        justify-content: space-between;
-        padding: 10px;
-    }
+  .navbar {
+    justify-content: space-between;
+    padding: 10px;
+  }
 
-    .hero-content h1 {
-        font-size: 40px;
-    }
+  .hero-content h1 {
+    font-size: 40px;
+  }
 
-    .hero-content p {
-        font-size: 18px;
-    }
+  .hero-content p {
+    font-size: 18px;
+  }
 
-    .cta-buttons .btn {
-        font-size: 16px;
-        padding: 12px 25px;
-    }
+  .cta-buttons .btn {
+    font-size: 16px;
+    padding: 12px 25px;
+  }
 
-    .section {
-        padding: 40px 20px;
-    }
+  .section {
+    padding: 40px 20px;
+  }
 
-    .program-cards {
-        flex-direction: column;
-        align-items: center;
-    }
+  .program-cards {
+    flex-direction: column;
+    align-items: center;
+  }
 
-    .program-card {
-        width: 100%;
-        margin-bottom: 20px;
-    }
+  .program-card {
+    width: 100%;
+    margin-bottom: 20px;
+  }
 
-    footer {
-        padding: 20px 0;
-    }
+  footer {
+    padding: 20px 0;
+  }
 }
 
 /* Smaller devices (phones in portrait mode) */
 @media (max-width: 480px) {
-    .hero-content h1 {
-        font-size: 30px;
-    }
+  .hero-content h1 {
+    font-size: 30px;
+  }
 
-    .cta-buttons .btn {
-        font-size: 14px;
-        padding: 10px 20px;
-    }
+  .cta-buttons .btn {
+    font-size: 14px;
+    padding: 10px 20px;
+  }
 
-    .program-card h3 {
-        font-size: 20px;
-    }
+  .program-card h3 {
+    font-size: 20px;
+  }
 }
