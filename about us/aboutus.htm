@@ -14,51 +14,44 @@
 
 <body>
   <nav class="navbar">
-    <div class="logo">
-      <a href=""><img src="../assets/images/Student__1_-removebg-preview.png" height="90px" width="100px" alt=""></a>
-      <!-- Default Text Logo -->
-    </div>
-    <ul class="nav-links" display: flex;>
-      <li><a href="../home.htm">Home</a></li>
-      <li><a href="../department/attendance.htm">Attendance</a></li>
-      <li><a href="../">Fee</a></li>
-      <li><a href="../exams/exam-forms.htm">Exam and Results</a></li>
-      <li><a href="../library/library.htm">Library</a></li>
-      <li><a href="../about us/aboutus.htm">About Us</a></li>
-      <!-- Login link -->
-    </ul>
-    <img src="../assets/images/profile-pic.png" alt="" class="user-pic" onclick="toggleSubMenu()">
-    <div class="sub-menu-wrap" id="subMenu">
-      <div class="sub-menu">
-        <div class="user-info">
-          <img src="../assets/images/defaultimg.png" alt="">
-          <h3>Ritika Suwal</h3>
-        </div>
-        <hr>
-
-        <a href="../user-profile/userprofile.htm" class="sub-menu-link">
-          <img src="../assets/images/profile.png" alt="">
-          <p>My Profile</p>
-          <span>></span>
-        </a>
-        <a href="#" class="sub-menu-link">
-          <img src="../assets/images/help.png" alt="">
-          <p>Help & Support</p>
-          <span>></span>
-        </a>
-        <a href="../authentication/sign-in.htm" class="sub-menu-link">
-          <img src="../assets/images/logout.png" alt="">
-          <p>Logout</p>
-          <span>></span>
+    <div class="container">
+      <div class="logo">
+        <a href="#" class="logo">
+          <img src="../assets/images/Student.png" alt="Student Academic Portal">
         </a>
       </div>
+      <button class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="../index.htm">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#program">Programs</a></li>
+        <li>
+          <a id="register" class="register-btn">Register</a>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="login-dropdown">Login</a>
+          <ul class="dropdown-menu">
+            <li><a class="register-btn" id="login-admin">Login as Admin</a></li>
+            <li><a class="register-btn" id="login-user">Login as Student</a></li>
+          </ul>
+        </li>
+      </ul>
     </div>
   </nav>
 
-  <section class="about-banner">
-    <h1>About Us</h1>
-    <p>Empowering students with easy access to their academic information.</p>
+
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h1>About Us</h1>
+      <p>Empowering students with easy access to their academic information.</p>
+    </div>
   </section>
+
 
   <div class="about-page">
     <div class="about-section">
@@ -70,20 +63,22 @@
           platform where students can access and manage their academic information.</p>
       </div>
     </div>
-
     <div class="about-section reverse">
+      <img src="../assets/images/student-hero5.webp" alt="What We Offer" class="section-image">
       <div class="section-content">
         <h2>What We Offer</h2>
-        <ul>
-          <li><strong>Real-Time Access to Academic Records:</strong> Easily view attendance, grades, and other academic
+        <ul class="offer-li">
+          <li class="offer-li"><strong>Real-Time Access to Academic Records:</strong> Easily view attendance, grades,
+            and other academic
             details in one place.</li>
-          <li><strong>Personal Information Management:</strong> Update personal details such as contact information.
+          <li class="offer-li"><strong>Personal Information Management:</strong> Update personal details such as contact
+            information.
           </li>
-          <li><strong>Enhanced Communication:</strong> Stay informed with notifications, announcements, and updates.
+          <li class="offer-li"><strong>Enhanced Communication:</strong> Stay informed with notifications, announcements,
+            and updates.
           </li>
         </ul>
       </div>
-      <img src="../assets/images/world-student-day1.webp" alt="What We Offer" class="section-image">
     </div>
 
     <div class="about-section">
@@ -96,12 +91,12 @@
     </div>
 
     <div class="about-section reverse">
+      <img src="../assets/images/images.jpeg" alt="Why Choose Us" class="section-image">
       <div class="section-content">
         <h2>Why Choose Us?</h2>
         <p>Designed with students in mind, our portal offers a responsive and user-friendly experience, accessible on
           any device. Our commitment to continuous improvement makes us a reliable academic companion.</p>
       </div>
-      <img src="../assets/images/images.jpeg" alt="Why Choose Us" class="section-image">
     </div>
   </div>
 
@@ -109,7 +104,7 @@
     <p>&copy; 2024 StudentAcademicPortal. All Rights Reserved.</p>
     <p>Have questions or suggestions? <a href="contact.html">Contact Us</a></p>
   </section>
-  <script src="../assets/js/navdropdow.js"></script>
+  <script src="../assets/js/nav.js"></script>
 </body>
 
 </html>

@@ -90,7 +90,7 @@
             </button>
             <ul class="nav-links" id="nav-links">
                 <li><a href="#home">Home</a></li>
-                <li><a href="#attendance">Attendance</a></li>
+                <li><a href="./department/attendance.php">Attendance</a></li>
                 <li><a href="#fee">Fee</a></li>
                 <li><a href="#exam">Exam</a></li>
                 <li><a href="#result">Result</a></li>
@@ -191,36 +191,35 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
     <script src="./assets/js/index.js"></script>
     <script src="./assets/js/nav.js"></script>
 
     <script>
 
-        // Show/Hide dropdown menu for profile icon
+        
         document.getElementById('profile-icon').addEventListener('click', function (e) {
             e.preventDefault();
             const dropdownMenu = document.getElementById('dropdown-menu');
             dropdownMenu.classList.toggle('show');
-            // Prevent event from bubbling up to the document
+           
             e.stopPropagation();
         });
 
-        // Hide dropdown if clicked outside
+        
         document.addEventListener('click', function (e) {
             const dropdownMenu = document.getElementById('dropdown-menu');
             const profileIcon = document.getElementById('profile-icon');
 
-            // If the clicked element is not the profile icon or the dropdown, hide the dropdown
+           
             if (!profileIcon.contains(e.target) && !dropdownMenu.contains(e.target)) {
                 dropdownMenu.classList.remove('show');
             }
         });
 
-        // Logout functionality
+       
         document.getElementById('logout').addEventListener('click', function () {
             alert("Logged out successfully!");
-            window.location.href = "logout.php"; // Or call your PHP script to handle session unset
+            window.location.href = "logout.php"; 
         });
     </script>
 

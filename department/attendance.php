@@ -1,7 +1,6 @@
 <?php
-// attendance.php
+
 session_start();
-// Database connection
 try {
     $conn = new PDO("mysql:host=localhost;dbname=sapo", "root", "rabin");
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -10,12 +9,12 @@ try {
     exit;
 }
 
-// Default values
-$userId =  $_SESSION['user_id']; // Replace with a session-based user ID
+
+$userId =  $_SESSION['user_id']; 
 $currentMonth = date('F');
 $currentYear = date('Y');
 
-// Function to get the number of days in a month
+
 function getDaysInMonth($month, $year) {
     return cal_days_in_month(CAL_GREGORIAN, date('m', strtotime($month)), $year);
 }
@@ -49,7 +48,8 @@ $attendanceDetails = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Attendance</title>
-    <link rel="stylesheet" href="style.css"> <!-- Include your CSS here -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../assets/css/nav.css">
     <script>
        // JavaScript to handle dynamic month updates
        function updateCalendar() {
@@ -70,20 +70,154 @@ $attendanceDetails = $stmt->fetchAll(PDO::FETCH_ASSOC);
             });
     }
     </script>
+    <style>
+/* Body styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    padding: 20px;
+}
+
+/* Header styles */
+
+
+/* Main content styles */
+main {
+    margin-top: 30px;
+}
+
+/* Attendance summary */
+.attendance-summary {
+    background-color: #ecf0f1;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.attendance-summary h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.attendance-circle {
+    background-color: #3498db;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    margin: 20px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.attendance-summary p {
+    font-size: 18px;
+}
+
+/* Calendar Section */
+.calendar {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.calendar h3 {
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+select {
+    padding: 8px 15px;
+    font-size: 16px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+
+select:hover {
+    border-color: #3498db;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th, table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+table th {
+    background-color: #3498db;
+    color: black;
+    font-weight: bold;
+}
+
+table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+table tr:hover {
+    background-color: #f1f1f1;
+}
+
+table td {
+    color: #555;
+}
+
+/* Footer styles */
+
+
+    </style>
 </head>
 
 <body>
-    <header>
-        <div class="logo">LOGO</div>
-        <nav>
-            <a href="/home.htm">Home</a>
-            <a href="#">Attendance</a>
-            <a href="#">Fee</a>
-            <a href="#">Exam and Results</a>
-            <a href="#">Library</a>
-            <a href="#">About Us</a>
-        </nav>
-    </header>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="#" class="logo">
+                    <img src="../assets/images/Student.png" alt="Student Academic Portal">
+                </a>
+            </div>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="../home.htm">Home</a></li>
+                <li><a href="./department/attendance.php">Attendance</a></li>
+                <li><a href="#fee">Fee</a></li>
+                <li><a href="#exam">Exam</a></li>
+                <li><a href="#result">Result</a></li>
+            </ul>
+
+            <!-- Profile Dropdown on the rightmost side -->
+            <ul class="nav-links right">
+                <li class="dropdown" id="profile-dropdown">
+                    <a href="#" class="profile-icon" id="profile-icon">
+                        <img src="./assets/images/profile.png" alt="Profile Icon" class="profile-img">
+                    </a>
+                    <ul class="dropdown-menu" id="dropdown-menu">
+                        <li><a href="#profile">My Profile</a></li>
+                        <li><a href="#logout" id="logout">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
     <main>
         <div class="attendance-summary">
             <h2>Attendance Summary</h2>
@@ -128,9 +262,12 @@ $attendanceDetails = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </div>
         </div>
     </main>
-    <footer>
-        <p>&copy; 2024 Student Academic Portal. All Rights Reserved.</p>
+    <footer id="contact" class="contact">
+        <div class="container">
+            <p>&copy; 2024 Student Academic Portal. All Rights Reserved.</p>
+        </div>
     </footer>
+    <script src="../assets/nav.js"></script>
 </body>
 
 </html>
