@@ -1,3 +1,10 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
 .navbar {
   background-color: #F6F4F1;
   color: black;
@@ -143,6 +150,13 @@
 
 .register-btn {
   cursor: pointer;
+}
+
+.contact {
+  background-color: #25314a;
+  color: white;
+  padding: 1rem 0;
+  text-align: center;
 }
 
 @media (max-width: 768px) {

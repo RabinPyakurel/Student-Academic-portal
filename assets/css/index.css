@@ -47,7 +47,7 @@
     background-color: #fff;
     color: var(--btn-color);
     text-decoration: none;
-    
+
     border-radius: 5px;
     transition: background-color 0.3s ease;
 }
@@ -61,6 +61,45 @@
     padding: 4rem 1rem;
     background-color: #f9f9f9;
     text-align: center;
+}
+
+/* Styling for the About Us button */
+.btn-about {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #007BFF;
+    /* Blue background */
+    color: #fff;
+    /* White text */
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    border: none;
+    border-radius: 8px;
+    /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow */
+    transition: all 0.3s ease;
+    /* Smooth transition */
+    text-align: center;
+}
+
+.btn-about:hover {
+    background-color: #0056b3;
+    /* Darker blue on hover */
+    transform: translateY(-2px);
+    /* Slight lift effect */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    /* Enhanced shadow on hover */
+}
+
+.btn-about:active {
+    background-color: #003d80;
+    /* Even darker blue when clicked */
+    transform: translateY(0);
+    /* Return to original position */
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+    /* Subtle shadow */
 }
 
 
@@ -117,12 +156,7 @@
 }
 
 
-.contact {
-    background-color: #25314a;
-    color: white;
-    padding: 1rem 0;
-    text-align: center;
-}
+
 
 
 .program-carousel {

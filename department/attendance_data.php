@@ -1,12 +1,25 @@
 <?php
-// attendance_data.php
 session_start();
-$conn = new PDO("mysql:host=localhost;dbname=sapo", "root", "rabin");
+
+// Error handling
+try {
+    $conn = new PDO("mysql:host=localhost;dbname=sapo", "root", "rabin");
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    echo "Connection failed: " . $e->getMessage();
+    exit;
+}
 
 // Get data from request
-$month = $_GET['month'];
-$year = $_GET['year'];
-$userId =  $_SESSION['user_id']; // Replace with session-based user ID
+$month = isset($_GET['month']) ? htmlspecialchars($_GET['month']) : ''; // Sanitize input
+$year = isset($_GET['year']) ? htmlspecialchars($_GET['year']) : '';
+$userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null; // Replace with session-based user ID
+
+// Validate the inputs
+if (!$month || !$year || !$userId) {
+    echo "Missing required parameters.";
+    exit;
+}
 
 // Fetch attendance percentage for the selected month
 $stmt = $conn->prepare("SELECT AVG(CASE 
@@ -20,7 +33,7 @@ $stmt = $conn->prepare("SELECT AVG(CASE
                           AND YEAR(date) = :year");
 $stmt->execute([':user_id' => $userId, ':month' => $month, ':year' => $year]);
 $attendanceSummary = $stmt->fetch(PDO::FETCH_ASSOC);
-$attendancePercentage = round($attendanceSummary['avg_attendance'] * 100, 2);
+$attendancePercentage = isset($attendanceSummary['avg_attendance']) ? round($attendanceSummary['avg_attendance'] * 100, 2) : 0;
 
 // Fetch attendance details for the selected month
 $stmt = $conn->prepare("SELECT date, status, remarks 
@@ -38,7 +51,7 @@ echo '<div class="attendance-summary">
         <div class="attendance-circle">
             <span>' . ($attendancePercentage ?: '0') . '%</span>
         </div>
-        <p>Month: ' . $month . ' ' . $year . '</p>
+        <p>Month: ' . htmlspecialchars($month) . ' ' . htmlspecialchars($year) . '</p>
       </div>';
 
 echo '<!-- separator -->'; // This separator is used to split the data in JS
@@ -50,12 +63,17 @@ echo '<table>
             <th>Status</th>
             <th>Remarks</th>
         </tr>';
-foreach ($attendanceDetails as $detail) {
-    echo '<tr>
-            <td>' . date('d F Y', strtotime($detail['date'])) . '</td>
-            <td>' . $detail['status'] . '</td>
-            <td>' . $detail['remarks'] . '</td>
-          </tr>';
-}
-echo '</table>';
+        foreach ($attendanceDetails as $detail) {
+          $status = htmlspecialchars($detail['status'] ?? '');  // Replace null with empty string
+          $remarks = htmlspecialchars($detail['remarks'] ?? '');  // Replace null with empty string
+      
+          echo '<tr>
+                  <td>' . date('d F Y', strtotime($detail['date'])) . '</td>
+                  <td>' . $status . '</td>
+                  <td>' . $remarks . '</td>
+                </tr>';
+      }
+      echo '</table>';
+      
+
 ?>
