@@ -40,7 +40,7 @@ body {
 
 .about-section {
   display: flex;
-  
+
   align-items: center;
   gap: 20px;
   margin-bottom: 30px;
@@ -99,8 +99,8 @@ li {
 .footer-link a:hover {
   text-decoration: underline;
 }
-@media (max-width:768px) {
-  .about-section{
-   flex-direction: column;
+@media (max-width: 768px) {
+  .about-section {
+    flex-direction: column;
   }
-}media
+}

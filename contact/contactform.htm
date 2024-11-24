@@ -6,25 +6,54 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact Us</title>
   <link rel="stylesheet" href="./contactform.css">
+  <link rel="stylesheet" href="../assets/css/nav.css">
 </head>
 
 <body>
+  <nav class="navbar">
+    <div class="container">
+      <div class="logo">
+        <a href="#" class="logo">
+          <img src="../assets/images/Student.png" alt="Student Academic Portal">
+        </a>
+      </div>
+      <button class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="../home.htm">Home</a></li>
+        <li><a href="../department/attendance.php">Attendance</a></li>
+        <li><a href="#fee">Fee</a></li>
+        <li><a href="#exam">Exam</a></li>
+        <li><a href="#result">Result</a></li>
+      </ul>
+
+      <!-- Profile Dropdown on the rightmost side -->
+      <ul class="nav-links right >
+        <li class=" dropdown" id="profile-dropdown">
+        <a href="#" class="profile-icon" id="profile-icon">
+          <img src="../assets/images/profile.png" alt="Profile Icon" class="profile-img">
+        </a>
+        <ul class="dropdown-menu" id="dropdown-menu">
+          <li><a href="#profile">My Profile</a></li>
+          <li><a href="#logout" id="logout">Logout</a></li>
+        </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
   <header>
     <h1>Student Academic Portal</h1>
-    <p>Your gateway to Academic Excellence</p>
+    <p>Hami samma pugnu hos</p>
   </header>
 
   <section id="contact-us">
-    <button id="contact-button">Contact Us</button>
+    <button id="contact-button" onclick="window.location.href='form.htm';">Contact Us</button>
   </section>
 
-  <section id="introduction">
-    <h2>Website Introduction</h2>
-    <p>
-      Welcome to the Student Academic Portal, where you can effortlessly track attendance,
-      view results, access previous year questions, and manage your academic journey with ease.
-    </p>
-  </section>
+
 
   <section id="blogs">
     <h2>Blogs</h2>

@@ -10,7 +10,7 @@ body {
 
 /* Header */
 header {
-  background-color: #4caf50;
+  background-color: #313131;
   color: white;
   text-align: center;
   padding: 20px 0;
@@ -35,8 +35,8 @@ header p {
 #contact-button {
   padding: 10px 20px;
   font-size: 1rem;
-  color: white;
-  background-color: #4caf50;
+  color:whitesmoke;
+  background-color:#42a5bb;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -44,28 +44,9 @@ header p {
 }
 
 #contact-button:hover {
-  background-color: #45a049;
-}
-
-/* Introduction Section */
-#introduction {
-  padding: 20px;
-  text-align: center;
-  background-color: #fff;
-  margin: 20px 0;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-#introduction h2 {
-  margin-bottom: 10px;
-  font-size: 1.8rem;
-}
-
-#introduction p {
-  margin: 0;
-  font-size: 1rem;
-  color: #666;
+  background-color:whitesmoke;
+  color: #34a4d0;
+  border: 2px solid #d3cccc;
 }
 
 /* Blogs Section */
@@ -103,8 +84,11 @@ header p {
   margin-bottom: 10px;
   font-size: 1rem;
   font-weight: bold;
-}
+  
 
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
 /* Footer */
 footer {
   background-color: #333;
@@ -185,7 +169,7 @@ footer p:last-child {
   margin-top: 20px;
   padding: 10px;
   font-size: 1rem;
-  background-color: #4caf50;
+  background-color: #42a5bb;
   color: white;
   border: none;
   border-radius: 5px;
@@ -194,7 +178,7 @@ footer p:last-child {
 }
 
 .modal-content button:hover {
-  background-color: #45a049;
+  background-color: #34a4d0;
 }
 
 .close {
