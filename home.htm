@@ -71,6 +71,12 @@
     #dropdown-menu li a:hover {
         background-color: #f1f1f1;
     }
+
+    @media(max-width:1280px) {
+        .profile-img {
+            display: none;
+        }
+    }
 </style>
 
 <body>
@@ -91,8 +97,8 @@
             <ul class="nav-links" id="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="./department/attendance.php">Attendance</a></li>
-                <li><a href="#fee">Fee</a></li>
-                <li><a href="#exam">Exam</a></li>
+                <li><a href="./fee_status.htm">Fee</a></li>
+                <li><a href="./exam.htm">Exam</a></li>
                 <li><a href="#result">Result</a></li>
                 <li><a href="./about us/aboutus.htm">About Us</a></li>
             </ul>
@@ -225,7 +231,7 @@
 
         document.getElementById('logout').addEventListener('click', function () {
             alert("Logged out successfully!");
-            window.location.href = "logout.php";
+            window.location.href = "./authentication/sign-in.htm";
         });
     </script>
 
