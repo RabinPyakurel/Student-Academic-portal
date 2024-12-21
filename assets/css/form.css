@@ -28,6 +28,7 @@ body {
 select {
     width: 100%;
     padding: 0.75rem;
+    padding-right: 2.5rem;
     border: 1px solid #ccc;
     border-radius: 0.25rem;
     font-size: 1em;
@@ -203,6 +204,37 @@ a:hover {
     display: block;
 }
 
+.toggle-eye {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    font-size: 1.5rem;
+    cursor: pointer;
+    user-select: none;
+}
+
+.toggle-eye:hover {
+    color: #000;
+}
+
+/* Style for the crossed-out eye */
+.crossed {
+    position: relative;
+}
+
+.crossed::after {
+    content: "/";
+    position: absolute;
+    top: -4px;
+    left: 7px;
+    font-weight: bold;
+    font-size: 2rem;
+    transform: rotate(45deg);
+    color: black;
+    z-index: 1;
+}
+
 @keyframes animate {
     from {
         transform: scale(1, 0);
@@ -281,6 +313,21 @@ a:hover {
         font-size: 0.8rem;
         top: 15%;
     }
+
+    .toggle-eye {
+        font-size: 1rem;
+        /* Slightly smaller icon for compact screens */
+        right: 8px;
+        /* Adjust right margin to avoid overflow */
+        top: 35%;
+    }
+
+    .crossed::after {
+        top: -1.9px;
+        left: 5.3px;
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
 }
 
 @media (max-width: 360px) {
@@ -290,6 +337,21 @@ a:hover {
 
     .terms {
         font-size: 0.7rem;
+    }
+
+    .toggle-eye {
+        font-size: 0.9rem;
+        /* Further reduce size for very small screens */
+        right: 5px;
+        /* Reduce spacing */
+        top: 35%;
+    }
+
+    .crossed::after {
+        top: -2px;
+        left: 4.5px;
+        font-weight: bold;
+        font-size: 1rem;
     }
 }
 

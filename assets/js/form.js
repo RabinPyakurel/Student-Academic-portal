@@ -62,14 +62,30 @@ prevBtns.forEach(btn => {
     });
 });
 
-// Handle Clickable Progress Steps
 progressSteps.forEach((progressStep, index) => {
     progressStep.addEventListener("click", () => {
         if (index <= step) {
-            // Navigate only to validated or current step
+            // Always allow navigating back
             step = index;
             updateFormSteps();
             updateProgressbar();
+        } else {
+            // Validate current step before allowing forward navigation
+            const currentFormStep = formSteps[step];
+            const requiredFields = currentFormStep.querySelectorAll("input[required], select[required], textarea[required]");
+            let allValid = true;
+
+            requiredFields.forEach(field => {
+                if (!field.checkValidity()) {
+                    allValid = false;
+                }
+            });
+
+            if (allValid) {
+                step = index;
+                updateFormSteps();
+                updateProgressbar();
+            }
         }
     });
 });
@@ -102,3 +118,14 @@ document.querySelectorAll('.close-btn').forEach(button => {
         window.location.href = '/index.htm';
     });
 });
+
+function togglePassword(inputId, toggleIcon) {
+    const input = document.getElementById(inputId);
+    if (input.type === "password") {
+        input.type = "text";
+        toggleIcon.innerHTML = "<span class='crossed'>&#x1F441;</span>";
+    } else {
+        input.type = "password";
+        toggleIcon.innerHTML = "&#x1F441;";
+    }
+}

@@ -101,11 +101,13 @@
             <div class="input-group">
                 <input type="password" name="password" id="password" placeholder="" required>
                 <label for="password">Password <span class="necessary">*</span></label>
+                <span class="toggle-eye" onclick="togglePassword('password', this)">&#128065;</span>
                 <span class="error" id="pwMsg"></span>
             </div>
             <div class="input-group">
                 <input type="password" name="confirm_password" id="cpass" placeholder="" required>
                 <label for="cpass">Confirm Password <span class="necessary">*</span></label>
+                <span class="toggle-eye" onclick="togglePassword('cpass', this)">&#128065;</span>
                 <span class="error" id="cmpwMsg"></span>
             </div>
             <div class="terms">
