@@ -3,8 +3,10 @@ const nextBtns = document.querySelectorAll(".btn-next");
 const progress = document.getElementById("progress");
 const formSteps = document.querySelectorAll(".form-step");
 const progressSteps = document.querySelectorAll(".progress-step");
-const form = document.querySelector(".form")
+const form = document.querySelector(".form");
+
 let step = 0;
+
 window.addEventListener("load", () => {
     step = 0;
     updateFormSteps();
@@ -12,11 +14,13 @@ window.addEventListener("load", () => {
     form.reset();
 });
 
+// Handle Next Button Click
 nextBtns.forEach(btn => {
     btn.addEventListener("click", (e) => {
         const currentFormStep = formSteps[step];
         const requiredFields = currentFormStep.querySelectorAll("input[required], select[required], textarea[required]");
         let allValid = true;
+
         requiredFields.forEach(field => {
             if (!field.checkValidity()) {
                 allValid = false;
@@ -25,11 +29,12 @@ nextBtns.forEach(btn => {
 
                 if (errorMsg) {
                     if (field.validity.valueMissing) {
-                        errorMsg.innerHTML = require;
+                        errorMsg.innerHTML = "This field is required.";
                     }
                 }
             }
         });
+
         if (step === 0) {
             allValid = allValid && validStep0();
         } else if (step === 1) {
@@ -48,7 +53,7 @@ nextBtns.forEach(btn => {
     });
 });
 
-
+// Handle Previous Button Click
 prevBtns.forEach(btn => {
     btn.addEventListener("click", () => {
         step--;
@@ -57,17 +62,29 @@ prevBtns.forEach(btn => {
     });
 });
 
-function updateFormSteps() {
-    formSteps.forEach(formStep => {
-        formStep.classList.contains("form-step-active") &&
-            formStep.classList.remove("form-step-active");
+// Handle Clickable Progress Steps
+progressSteps.forEach((progressStep, index) => {
+    progressStep.addEventListener("click", () => {
+        if (index <= step) {
+            // Navigate only to validated or current step
+            step = index;
+            updateFormSteps();
+            updateProgressbar();
+        }
     });
-    formSteps[step].classList.add("form-step-active");
+});
+
+// Update Form Step Visibility
+function updateFormSteps() {
+    formSteps.forEach((formStep, index) => {
+        formStep.classList.toggle("form-step-active", index === step);
+    });
 }
 
+// Update Progress Bar
 function updateProgressbar() {
     progressSteps.forEach((progressStep, idx) => {
-        if (idx < step + 1) {
+        if (idx <= step) {
             progressStep.classList.add("progress-step-active");
         } else {
             progressStep.classList.remove("progress-step-active");
@@ -77,3 +94,11 @@ function updateProgressbar() {
     const progressActive = document.querySelectorAll(".progress-step-active");
     progress.style.width = ((progressActive.length - 1) / (progressSteps.length - 1)) * 100 + "%";
 }
+
+// Handle Close Button
+document.querySelectorAll('.close-btn').forEach(button => {
+    button.addEventListener('click', () => {
+        button.parentElement.style.display = 'none';
+        window.location.href = '/index.htm';
+    });
+});
