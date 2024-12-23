@@ -112,20 +112,21 @@ function updateProgressbar() {
 }
 
 // Handle Close Button
-document.querySelectorAll('.close-btn').forEach(button => {
+document.querySelectorAll('.redirect-index').forEach(button => {
     button.addEventListener('click', () => {
         button.parentElement.style.display = 'none';
         window.location.href = '/index.htm';
     });
 });
 
+
 function togglePassword(inputId, toggleIcon) {
     const input = document.getElementById(inputId);
     if (input.type === "password") {
         input.type = "text";
-        toggleIcon.innerHTML = "<span class='crossed'>&#x1F441;</span>";
+        toggleIcon.innerHTML = "&#x1F441;";
     } else {
         input.type = "password";
-        toggleIcon.innerHTML = "&#x1F441;";
+        toggleIcon.innerHTML = "<span class='crossed'>&#x1F441;</span>";
     }
 }

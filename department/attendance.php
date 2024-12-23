@@ -102,20 +102,35 @@ main {
     margin-bottom: 10px;
 }
 
-.attendance-circle {
-    background-color: #3498db;
-    border-radius: 50%;
-    width: 120px;
-    height: 120px;
-    margin: 20px auto;
+.circle{
+    position: relative;
+    margin: auto;
+    width: 150px;
+    height: 150px;
+    background: conic-gradient(#3498db 0% 75%,
+    #ddd 75% 100%);
+    border-radius:50%;
     display: flex;
-    align-items: center;
     justify-content: center;
-    color: black;
-    font-size: 24px;
-    font-weight: bold;
+    align-items: center;
 }
+.circle-inner {
+            position: relative;
+            width: 90%;
+            height: 90%;
+            background-color: #fff;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+        }
 
+        .percentage {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #4caf50;
+        }
 .attendance-summary p {
     font-size: 18px;
 }
@@ -221,8 +236,10 @@ table td {
     <main>
         <div class="attendance-summary">
             <h2>Attendance Summary</h2>
-            <div class="attendance-circle">
-                <span><?= $attendancePercentage ?: '0'; ?>%</span>
+            <div class="circle">
+                <div class="circle-inner">
+                    <div class="percentage"><?= $attendancePercentage ?: '0'; ?>%</div>
+                </div>
             </div>
             <p>Month: <?= $currentMonth . ' ' . $currentYear; ?></p>
         </div>
