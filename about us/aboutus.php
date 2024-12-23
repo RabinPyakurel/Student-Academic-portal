@@ -6,34 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About Us</title>
   <link rel="stylesheet" href="aboutus.css">
-  <link rel="stylesheet" href="../assets/css/nav.css">
-  <link rel="stylesheet" href="../assets/css/navdropdown.css">
   <link href='https://fonts.googleapis.com/css?family=Alegreya SC' rel='stylesheet'>
 
 </head>
 
 <body>
-  <nav class="navbar">
-    <div class="container">
-      <div class="logo">
-        <a href="#" class="logo">
-          <img src="../assets/images/Student.png" alt="Student Academic Portal">
-        </a>
-      </div>
-      <button class="hamburger" id="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-      <ul class="nav-links" id="nav-links">
-        <li><a href="../index.htm">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#features">Features</a></li>
-        <li><a href="#program">Programs</a></li>
-      </ul>
-    </div>
-  </nav>
-
+<?php include '../layout/nav.htm' ?> 
 
   <section id="home" class="hero">
     <div class="hero-content">
@@ -89,12 +67,7 @@
       </div>
     </div>
   </div>
-
-  <section class="footer-link">
-    <p>&copy; 2024 StudentAcademicPortal. All Rights Reserved.</p>
-    <p>Have questions or suggestions? <a href="contact.html">Contact Us</a></p>
-  </section>
-  <script src="../assets/js/nav.js"></script>
+<?php include '../layout/footer.htm' ?>
 </body>
 
 </html>

@@ -42,9 +42,6 @@
             </ul>
         </div>
     </nav>
-
-
-
     <section id="home" class="hero">
         <div class="hero-content">
             <h1>Streamline Academics with SAPO</h1>

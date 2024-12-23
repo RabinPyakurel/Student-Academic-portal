@@ -49,190 +49,53 @@ $attendanceDetails = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Attendance</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="../assets/css/nav.css">
+    
     <script>
-       // JavaScript to handle dynamic month updates
-       function updateCalendar() {
-        const monthSelector = document.getElementById("month");
-        const selectedMonth = monthSelector.value;
-        const year = new Date().getFullYear();
+     // Function to update the calendar and attendance summary dynamically
+function updateCalendar() {
+    const monthSelector = document.getElementById("month");
+    const selectedMonth = monthSelector.value;
+    const year = new Date().getFullYear();
 
-        // Send AJAX request to fetch data for the selected month
-        fetch(`attendance_data.php?month=${selectedMonth}&year=${year}`)
-            .then((response) => response.text())
-            .then((data) => {
-                // Split the response into attendance summary and calendar table parts
-                const dataParts = data.split("<!-- separator -->");
+    fetch(`attendance_data.php?month=${selectedMonth}&year=${year}`)
+        .then((response) => response.text())
+        .then((data) => {
+            const dataParts = data.split("<!-- separator -->");
 
-                // Update the attendance summary and calendar dynamically
-                document.querySelector(".attendance-summary").innerHTML = dataParts[0];
-                document.getElementById("calendar-container").innerHTML = dataParts[1];
-            });
-    }
-    </script>
-    <style>
-/* Body styles */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f7f6;
-    color: #333;
-    padding: 20px;
+            // Update the attendance summary and calendar dynamically
+            document.querySelector(".attendance-summary").innerHTML = dataParts[0];
+            document.getElementById("calendar-container").innerHTML = dataParts[1];
+
+            // Extract percentage value from the updated attendance summary
+            const percentageElement = document.querySelector(".percentage");
+            const percentage = parseFloat(percentageElement.textContent.replace('%', '')) || 0;
+
+            // Apply gradient dynamically based on percentage
+            const circle = document.querySelector(".circle");
+            circle.style.background = `conic-gradient(
+                #4caf50 ${percentage * 3.6}deg, 
+                #f3f4f6 ${percentage * 3.6}deg
+            )`;
+        })
+        .catch((error) => console.error("Error fetching attendance data:", error));
 }
 
-/* Header styles */
-
-
-/* Main content styles */
-main {
-    margin-top: 30px;
+// Function to load attendance data for a specific day
+function loadDailyRecord(selectedDate) {
+    fetch(`attendance_day_data.php?date=${selectedDate}`)
+        .then((response) => response.text())
+        .then((data) => {
+            document.getElementById("daily-record-container").innerHTML = data;
+        })
+        .catch((error) => console.error("Error fetching daily record:", error));
 }
 
-/* Attendance summary */
-.attendance-summary {
-    background-color: #ecf0f1;
-    padding: 20px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
-
-.attendance-summary h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-
-.circle{
-    position: relative;
-    margin: auto;
-    width: 150px;
-    height: 150px;
-    background: conic-gradient(#3498db 0% 75%,
-    #ddd 75% 100%);
-    border-radius:50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.circle-inner {
-            position: relative;
-            width: 90%;
-            height: 90%;
-            background-color: #fff;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .percentage {
-            font-size: 1.5em;
-            font-weight: bold;
-            color: #4caf50;
-        }
-.attendance-summary p {
-    font-size: 18px;
-}
-
-/* Calendar Section */
-.calendar {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.calendar h3 {
-    font-size: 22px;
-    margin-bottom: 15px;
-}
-
-select {
-    padding: 8px 15px;
-    font-size: 16px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    outline: none;
-}
-
-select:hover {
-    border-color: #3498db;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
-table th, table td {
-    padding: 12px 15px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-}
-
-table th {
-    background-color: #3498db;
-    color: black;
-    font-weight: bold;
-}
-
-table tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-table tr:hover {
-    background-color: #f1f1f1;
-}
-
-table td {
-    color: #555;
-}
-
-/* Footer styles */
-
-
-    </style>
+</script>
 </head>
 
 <body>
     <!-- Navbar -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="logo">
-                <a href="#" class="logo">
-                    <img src="../assets/images/Student.png" alt="Student Academic Portal">
-                </a>
-            </div>
-            <button class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <ul class="nav-links" id="nav-links">
-                <li><a href="../home.htm">Home</a></li>
-                <li><a href="./department/attendance.php">Attendance</a></li>
-                <li><a href="#fee">Fee</a></li>
-                <li><a href="#exam">Exam</a></li>
-                <li><a href="#result">Result</a></li>
-            </ul>
-
-            <!-- Profile Dropdown on the rightmost side -->
-            <ul class="nav-links right">
-                <li class="dropdown" id="profile-dropdown">
-                    <a href="#" class="profile-icon" id="profile-icon">
-                        <img src="./assets/images/profile.png" alt="Profile Icon" class="profile-img">
-                    </a>
-                    <ul class="dropdown-menu" id="dropdown-menu">
-                        <li><a href="#profile">My Profile</a></li>
-                        <li><a href="#logout" id="logout">Logout</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </nav>
+   <?php include '../layout/nav.htm' ?>
     <main>
         <div class="attendance-summary">
             <h2>Attendance Summary</h2>
@@ -244,23 +107,22 @@ table td {
             <p>Month: <?= $currentMonth . ' ' . $currentYear; ?></p>
         </div>
 
-        <div class="calendar">
-            <h3>Attendance Calendar</h3>
-            <label for="month">Select Month:</label>
-            <select id="month" onchange="updateCalendar()">
-                <option value="January" <?= $currentMonth == 'January' ? 'selected' : ''; ?>>January</option>
-                <option value="February" <?= $currentMonth == 'February' ? 'selected' : ''; ?>>February</option>
-                <option value="March" <?= $currentMonth == 'March' ? 'selected' : ''; ?>>March</option>
-                <option value="April" <?= $currentMonth == 'April' ? 'selected' : ''; ?>>April</option>
-                <option value="May" <?= $currentMonth == 'May' ? 'selected' : ''; ?>>May</option>
-                <option value="June" <?= $currentMonth == 'June' ? 'selected' : ''; ?>>June</option>
-                <option value="July" <?= $currentMonth == 'July' ? 'selected' : ''; ?>>July</option>
-                <option value="August" <?= $currentMonth == 'August' ? 'selected' : ''; ?>>August</option>
-                <option value="September" <?= $currentMonth == 'September' ? 'selected' : ''; ?>>September</option>
-                <option value="October" <?= $currentMonth == 'October' ? 'selected' : ''; ?>>October</option>
-                <option value="November" <?= $currentMonth == 'November' ? 'selected' : ''; ?>>November</option>
-                <option value="December" <?= $currentMonth == 'December' ? 'selected' : ''; ?>>December</option>
-            </select>
+        <div class="calendar-section">
+        <h3>Attendance Calendar</h3>
+        <label for="month">Select Month:</label>
+        <select id="month" onchange="updateCalendar()">
+            <!-- Month Options -->
+            <?php
+            $months = [
+                'January', 'February', 'March', 'April', 'May', 'June', 
+                'July', 'August', 'September', 'October', 'November', 'December'
+            ];
+            foreach ($months as $month) {
+                $selected = ($currentMonth == $month) ? 'selected' : '';
+                echo "<option value='$month' $selected>$month</option>";
+            }
+            ?>
+        </select>
             <div id="calendar-container">
                 <table>
                     <tr>
@@ -279,12 +141,7 @@ table td {
             </div>
         </div>
     </main>
-    <footer id="contact" class="contact">
-        <div class="container">
-            <p>&copy; 2024 Student Academic Portal. All Rights Reserved.</p>
-        </div>
-    </footer>
-    <script src="../assets/nav.js"></script>
+   <?php include '../layout/footer.htm' ?>
 </body>
 
 </html>

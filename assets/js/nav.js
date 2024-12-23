@@ -14,4 +14,27 @@ document.querySelectorAll('.nav-links a').forEach(link => {
     });
 });
 
+document.getElementById('profile-icon').addEventListener('click', function (e) {
+    e.preventDefault();
+    const dropdownMenu = document.getElementById('dropdown-menu');
+    dropdownMenu.classList.toggle('show');
 
+    e.stopPropagation();
+});
+
+
+document.addEventListener('click', function (e) {
+    const dropdownMenu = document.getElementById('dropdown-menu');
+    const profileIcon = document.getElementById('profile-icon');
+
+
+    if (!profileIcon.contains(e.target) && !dropdownMenu.contains(e.target)) {
+        dropdownMenu.classList.remove('show');
+    }
+});
+
+
+document.getElementById('logout').addEventListener('click', function () {
+    alert("Logged out successfully!");
+    window.location.href = "/index.php";
+});

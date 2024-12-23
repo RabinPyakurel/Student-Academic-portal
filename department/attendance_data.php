@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-// Error handling
+// Database Connection
 try {
     $conn = new PDO("mysql:host=localhost;dbname=sapo", "root", "rabin");
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -11,11 +11,10 @@ try {
 }
 
 // Get data from request
-$month = isset($_GET['month']) ? htmlspecialchars($_GET['month']) : ''; // Sanitize input
+$month = isset($_GET['month']) ? htmlspecialchars($_GET['month']) : '';
 $year = isset($_GET['year']) ? htmlspecialchars($_GET['year']) : '';
-$userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null; // Replace with session-based user ID
+$userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
 
-// Validate the inputs
 if (!$month || !$year || !$userId) {
     echo "Missing required parameters.";
     exit;
@@ -35,45 +34,47 @@ $stmt->execute([':user_id' => $userId, ':month' => $month, ':year' => $year]);
 $attendanceSummary = $stmt->fetch(PDO::FETCH_ASSOC);
 $attendancePercentage = isset($attendanceSummary['avg_attendance']) ? round($attendanceSummary['avg_attendance'] * 100, 2) : 0;
 
-// Fetch attendance details for the selected month
-$stmt = $conn->prepare("SELECT date, status, remarks 
-                        FROM attendance 
-                        WHERE std_id = :user_id 
-                          AND MONTHNAME(date) = :month 
-                          AND YEAR(date) = :year 
-                        ORDER BY date ASC");
-$stmt->execute([':user_id' => $userId, ':month' => $month, ':year' => $year]);
-$attendanceDetails = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-// Generate the HTML for the updated attendance summary and table
+// Generate Attendance Summary
 echo '<div class="attendance-summary">
         <h2>Attendance Summary</h2>
-        <div class="attendance-circle">
-            <span>' . ($attendancePercentage ?: '0') . '%</span>
+        <div class="circle">
+            <div class="circle-inner">
+                <div class="percentage">' . ($attendancePercentage ?: '0') . '%</div>
+            </div>
         </div>
         <p>Month: ' . htmlspecialchars($month) . ' ' . htmlspecialchars($year) . '</p>
       </div>';
 
-echo '<!-- separator -->'; // This separator is used to split the data in JS
+echo '<!-- separator -->';
 
-// Generate table rows for the calendar
+// Generate the calendar table
+$daysInMonth = cal_days_in_month(CAL_GREGORIAN, date('m', strtotime($month)), $year);
 echo '<table>
         <tr>
-            <th>Date</th>
-            <th>Status</th>
-            <th>Remarks</th>
+            <th>Sun</th>
+            <th>Mon</th>
+            <th>Tue</th>
+            <th>Wed</th>
+            <th>Thu</th>
+            <th>Fri</th>
+            <th>Sat</th>
         </tr>';
-        foreach ($attendanceDetails as $detail) {
-          $status = htmlspecialchars($detail['status'] ?? '');  // Replace null with empty string
-          $remarks = htmlspecialchars($detail['remarks'] ?? '');  // Replace null with empty string
-      
-          echo '<tr>
-                  <td>' . date('d F Y', strtotime($detail['date'])) . '</td>
-                  <td>' . $status . '</td>
-                  <td>' . $remarks . '</td>
-                </tr>';
-      }
-      echo '</table>';
-      
 
+$currentDay = 1;
+$firstDay = date('w', strtotime("$year-$month-01"));
+
+for ($i = 0; $i < 6; $i++) {
+    echo '<tr>';
+    for ($j = 0; $j < 7; $j++) {
+        if ($i === 0 && $j < $firstDay || $currentDay > $daysInMonth) {
+            echo '<td></td>';
+        } else {
+            $date = "$year-$month-$currentDay";
+            echo "<td onclick=\"loadDailyRecord('$date')\">$currentDay</td>";
+            $currentDay++;
+        }
+    }
+    echo '</tr>';
+}
+echo '</table>';
 ?>

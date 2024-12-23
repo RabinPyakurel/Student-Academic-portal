@@ -115,7 +115,7 @@ function updateProgressbar() {
 document.querySelectorAll('.redirect-index').forEach(button => {
     button.addEventListener('click', () => {
         button.parentElement.style.display = 'none';
-        window.location.href = '/index.htm';
+        window.location.href = '/index.php';
     });
 });
 

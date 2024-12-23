@@ -5,41 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fee Status</title>
-    <link rel="stylesheet" href="./assets/css/nav.css">
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #eeeeee;
-            color: #333333;
-        }
-
-        header {
-            background-color: #ffffff;
-            padding: 10px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 2px solid #cccccc;
-        }
-
-        header .logo {
-            font-size: 20px;
-            font-weight: bold;
-        }
-
-        header nav a {
-            text-decoration: none;
-            color: #333333;
-            margin: 0 10px;
-            font-size: 14px;
-        }
-
-        header nav a:hover {
-            text-decoration: underline;
-        }
-
         main {
             padding: 20px;
             max-width: 900px;
@@ -126,31 +92,6 @@
         .pay-now:hover {
             background-color: #005bb5;
         }
-
-        footer {
-            text-align: center;
-            font-size: 12px;
-            margin-top: 20px;
-            padding: 10px;
-            background-color: #f9f9f9;
-            border-top: 2px solid #cccccc;
-        }
-
-        footer .contact-info,
-        footer .social-media {
-            margin: 10px 0;
-        }
-
-        footer .social-media a {
-            margin: 0 5px;
-            text-decoration: none;
-            color: #0073e6;
-        }
-
-        footer .social-media a:hover {
-            text-decoration: underline;
-        }
-
         @media (max-width: 768px) {
             header nav a {
                 font-size: 12px;
@@ -170,41 +111,7 @@
 </head>
 
 <body>
-    <nav class="navbar">
-        <div class="container">
-            <div class="logo">
-                <a href="#" class="logo">
-                    <img src="./assets/images/Student.png" alt="Student Academic Portal">
-                </a>
-            </div>
-            <button class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <ul class="nav-links" id="nav-links">
-                <li><a href="home.htm">Home</a></li>
-                <li><a href="./department/attendance.php">Attendance</a></li>
-                <li><a href="./fee_status.htm">Fee</a></li>
-                <li><a href="./exam.htm">Exam</a></li>
-                <li><a href="#result">Result</a></li>
-                <li><a href="./about us/aboutus.htm">About Us</a></li>
-            </ul>
-
-            <!-- Profile Dropdown on the rightmost side -->
-            <ul class="nav-links right">
-                <li class="dropdown" id="profile-dropdown">
-                    <a href="#" class="profile-icon" id="profile-icon">
-                        <img src="./assets/images/profile.png" alt="Profile Icon" class="profile-img">
-                    </a>
-                    <ul class="dropdown-menu" id="dropdown-menu">
-                        <li><a href="#profile">My Profile</a></li>
-                        <li><a href="#logout" id="logout">Logout</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </nav>
+  <?php include '../layout/nav.htm' ?>
     <main>
         <div class="fee-summary">
             <div class="user-photo"></div>
@@ -264,20 +171,8 @@
             </tbody>
         </table>
         <a href="#" class="pay-now">Pay Now</a>
-        <footer>
-            <div class="contact-info">
-                <p>Faculty of Engineering | Faculty of IT and Management</p>
-                <p>Contact: 01-5202141</p>
-            </div>
-            <div class="social-media">
-                <a href="#">Facebook</a>
-                <a href="#">Instagram</a>
-                <a href="#">LinkedIn</a>
-            </div>
-            <p>© 2024 All rights reserved. Privacy | Terms and Conditions</p>
-        </footer>
     </main>
-    <script src="./assets/js/nav.js"></script>
+   <?php include '../layout/footer.htm' ?>
 </body>
 
 </html>

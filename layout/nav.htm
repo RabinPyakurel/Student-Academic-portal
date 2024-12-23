@@ -1,0 +1,42 @@
+<link rel="stylesheet" href="/assets/css/nav.css">
+<nav class="navbar">
+    <div class="container">
+        <!-- Logo Section -->
+        <div class="logo">
+            <a href="/home.php">
+                <img src="/assets/images/Student.png" alt="Student Academic Portal">
+            </a>
+        </div>
+
+        <!-- Hamburger Menu for Mobile -->
+        <button class="hamburger" id="hamburger" aria-label="Toggle Navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <!-- Main Navigation Links -->
+        <ul class="nav-links" id="nav-links">
+            <li><a href="/home.php" class="nav-item">Home</a></li>
+            <li><a href="/department/attendance.php" class="nav-item">Attendance</a></li>
+            <li><a href="/account/fee_status.php" class="nav-item">Fee</a></li>
+            <li><a href="/exams/exam.php" class="nav-item">Exam</a></li>
+            <li><a href="/exams/results.php" class="nav-item">Result</a></li>
+            <li><a href="/about us/aboutus.php" class="nav-item">About Us</a></li>
+        </ul>
+
+        <!-- Profile Dropdown Section -->
+        <ul class="nav-links right">
+            <li class="dropdown" id="profile-dropdown">
+                <a href="#" class="profile-icon" id="profile-icon" aria-label="Profile Menu">
+                    <img src="/assets/images/profile.png" Profile Icon" class="profile-img">
+                </a>
+                <ul class="dropdown-menu" id="dropdown-menu">
+                    <li><a href="/user-profile/profile.htm">My Profile</a></li>
+                    <li><a href="/authentication/sign-in.php" id="logout">Logout</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>
+<script src="/assets/js/nav.js"></script>
