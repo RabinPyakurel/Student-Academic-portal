@@ -22,7 +22,7 @@
                         <div class="percentage">0% <br>Attendance</div>
                     </div>
                 </div>
-                <p class="month">month: January</p>
+                <p class="month"><bold>Month: </bold>January</p>
             </div>
             <div class="wrapper">
                 <header>

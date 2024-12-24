@@ -70,6 +70,10 @@ main {
     color: #555;
 }
 
+.month bold {
+    font-weight: bold;
+}
+
 .wrapper {
     width: 300px;
     background-color: #fff;
