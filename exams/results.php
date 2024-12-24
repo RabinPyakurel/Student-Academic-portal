@@ -1,3 +1,10 @@
+<?php
+session_start();
+if(!isset($_SESSION['user_id'])){
+    include '../not-found.htm';
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

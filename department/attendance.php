@@ -1,3 +1,10 @@
+<?php
+session_start();
+if(!isset($_SESSION['user_id'])){
+    include '../not-found.htm';
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,6 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Attendance</title>
     <link rel="stylesheet" href="../assets/css/attendance.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 </head>
 
 <body>
@@ -53,36 +61,57 @@
             <hr>
             <div class="attendance-table">
                 <table>
+                    <thead>
                     <tr>
                         <th>Date</th>
                         <th>Attendance (in %)</th>
                         <th>In Detail</th>
                     </tr>
-                    <tr>
-                        <td>December, 2024</td>
-                        <td>91%</td>
-                        <td><a href="">View</a></td>
-                    </tr>
-                    <tr>
-                        <td>November, 2024</td>
-                        <td>89%</td>
-                        <td><a href="">View</a></td>
-                    </tr>
-                    <tr>
-                        <td>October, 2024</td>
-                        <td>85%</td>
-                        <td><a href="">View</a></td>
-                    </tr>
-                    <tr>
-                        <td>September, 2024</td>
-                        <td>97%</td>
-                        <td><a href="">View</a></td>
-                    </tr>
+                    </thead>
+                    <tbody id="table-body">
+                    </tbody>
                 </table>
             </div>
         </div>
     </main>
     <?php include '../layout/footer.htm'; ?>
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: 'attendance_data.php',
+                method: 'GET',
+                data: {
+                    action: 'monthly'
+                },
+                dataType: 'json',
+                success: function (data) {
+                    const tableBody = $('#table-body');
+                    tableBody.empty();
+                    data.forEach((item) => {
+                        tableBody.append(`<tr>
+                                <td>${item.month_year}</td>
+                                <td>${item.attendance_percentage}%</td>
+                                <td><a href="">View</a></td>
+                            </tr>`);
+                    });
+                }
+            });
+
+            $.ajax({
+                url: 'attendance_data.php',
+                method: 'GET',
+                data: {
+                    action: 'overall'
+                },
+                dataType: 'json',
+                success: function (data) {
+                    const percentage = data[0].attendance_percentage;
+                    $('.percentage').text(`${percentage}% Attendance`);
+                    $('.circle').css('background', `conic-gradient(#3498db ${percentage}%, #ddd ${percentage}% 100%)`);
+                }
+            });
+        });
+    </script>
     <script src="../assets/js/attendance.js"></script>
 </body>
 
