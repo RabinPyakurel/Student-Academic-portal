@@ -161,6 +161,44 @@ main {
     color: #333;
 }
 
+.attendance-overview {
+    width: 65%;
+    margin: auto;
+}
+
+.attendance-overview h4 {
+    margin-left: 1.85%;
+}
+
+.attendance-table {
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #333;
+    width: 90%;
+    border-radius: 0.5rem;
+}
+
+.attendance-table table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    margin-bottom: 3px;
+}
+
+.attendance-table th {
+    border-bottom: 1px solid #838383;
+    padding: 0.5rem;
+    text-align: center;
+}
+
+.attendance-table td {
+    padding: 1rem;
+    border-bottom: 1px solid #838383;
+}
+
+
 /* Responsive Design */
 @media (max-width: 1024px) {
     main {

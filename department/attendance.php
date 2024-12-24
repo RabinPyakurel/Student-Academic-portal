@@ -47,6 +47,40 @@
                 </div>
             </div>
         </div>
+        
+        <div class="attendance-overview">
+            <h4>Summary Table</h4>
+            <hr>
+            <div class="attendance-table">
+                <table>
+                    <tr>
+                        <th>Date</th>
+                        <th>Attendance (in %)</th>
+                        <th>In Detail</th>
+                    </tr>
+                    <tr>
+                        <td>December, 2024</td>
+                        <td>91%</td>
+                        <td><a href="">View</a></td>
+                    </tr>
+                    <tr>
+                        <td>November, 2024</td>
+                        <td>89%</td>
+                        <td><a href="">View</a></td>
+                    </tr>
+                    <tr>
+                        <td>October, 2024</td>
+                        <td>85%</td>
+                        <td><a href="">View</a></td>
+                    </tr>
+                    <tr>
+                        <td>September, 2024</td>
+                        <td>97%</td>
+                        <td><a href="">View</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
     </main>
     <?php include '../layout/footer.htm'; ?>
     <script src="../assets/js/attendance.js"></script>
