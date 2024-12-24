@@ -71,5 +71,5 @@ login_admin.addEventListener('click', () => {
 const login_user = document.getElementById('login-user');
 
 login_user.addEventListener('click', () => {
-  window.location.href = "authentication/sign-in.htm";
+  window.location.href = "authentication/sign-in.php";
 });

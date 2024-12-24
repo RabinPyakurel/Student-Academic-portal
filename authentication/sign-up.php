@@ -59,7 +59,7 @@
                 <a href="#" class="btn btn-next width-50 ml-auto">Next</a>
             </div>
             <div class="link text-center">
-                Already have an account?<a href="./sign-in.htm"> Log in here</a>
+                Already have an account?<a href="./sign-in.php"> Log in here</a>
             </div>
         </div>
 

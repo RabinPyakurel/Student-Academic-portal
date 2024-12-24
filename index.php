@@ -35,7 +35,7 @@
                     <a href="#" class="login-dropdown">Login</a>
                     <ul class="dropdown-menu">
                         <li><a class="register-btn" id="login-admin" href="./authentication/">Login as Admin</a></li>
-                        <li><a class="register-btn" id="login-user" href="./authentication/sign-in.htm">Login as
+                        <li><a class="register-btn" id="login-user" href="./authentication/sign-in.php">Login as
                                 Student</a></li>
                     </ul>
                 </li>

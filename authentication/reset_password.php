@@ -42,7 +42,7 @@ if (isset($_GET['token'])) {
         $stmt->execute([$token]);
 
         echo "alert('Password reset successful.')";
-        header("location:sign-in.htm");
+        header("location:sign-in.php");
         exit;
     }
 } else {

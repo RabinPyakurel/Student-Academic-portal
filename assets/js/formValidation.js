@@ -212,7 +212,7 @@ $(document).ready(function () {
                     $("#password").val("");
                     $("#cpass").val("");
                     if (response.includes("Registration successful.")) {
-                        window.location.href = "sign-in.htm";
+                        window.location.href = "sign-in.php";
                     }
                 },
                 error: function (xhr, status, error) {

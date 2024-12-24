@@ -1,0 +1,233 @@
+main {
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    width: 100%;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.user-profile {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: url('https://www.w3schools.com/howto/img_avatar.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.attendance {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: -30px;
+    margin-right: 20px;
+}
+
+.attendance-summary {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.circle {
+    width: 180px;
+    height: 180px;
+    background: conic-gradient(#3498db 82% 0%, #ddd 82% 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    transform: scaleX(-1);
+}
+
+.circle-inner {
+    width: 140px;
+    height: 140px;
+    background-color: #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: scaleX(-1);
+}
+
+.percentage {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+    color: #333;
+}
+
+.month {
+    font-size: 1rem;
+    color: #555;
+}
+
+.wrapper {
+    width: 300px;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.wrapper header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.current-date {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.icons {
+    display: flex;
+    gap: 5px;
+}
+
+.icons span {
+    height: 38px;
+    width: 38px;
+    color: #555;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: #f2f2f2;
+    cursor: pointer;
+}
+
+.icons span:hover {
+    background-color: #ddd;
+}
+
+.calendar {
+    text-align: center;
+}
+
+.calendar ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.weeks li {
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 5px;
+    flex: 1;
+    text-align: center;
+}
+
+.days li {
+    width: calc(100% / 7);
+    height: 35px;
+    line-height: 35px;
+    color: #555;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background 0.3s;
+    text-align: center;
+}
+
+.days li.inactive {
+    color: #bbb;
+}
+
+.days li.active {
+    background-color: #3498db;
+    color: #fff;
+}
+
+.days li:hover {
+    background-color: #ddd;
+    color: #333;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    main {
+        padding: 15px;
+    }
+
+    .attendance {
+        flex-direction: column;
+        margin-top: -10px;
+        margin-right: 0;
+    }
+
+    .circle {
+        width: 150px;
+        /* Reduced size for medium screens */
+        height: 150px;
+    }
+
+    .circle-inner {
+        width: 120px;
+        height: 120px;
+    }
+
+    .wrapper {
+        width: 250px;
+        /* Smaller calendar */
+    }
+
+    .days li {
+        height: 30px;
+        /* Adjusted height for smaller days */
+        line-height: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .circle {
+        width: 140px;
+        /* Further reduction */
+        height: 140px;
+    }
+
+    .circle-inner {
+        width: 100px;
+        height: 100px;
+    }
+
+    .wrapper {
+        width: 100%;
+        /* Full width for compact devices */
+    }
+
+    .days li {
+        height: 25px;
+        line-height: 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .current-date {
+        font-size: 0.9rem;
+    }
+
+    .icons span {
+        height: 30px;
+        width: 30px;
+        font-size: 1.2rem;
+    }
+
+    .days li {
+        height: 20px;
+        line-height: 20px;
+    }
+}
