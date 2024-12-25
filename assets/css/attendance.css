@@ -161,6 +161,18 @@ main {
     color: #333;
 }
 
+.days li.present {
+    background-color: #ddfcde;
+}
+
+.days li.absent {
+    background-color: #f7dbd8;
+}
+
+.days li.late {
+    background-color: #faefdf;
+}
+
 .attendance-overview {
     width: 65%;
     margin: auto;
@@ -168,6 +180,53 @@ main {
 
 .attendance-overview h4 {
     margin-left: 1.85%;
+}
+
+.attendance-legend {
+    margin-top: 20px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.attendance-legend h3 {
+    margin-right: 20px;
+    font-size: 16px;
+}
+
+.attendance-legend ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    margin: 0;
+}
+
+.attendance-legend li {
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.status-box {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    border-radius: 50%;
+}
+
+.status-box.present {
+    background-color: #ddfcde;
+}
+
+.status-box.late {
+    background-color: #faefdf;
+}
+
+.status-box.absent {
+    background-color: #f7dbd8;
 }
 
 .attendance-table {
