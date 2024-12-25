@@ -38,7 +38,7 @@ main {
 .circle {
     width: 180px;
     height: 180px;
-    background: conic-gradient(#3498db 82% 0%, #ddd 82% 100%);
+    background: conic-gradient(#3498db 0% 0%, #ddd 0% 100%);
     display: flex;
     justify-content: center;
     align-items: center;
