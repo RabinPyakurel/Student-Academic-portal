@@ -73,8 +73,19 @@ if(!isset($_SESSION['user_id'])){
                 </table>
             </div>
         </div>
+
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h3 id="modal-title">Attendance Details</h3>
+                <div class="modal-details">
+
+                </div>
+            </div>
+        </div>
     </main>
     <?php include '../layout/footer.htm'; ?>
+    <script src="../assets/js/calendar.js"></script>
     <script>
         $(document).ready(function () {
             $.ajax({
@@ -91,7 +102,7 @@ if(!isset($_SESSION['user_id'])){
                         tableBody.append(`<tr>
                                 <td>${item.month_year}</td>
                                 <td>${item.attendance_percentage}%</td>
-                                <td><a href="">View</a></td>
+                                <td><a href="#" class="view-details" data-date="${item.month_year}">View</a></td>
                             </tr>`);
                     });
                 }
@@ -110,9 +121,14 @@ if(!isset($_SESSION['user_id'])){
                     $('.circle').css('background', `conic-gradient(#3498db ${percentage}%, #ddd ${percentage}% 100%)`);
                 }
             });
+
+            $(document).on('click','[data-date]',function(e){
+                e.preventDefault();
+                const monthYear = $(this).data('date');
+            })
         });
     </script>
-    <script src="../assets/js/attendance.js"></script>
+   
 </body>
 
 </html>
