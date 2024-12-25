@@ -58,6 +58,40 @@ function fetchAttendanceDetails($pdo,$user_id,$monthYear){
     echo json_encode($details);
 }
 
+
+function fetchAllAttendanceForMonth($pdo,$user_id, $month, $year) {
+    $startDate = "$year-$month-01";
+    $endDate = date("Y-m-t", strtotime($startDate));
+
+    $sql = "SELECT DAY(date) as day, status 
+            FROM attendance 
+            WHERE date BETWEEN :startDate AND :endDate AND std_id= :user_id";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':startDate', $startDate);
+    $stmt->bindParam(':endDate', $endDate);
+    $stmt->bindParam(':user_id', $user_id);
+
+    $stmt->execute();
+
+    $attendance = array_fill(1, date("t", strtotime($startDate)), 'No School');
+
+   
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        $day = (int)$row['day'];
+        $attendance[$day] = $row['status']; 
+    }
+
+    $attendanceData = [];
+    for ($day = 1; $day <= date("t", strtotime($startDate)); $day++) {
+        $attendanceData[] = [
+            "day" => $day,
+            "status" => $attendance[$day]
+        ];
+    }
+    echo json_encode($attendanceData);
+}
+
 if(isset($_GET['action'])){
     $action = $_GET['action'];
     if($action === 'overall'){
@@ -66,6 +100,10 @@ if(isset($_GET['action'])){
         fetchMonthlyAttendance($pdo,$user_id);
     }elseif($action === 'details' && isset($_GET['month_year'])){
         fetchAttendanceDetails($pdo,$user_id,$_GET['month_year']);
+    }elseif($action==='calendar'){
+        $month = $_GET['month']; // Month (1-12)
+        $year = $_GET['year'];
+        fetchAllAttendanceForMonth($pdo,$user_id,$month,$year);
     }else{
         echo "Invalid action";
     }
