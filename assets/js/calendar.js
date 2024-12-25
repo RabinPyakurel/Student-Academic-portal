@@ -13,7 +13,7 @@ const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 
 // Function to fetch attendance data using AJAX
 const fetchAttendanceData = (month, year, callback) => {
     $.ajax({
-        url: 'attendance.php', // Backend endpoint to fetch attendance
+        url: 'attendance_data.php', // Backend endpoint to fetch attendance
         type: 'GET',
         data: {
             action: 'calendar',
