@@ -78,7 +78,7 @@ if(!isset($_SESSION['user_id'])){
             <div class="modal-content">
                 <span class="close">&times;</span>
                 <h3 id="modal-title">Attendance Details</h3>
-                <div class="modal-details">
+                <div id="modal-details">
 
                 </div>
             </div>
@@ -86,49 +86,7 @@ if(!isset($_SESSION['user_id'])){
     </main>
     <?php include '../layout/footer.htm'; ?>
     <script src="../assets/js/calendar.js"></script>
-    <script>
-        $(document).ready(function () {
-            $.ajax({
-                url: 'attendance_data.php',
-                method: 'GET',
-                data: {
-                    action: 'monthly'
-                },
-                dataType: 'json',
-                success: function (data) {
-                    const tableBody = $('#table-body');
-                    tableBody.empty();
-                    data.forEach((item) => {
-                        tableBody.append(`<tr>
-                                <td>${item.month_year}</td>
-                                <td>${item.attendance_percentage}%</td>
-                                <td><a href="#" class="view-details" data-date="${item.month_year}">View</a></td>
-                            </tr>`);
-                    });
-                }
-            });
-
-            $.ajax({
-                url: 'attendance_data.php',
-                method: 'GET',
-                data: {
-                    action: 'overall'
-                },
-                dataType: 'json',
-                success: function (data) {
-                    const percentage = data[0].attendance_percentage;
-                    $('.percentage').text(`${percentage}% Attendance`);
-                    $('.circle').css('background', `conic-gradient(#3498db ${percentage}%, #ddd ${percentage}% 100%)`);
-                }
-            });
-
-            $(document).on('click','[data-date]',function(e){
-                e.preventDefault();
-                const monthYear = $(this).data('date');
-            })
-        });
-    </script>
-   
+    <script src="../assets/js/attendance.js"></script>
 </body>
 
 </html>

@@ -171,13 +171,16 @@ main {
 }
 
 .attendance-table {
-    margin: 20px auto;
+    margin-left: auto;
+    margin-right: auto;
     display: flex;
     justify-content: center;
     align-items: center;
     border: 2px solid #333;
-    width: 90%;
+    width: 100%;
+    max-width: 800px;
     border-radius: 0.5rem;
+    overflow-x: auto;
 }
 
 .attendance-table table {
@@ -187,17 +190,76 @@ main {
     margin-bottom: 3px;
 }
 
-.attendance-table th {
-    border-bottom: 1px solid #838383;
-    padding: 0.5rem;
-    text-align: center;
-}
-
+.attendance-table th,
 .attendance-table td {
-    padding: 1rem;
+    padding: 0.5rem;
     border-bottom: 1px solid #838383;
+    text-align: center;
+    word-wrap: break-word;
 }
 
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 9999;
+    /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    /* Disable scrolling for the background */
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Black w/ opacity */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 700px;
+    max-height: 90%;
+    overflow-y: auto;
+    /* Enable vertical scrolling for the modal content */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    position: relative;
+    /* Position relative for close button */
+    top: 50%;
+    /* Center vertically */
+    transform: translateY(-50%);
+    /* Adjust for exact center */
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 20px;
+    cursor: pointer;
+    color: #333;
+}
+
+.modal table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.modal th,
+.modal td {
+    text-align: left;
+    padding: 8px;
+    border: 1px solid #ddd;
+}
+
+.modal th {
+    background: #f4f4f4;
+}
 
 /* Responsive Design */
 @media (max-width: 1024px) {
@@ -232,6 +294,15 @@ main {
         /* Adjusted height for smaller days */
         line-height: 30px;
     }
+
+    .attendance-table {
+        width: 100%;
+        max-width: 600px;
+    }
+
+    .modal-content {
+        width: 95%;
+    }
 }
 
 @media (max-width: 768px) {
@@ -255,6 +326,14 @@ main {
         height: 25px;
         line-height: 25px;
     }
+
+    .attendance-table th,
+    .attendance-table td,
+    .modal th,
+    .modal td {
+        font-size: 0.9rem;
+        padding: 0.5rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -271,5 +350,23 @@ main {
     .days li {
         height: 20px;
         line-height: 20px;
+    }
+
+    .attendance-table {
+        width: 100%;
+    }
+
+    .attendance-table table {
+        font-size: 0.8rem;
+    }
+
+    .modal-content {
+        padding: 15px;
+    }
+
+    .modal th,
+    .modal td {
+        font-size: 0.8rem;
+        padding: 6px;
     }
 }

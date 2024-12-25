@@ -39,12 +39,33 @@ $overallSummary = $stmt->fetchAll(PDO::FETCH_ASSOC);
 echo json_encode($overallSummary);
 }
 
+function fetchAttendanceDetails($pdo,$user_id,$monthYear){
+    $query = "SELECT
+                DATE_FORMAT(date,'%Y-%m-%d') AS date,
+                status,
+                remarks
+                FROM attendance
+                WHERE std_id = :user_id
+                  AND DATE_FORMAT(date, '%M, %Y') = :month_year
+                ORDER BY date;";
+
+    $stmt = $pdo->prepare($query);
+    $stmt->bindParam(':user_id',$user_id);
+    $stmt->bindParam(':month_year',$monthYear,PDO::PARAM_STR);
+    $stmt->execute();
+    $details = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    echo json_encode($details);
+}
+
 if(isset($_GET['action'])){
     $action = $_GET['action'];
     if($action === 'overall'){
         fetchOverallAttendance($pdo,$user_id);
     }elseif($action === 'monthly'){
         fetchMonthlyAttendance($pdo,$user_id);
+    }elseif($action === 'details' && isset($_GET['month_year'])){
+        fetchAttendanceDetails($pdo,$user_id,$_GET['month_year']);
     }else{
         echo "Invalid action";
     }
