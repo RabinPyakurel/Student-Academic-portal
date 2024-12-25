@@ -53,6 +53,14 @@ if(!isset($_SESSION['user_id'])){
                     <ul class="days">
                     </ul>
                 </div>
+                <div class="attendance-legend">
+                    <h3>Legend:</h3>
+                    <ul>
+                        <li><span class="status-box present"></span> Present</li>
+                        <li><span class="status-box late"></span> Late</li>
+                        <li><span class="status-box absent"></span> Absent</li>
+                    </ul>
+                </div>
             </div>
         </div>
         
