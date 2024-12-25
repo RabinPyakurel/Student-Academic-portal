@@ -7,16 +7,11 @@
     <title>Sign Up</title>
     <link rel="preload" href="../assets/css/form.css" as="style" onload="this.rel='stylesheet'">
     <link rel="preload" href="../assets/css/terms.css" as="style" onload="this.rel='stylesheet'">
-    <link rel="stylesheet" href="../assets/css/loader.css">
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 </head>
 
 <body>
-    <div id="loader-container" style="display: none;">
-        <div class="loader">
-            <img src="../assets/images/loader.gif" alt="Loading...">
-        </div>
-    </div>
+<?php include '../layout/loader.htm' ?>
     <form class="form" method="post">
         <span class="close-btn redirect-index">&times;</span>
         <h1 class="text-center">Registration Form</h1>

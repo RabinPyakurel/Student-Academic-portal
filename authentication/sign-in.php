@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign In</title>
     <link rel="stylesheet" href="../assets/css/form.css">
-    <link rel="stylesheet" href="../assets/css/loader.css">
     <link rel="stylesheet" href="../assets/css/terms.css">
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <style>
@@ -17,6 +16,7 @@
 </head>
 
 <body>
+    <?php include '../layout/loader.htm' ?>
     <div id="loader-container" style="display: none;">
         <div class="loader">
             <img src="../assets/images/loging_in.gif" alt="Loading...">

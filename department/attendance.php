@@ -18,10 +18,11 @@ if(!isset($_SESSION['user_id'])){
 
 <body>
     <?php include '../layout/nav.htm'; ?>
+    <?php include '../layout/loader.htm';?>
     <main>
         <div class="user-info">
             <div class="user-profile"></div>
-            <h1>Rabin Pyakurel</h1>
+            <h1 id="username"></h1>
         </div>
         <div class="attendance">
             <div class="attendance-summary">

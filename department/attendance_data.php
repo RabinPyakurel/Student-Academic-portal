@@ -8,6 +8,15 @@ if(!isset($_SESSION['user_id'])){
 }
  $user_id = $_SESSION['user_id'];
 
+ function getUserName($pdo,$user_id){
+    $query = "SELECT name from student
+                where std_id = :user_id;";
+    $stmt = $pdo->prepare($query);
+    $stmt->bindParam(':user_id', $user_id);
+    $stmt->execute();
+    $username = $stmt->fetch(PDO::FETCH_ASSOC);
+    echo json_encode($username);
+ }
 function fetchMonthlyAttendance($pdo,$user_id){
 $query = "SELECT 
             DATE_FORMAT(date, '%M, %Y') AS month_year,
@@ -104,7 +113,10 @@ if(isset($_GET['action'])){
         $month = $_GET['month']; // Month (1-12)
         $year = $_GET['year'];
         fetchAllAttendanceForMonth($pdo,$user_id,$month,$year);
-    }else{
+    }elseif($action==='username'){
+        getUserName($pdo,$user_id);
+    }
+    else{
         echo "Invalid action";
     }
 }

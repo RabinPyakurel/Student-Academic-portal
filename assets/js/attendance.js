@@ -1,4 +1,17 @@
 $(document).ready(function () {
+    //load username
+    $("#loader-container").show();
+    $.ajax({
+        url: 'attendance_data.php',
+        method: 'GET',
+        data: {
+            action: 'username'
+        },
+        dataType: 'json',
+        success: function (data) {
+            $('#username').html(data.name);
+        }
+    });
     // Load monthly summary data
     $.ajax({
         url: 'attendance_data.php',
@@ -29,6 +42,7 @@ $(document).ready(function () {
         },
         dataType: 'json',
         success: function (data) {
+            $("#loader-container").hide();
             const percentage = data[0].attendance_percentage;
             $('.percentage').text(`${percentage}% Attendance`);
             $('.circle').css('background', `conic-gradient(#3498db ${percentage}%, #ddd ${percentage}% 100%)`);
@@ -39,7 +53,7 @@ $(document).ready(function () {
     $(document).on('click', '[data-date]', function (e) {
         e.preventDefault();
         const monthYear = $(this).data('date');
-
+        $("#loader-container").show();
         // Fetch attendance details for the selected month
         $.ajax({
             url: 'attendance_data.php',
@@ -50,6 +64,7 @@ $(document).ready(function () {
             },
             dataType: 'json',
             success: function (data) {
+                $("#loader-container").hide();
                 const modalDetails = $('#modal-details');
                 modalDetails.empty();
 
@@ -76,6 +91,7 @@ $(document).ready(function () {
                 $('#modal-title').text(`Attendance Details for ${monthYear}`);
             },
             error: function () {
+                $("#loader-container").hide();
                 alert('Failed to fetch attendance details.');
             }
         });
