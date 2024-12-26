@@ -1,20 +1,13 @@
 <?php
 header('Content-Type: application/json');
+include '../backend/db_connection.php';
 
-try {
-    $pdo = new PDO("mysql:host=localhost;dbname=sapo", 'root', 'rabin');
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-} catch (PDOException $e) {
-    echo json_encode([
-        'success' => false,
-        'message' => 'Database connection failed',
-        'error' => $e->getMessage()
-    ]);
-    exit;
+session_start();
+if(!isset($_SESSION['user_id'])){
+    include '../not-found.htm';
+    exit();
 }
-
-$user_id = 5639;
+ $user_id = $_SESSION['user_id'];
 
 $query = "select photo_url from student where std_id= :user_id";
 $stmt = $pdo->prepare($query);

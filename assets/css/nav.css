@@ -7,13 +7,9 @@
 
 body {
   min-height: 100vh;
-  /* Ensure the body spans the full viewport height */
   position: relative;
-  /* Establish a relative positioning context for the footer */
   margin: 0;
-  /* Reset default margin for consistent layout */
   padding-bottom: 60px;
-  /* Add padding equal to footer height */
   background-color: #f5f5f5;
 }
 
@@ -26,7 +22,7 @@ body {
   z-index: 1000;
 }
 
-.navbar .container {
+.navbar .nav-container {
   display: flex;
   justify-content: space-between;
   align-items: center;

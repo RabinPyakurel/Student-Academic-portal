@@ -1,10 +1,9 @@
 .container {
-    max-width: 1200px;
-    margin: 2rem auto;
-    background: white;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
     padding: 1rem;
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     padding-left: 2rem;
 }
 
@@ -125,6 +124,15 @@ form input[readonly] {
     font-weight: bold;
 }
 
+.info h2,
+p {
+    padding: 0.5rem;
+}
+
+.info {
+    margin-left: 6rem;
+}
+
 @media (max-width: 768px) {
     form {
         grid-template-columns: 1fr;
@@ -143,6 +151,15 @@ form input[readonly] {
     .profile-tabs {
         gap: 1.5rem;
     }
+
+    .info h2,
+    p {
+        padding: 0;
+    }
+
+    .info {
+        margin: 0;
+    }
 }
 
 @media (max-width: 370px) {
@@ -158,6 +175,15 @@ form input[readonly] {
     .profile-tabs button {
         font-size: 0.8rem;
     }
+
+    .info h2,
+    p {
+        padding: 0;
+    }
+
+    .info {
+        margin: 0;
+    }
 }
 
 @media (max-width:300px) {
@@ -167,5 +193,14 @@ form input[readonly] {
 
     .profile-tabs button {
         font-size: 0.7rem;
+    }
+
+    .info h2,
+    p {
+        padding: 0;
+    }
+
+    .info {
+        margin: 0;
     }
 }

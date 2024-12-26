@@ -5,20 +5,14 @@ $baseDir = __DIR__ . '/../assets/images';
 $uploadDir = $baseDir . '/uploads/';
 $publicDir = '/assets/images/uploads/';
 
-try {
-    $pdo = new PDO("mysql:host=localhost;dbname=sapo", 'root', 'rabin');
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-} catch (PDOException $e) {
-    echo json_encode([
-        'success' => false,
-        'message' => 'Database connection failed',
-        'error' => $e->getMessage()
-    ]);
-    exit;
-}
+include '../backend/db_connection.php';
 
-$user_id = 5639;
+session_start();
+if(!isset($_SESSION['user_id'])){
+    include '../not-found.htm';
+    exit();
+}
+$user_id = $_SESSION['user_id'];
 
 if (isset($_FILES['photo'])) {
     $img = $_FILES['photo'];
