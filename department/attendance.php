@@ -13,7 +13,6 @@ if(!isset($_SESSION['user_id'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Attendance</title>
     <link rel="stylesheet" href="../assets/css/attendance.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 </head>
 
 <body>
@@ -21,7 +20,9 @@ if(!isset($_SESSION['user_id'])){
     <?php include '../layout/loader.htm';?>
     <main>
         <div class="user-info">
-            <div class="user-profile"></div>
+            <div >
+                <img src="" id="userImage" class="user-profile user-image" alt="">
+            </div>
             <h1 id="username"></h1>
         </div>
         <div class="attendance">
@@ -96,6 +97,7 @@ if(!isset($_SESSION['user_id'])){
     <?php include '../layout/footer.htm'; ?>
     <script src="../assets/js/calendar.js"></script>
     <script src="../assets/js/attendance.js"></script>
+    <script src="../assets/js/getPhoto.js" ></script>
 </body>
 
 </html>

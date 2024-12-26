@@ -126,6 +126,7 @@ if(!isset($_SESSION['user_id'])){
         </section>
         </main>
         <?php include '../layout/footer.htm' ?>
+        <script src="../assets/js/getPhoto.js" ></script>
 </body>
 
 </html>

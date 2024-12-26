@@ -1,0 +1,171 @@
+.container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    background: white;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding-left: 2rem;
+}
+
+.profile-header {
+    display: flex;
+    margin-left: 100px;
+    align-items: center;
+    gap: 5rem;
+    padding-bottom: 1rem;
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.profile-header img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: #ddd;
+    display: block;
+}
+
+.profile-header label {
+    border: 1px solid black;
+    background: #cac5c5;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.profile-header label:hover {
+    background: #a8a3a3;
+    transform: scale(1.05);
+}
+
+.profile-header .info-divider {
+    height: 100px;
+    width: 2px;
+    background-color: #ddd;
+}
+
+.profile-tabs {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 1.5rem 0;
+    border-top: 1px solid #ddd;
+    ;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 0.5rem;
+}
+
+.profile-tabs button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    color: #666;
+    padding: 0.5rem 0;
+}
+
+.profile-tabs button.active {
+    border-bottom: 2px solid #007BFF;
+    color: #007BFF;
+}
+
+.edit-controls {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: -1rem;
+}
+
+.edit-controls button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    margin-left: 0.5rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.form-section {
+    display: none;
+}
+
+.form-section.active {
+    display: block;
+}
+
+form {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr 1fr;
+    max-width: 600px;
+    margin: 0 100px;
+}
+
+form label {
+    font-weight: bold;
+}
+
+form input {
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 90%;
+}
+
+form input[readonly] {
+    background-color: #f5f5f5;
+    color: #6c757d;
+}
+
+#clz-email,
+#program-name,
+#batch-date {
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    form {
+        grid-template-columns: 1fr;
+        margin: 0 auto;
+    }
+
+    .profile-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .profile-header .info-divider {
+        display: none;
+    }
+
+    .profile-tabs {
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 370px) {
+    .profile-header {
+        margin-left: -10px;
+        gap: 2rem;
+    }
+
+    .profile-tabs {
+        font-size: 0.5rem;
+    }
+
+    .profile-tabs button {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width:300px) {
+    .profile-tabs {
+        font-size: 0.7rem;
+    }
+
+    .profile-tabs button {
+        font-size: 0.7rem;
+    }
+}

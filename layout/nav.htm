@@ -1,14 +1,14 @@
 <link rel="stylesheet" href="/assets/css/nav.css">
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <nav class="navbar">
     <div class="container">
-        <!-- Logo Section -->
         <div class="logo">
             <a href="/home.php">
                 <img src="/assets/images/Student.png" alt="Student Academic Portal">
             </a>
         </div>
 
-        <!-- Hamburger Menu for Mobile -->
         <button class="hamburger" id="hamburger" aria-label="Toggle Navigation">
             <span></span>
             <span></span>
@@ -29,10 +29,10 @@
         <ul class="nav-links right">
             <li class="dropdown" id="profile-dropdown">
                 <a href="#" class="profile-icon" id="profile-icon" aria-label="Profile Menu">
-                    <img src="https://www.w3schools.com/howto/img_avatar.png" Profile Icon" class="profile-img">
+                    <img id="userImage" src="" Profile Icon class="profile-img user-image">
                 </a>
                 <ul class="dropdown-menu" id="dropdown-menu">
-                    <li><a href="/user-profile/profile.htm">My Profile</a></li>
+                    <li><a href="/user-profile/user.htm">My Profile</a></li>
                     <li><a href="/backend/logout.php" id="logout">Logout</a></li>
                 </ul>
             </li>
@@ -40,3 +40,4 @@
     </div>
 </nav>
 <script src="/assets/js/nav.js"></script>
+<script src="/assets/js/getPhoto.js"></script>
