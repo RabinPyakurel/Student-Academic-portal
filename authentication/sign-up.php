@@ -47,7 +47,7 @@
             </div>
             <div class="input-group">
                 <input type="text" name="enroll_year" id="enroll" placeholder="" required>
-                <label for="enroll">Enrollment Year <span class="necessary">*</span></label>
+                <label for="enroll">Batch <span class="necessary">*</span></label>
                 <span class="error" id="enrMsg"></span>
             </div>
             <div>
@@ -84,7 +84,7 @@
             <div class="input-group">
                 <input type="text" name="id_num" id="id" placeholder="" required>
                 <label for="id">Id Card Number <span class="necessary">*</span></label>
-                <span class="error id=" idMsg"></span>
+                <span class="error" id="idMsg"></span>
             </div>
             <div class="btns-group">
                 <a href="#" class="btn btn-prev">Previous</a>
