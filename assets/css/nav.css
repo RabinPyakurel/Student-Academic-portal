@@ -9,7 +9,7 @@ body {
   min-height: 100vh;
   position: relative;
   margin: 0;
-  padding-bottom: 60px;
+  padding-bottom: 50px;
   background-color: #f5f5f5;
 }
 
@@ -223,18 +223,153 @@ body {
   background-color: #f1f1f1;
 }
 
-.contact {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background-color: #25314a;
-  color: white;
-  padding: 1rem 0;
+footer {
+  background-color: #f9f9f9;
+  padding: 20px 10px;
+  font-family: Arial, sans-serif;
+}
+
+.footer-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-left: 100px;
+  gap: 20px;
+}
+
+.footer-column {
+  flex: 1 1 200px;
+  margin: 10px 0;
+}
+
+.footer-column h3 {
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.footer-column p {
+  margin: 5px 0;
+  font-size: 0.9rem;
+}
+
+.footer-column a {
+  color: #000;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.footer-column a:hover {
+  text-decoration: underline;
+}
+
+.footer-bottom {
   text-align: center;
+  margin-top: 20px;
+  font-size: 0.8rem;
+}
+
+.footer-bottom a {
+  color: #000;
+  text-decoration: none;
+}
+
+.footer-bottom a:hover {
+  text-decoration: underline;
+}
+
+.faq-btn {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: #000;
+  border: 1px solid #000;
+  padding: 5px 10px;
+  border-radius: 50%;
+}
+
+.faq-btn:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+/* Social Icons */
+.social-icons {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.social-icons a img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.social-icons a img:hover {
+  transform: scale(1.1);
+}
+
+#faq-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.faq-modal {
+  display: none;
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  z-index: 1100;
+  background: #fff;
+  border-radius: 8px;
+  width: 320px;
+  height: 400px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.faq-modal-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.faq-close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1.2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #333;
+}
+
+.faq-close-btn:hover {
+  color: #ff4d4f;
+}
+
+#faq-iframe {
+  flex-grow: 1;
+  width: 100%;
+  border: none;
 }
 
 
+
+@media(max-width:1280px) {
+  .profile-img {
+    display: none;
+  }
+}
 
 @media (max-width: 768px) {
   .nav-links {
@@ -274,10 +409,38 @@ body {
     display: block;
     margin-top: 20px;
   }
-}
 
-@media(max-width:1280px) {
-  .profile-img {
-    display: none;
+  .footer-section {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-column {
+    margin-bottom: 15px;
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
+
+  .faq-modal {
+    width: 80%;
+    bottom: 100px;
+    right: 10px;
+  }
+
+  @media (max-width: 600px) {
+    .faq-modal {
+      width: 90%;
+      bottom: 90px;
+      right: 5px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .faq-modal {
+      width: 95%;
+      bottom: 80px;
+    }
   }
 }

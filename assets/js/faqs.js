@@ -1,21 +1,21 @@
-document.querySelectorAll(".faq-item").forEach((item) => {
-  const question = item.querySelector(".faq-question");
+// FAQ Modal Elements
+const faqBtn = document.getElementById('faq-btn');
+const faqModal = document.getElementById('faq-modal');
+const faqCloseBtn = document.getElementById('faq-close-btn');
 
-  // Toggle the FAQ item
-  question.addEventListener("click", () => {
-    const isActive = item.classList.contains("active");
-
-    // Collapse all other FAQ items
-    document.querySelectorAll(".faq-item").forEach((faq) => {
-      faq.classList.remove("active");
-    });
-
-    // Toggle the current FAQ item
-    if (!isActive) {
-      item.classList.add("active");
-    }
-  });
+// Open FAQ Modal
+faqBtn.addEventListener('click', () => {
+  faqModal.style.display = faqModal.style.display === 'block' ? 'none' : 'block';
 });
-function goBack() {
-  window.history.back();
-}
+
+// Close FAQ Modal
+faqCloseBtn.addEventListener('click', () => {
+  faqModal.style.display = 'none';
+});
+
+// Close Modal on Outside Click
+window.addEventListener('click', (event) => {
+  if (!faqModal.contains(event.target) && event.target !== faqBtn) {
+    faqModal.style.display = 'none';
+  }
+});

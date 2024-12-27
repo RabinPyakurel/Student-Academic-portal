@@ -75,7 +75,7 @@ if(!isset($_SESSION['user_id'])){
       </div>
     </div>
   </div>
-<?php include '../layout/footer1.php' ?>
+<?php include '../layout/footer.htm' ?>
 </body>
 
 </html>

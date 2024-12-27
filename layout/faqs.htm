@@ -5,13 +5,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FAQs</title>
-  <link rel="stylesheet" href="../assets/css/faqs.css">
+  <link rel="stylesheet" href="/assets/css/faqs.css">
 </head>
 
 <body>
   <div class="faq-container">
     <h1>Frequently Asked Questions</h1>
-    <button class="close-btn" onclick="goBack()">&times;</button>
 
     <div class="faq-item">
       <div class="faq-question">
@@ -43,7 +42,27 @@
       </div>
     </div>
   </div>
-  <script src="../assets/js/faqs.js"></script>
+  <script>
+    document.querySelectorAll(".faq-item").forEach((item) => {
+      const question = item.querySelector(".faq-question");
+
+      // Toggle the FAQ item
+      question.addEventListener("click", () => {
+        const isActive = item.classList.contains("active");
+
+        // Collapse all other FAQ items
+        document.querySelectorAll(".faq-item").forEach((faq) => {
+          faq.classList.remove("active");
+        });
+
+        // Toggle the current FAQ item
+        if (!isActive) {
+          item.classList.add("active");
+        }
+      });
+    });
+   
+  </script>
 </body>
 
 </html>
