@@ -13,6 +13,7 @@ if(!isset($_SESSION['user_id'])){
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About Us</title>
   <link rel="stylesheet" href="aboutus.css">
+  <link rel="stylesheet" href="../assets/css/footer.css">
   <link href='https://fonts.googleapis.com/css?family=Alegreya SC' rel='stylesheet'>
 
 </head>
@@ -74,7 +75,7 @@ if(!isset($_SESSION['user_id'])){
       </div>
     </div>
   </div>
-<?php include '../layout/footer.htm' ?>
+<?php include '../layout/footer1.php' ?>
 </body>
 
 </html>
