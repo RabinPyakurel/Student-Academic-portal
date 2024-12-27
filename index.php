@@ -16,7 +16,6 @@ if (isset($_SESSION['user_id'])) {
 </head>
 
 <body>
-
     <nav class="navbar">
         <div class="container">
             <div class="logo">
