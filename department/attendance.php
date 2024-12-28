@@ -17,11 +17,11 @@ if(!isset($_SESSION['user_id'])){
 
 <body>
     <?php include '../layout/nav.htm'; ?>
-    <?php include '../layout/loader.htm';?>
-    <main>
+    <?php include '../layout/skeleton.htm' ?>
+    <main style="display: none;">
         <div class="user-info">
-            <div >
-                <img src="" id="userImage" class="user-profile user-image" alt="">
+            <div>
+                <img src="" id="userImage" class="user-profile user-image" alt="user-image">
             </div>
             <h1 id="username"></h1>
         </div>
@@ -32,7 +32,7 @@ if(!isset($_SESSION['user_id'])){
                         <div class="percentage">0% <br>Attendance</div>
                     </div>
                 </div>
-                <p class="month"><bold>Semester: </bold>Fourth</p>
+                <p class="sem"><bold>Semester: </bold>Fourth</p>
             </div>
             <div class="wrapper">
                 <header>
@@ -95,9 +95,9 @@ if(!isset($_SESSION['user_id'])){
         </div>
     </main>
     <?php include '../layout/footer.htm'; ?>
+    <script src="../assets/js/getPhoto.js" ></script>
     <script src="../assets/js/calendar.js"></script>
     <script src="../assets/js/attendance.js"></script>
-    <script src="../assets/js/getPhoto.js" ></script>
 </body>
 
 </html>

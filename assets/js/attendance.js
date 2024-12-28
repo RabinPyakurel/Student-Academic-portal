@@ -1,24 +1,21 @@
 $(document).ready(function () {
-    //load username
-    $("#loader-container").show();
-    $.ajax({
+    // Fetch Username
+    const usernameRequest = $.ajax({
         url: 'attendance_data.php',
         method: 'GET',
-        data: {
-            action: 'username'
-        },
+        data: { action: 'userinfo' },
         dataType: 'json',
         success: function (data) {
-            $('#username').html(data.name);
+            $('#username').html(data.username);
+            $('.sem').html(`<bold>Semester: </bold>${data.semester}`);
         }
     });
-    // Load monthly summary data
-    $.ajax({
+
+    // Fetch Monthly Summary
+    const monthlyRequest = $.ajax({
         url: 'attendance_data.php',
         method: 'GET',
-        data: {
-            action: 'monthly'
-        },
+        data: { action: 'monthly' },
         dataType: 'json',
         success: function (data) {
             const tableBody = $('#table-body');
@@ -33,28 +30,32 @@ $(document).ready(function () {
         }
     });
 
-    // Load overall attendance data
-    $.ajax({
+    // Fetch Overall Attendance
+    const overallRequest = $.ajax({
         url: 'attendance_data.php',
         method: 'GET',
-        data: {
-            action: 'overall'
-        },
+        data: { action: 'overall' },
         dataType: 'json',
         success: function (data) {
-            $("#loader-container").hide();
             const percentage = data[0].attendance_percentage;
             $('.percentage').text(`${percentage}% Attendance`);
             $('.circle').css('background', `conic-gradient(#3498db ${percentage}%, #ddd ${percentage}% 100%)`);
         }
     });
 
+    // When all AJAX requests are done, remove skeleton
+    $.when(usernameRequest, monthlyRequest, overallRequest).done(() => {
+        $('.skeleton-container').fadeOut();
+        $('main').fadeIn();
+    });
+
     // Open modal on "View Details"
     $(document).on('click', '[data-date]', function (e) {
         e.preventDefault();
         const monthYear = $(this).data('date');
-        $("#loader-container").show();
-        // Fetch attendance details for the selected month
+
+        $('#modal-details').html('<p>Loading...</p>'); // Show temporary loading state
+
         $.ajax({
             url: 'attendance_data.php',
             method: 'GET',
@@ -64,7 +65,6 @@ $(document).ready(function () {
             },
             dataType: 'json',
             success: function (data) {
-                $("#loader-container").hide();
                 const modalDetails = $('#modal-details');
                 modalDetails.empty();
 
@@ -91,7 +91,6 @@ $(document).ready(function () {
                 $('#modal-title').text(`Attendance Details for ${monthYear}`);
             },
             error: function () {
-                $("#loader-container").hide();
                 alert('Failed to fetch attendance details.');
             }
         });
@@ -102,7 +101,7 @@ $(document).ready(function () {
         $('#modal').fadeOut();
     });
 
-    // Close the modal when clicking outside
+    // Close modal when clicking outside
     $(window).on('click', function (e) {
         if ($(e.target).is('#modal')) {
             $('#modal').fadeOut();

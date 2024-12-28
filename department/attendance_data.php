@@ -8,15 +8,34 @@ if(!isset($_SESSION['user_id'])){
 }
  $user_id = $_SESSION['user_id'];
 
- function getUserName($pdo,$user_id){
-    $query = "SELECT name from student
-                where std_id = :user_id;";
-    $stmt = $pdo->prepare($query);
-    $stmt->bindParam(':user_id', $user_id);
-    $stmt->execute();
-    $username = $stmt->fetch(PDO::FETCH_ASSOC);
-    echo json_encode($username);
- }
+ function getUserInfo($pdo, $user_id) {
+    if (isset($_SESSION['username']) && isset($_SESSION['semester'])) {
+        $userInfo = [
+            'username' => $_SESSION['username'],
+            'semester' => $_SESSION['semester']
+        ];
+    } else {
+        $query = "SELECT name AS username, semester 
+                  FROM student 
+                  WHERE std_id = :user_id";
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+        $stmt->execute();
+        
+        $userInfo = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (!$userInfo) {
+            echo json_encode(['error' => 'User not found']);
+            return;
+        }
+
+        $_SESSION['username'] = $userInfo['username'];
+        $_SESSION['semester'] = $userInfo['semester'];
+    }
+
+    echo json_encode($userInfo);
+}
+
 function fetchMonthlyAttendance($pdo,$user_id){
 $query = "SELECT 
             DATE_FORMAT(date, '%M, %Y') AS month_year,
@@ -113,8 +132,8 @@ if(isset($_GET['action'])){
         $month = $_GET['month']; // Month (1-12)
         $year = $_GET['year'];
         fetchAllAttendanceForMonth($pdo,$user_id,$month,$year);
-    }elseif($action==='username'){
-        getUserName($pdo,$user_id);
+    }elseif($action==='userinfo'){
+        getUserInfo($pdo,$user_id);
     }
     else{
         echo "Invalid action";

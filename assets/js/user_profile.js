@@ -85,8 +85,8 @@ function saveChanges() {
         url: 'updateData.php',
         method: 'POST',
         data: updatedData,
-        processData: false,  
-        contentType: false, 
+        processData: false,
+        contentType: false,
         dataType: 'json',
         success: function (response) {
             if (response.success) {
@@ -105,12 +105,16 @@ function saveChanges() {
 
 
 $(document).ready(function () {
+    $('.skeleton-container').show();
+    $('main').hide();
     // ✅ Fetch User Data on Page Load
     function fetchUserProfile() {
         $.ajax({
             url: 'fetchData.php',
             dataType: 'json',
             success: function (response) {
+                $('.skeleton-container').hide();
+                $('main').show();
                 if (response.success) {
                     let info = response.data[0];
                     //personal info 
@@ -140,13 +144,7 @@ $(document).ready(function () {
                     $('#department').val(info.dept_name.toUpperCase());
                     $('#id-number').val(info.std_id);
 
-                    $('#semester').val(((num) => {
-                        const ordinals = [
-                            "first", "second", "third", "fourth",
-                            "fifth", "sixth", "seventh", "eighth"
-                        ];
-                        return ordinals[num - 1] || 'Unknown';
-                    })(parseInt(info.semester, 10)));
+                    $('#semester').val(info.semester);
 
                 } else {
                     alert('Error fetching profile: ' + response.message);

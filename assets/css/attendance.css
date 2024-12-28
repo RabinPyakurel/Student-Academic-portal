@@ -64,12 +64,12 @@ main {
     color: #333;
 }
 
-.month {
+.sem {
     font-size: 1rem;
     color: #555;
 }
 
-.month bold {
+.sem bold {
     font-weight: bold;
 }
 

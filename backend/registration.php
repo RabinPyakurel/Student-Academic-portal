@@ -35,8 +35,7 @@ try{
             $sql->bindParam(':id_num',$id_num);
             $sql->bindParam(':pass',$pass_hash);
             $sql->execute();
-
-           
+            
             $update_dob = $pdo->prepare("update student set dob = :dob where std_id = :id_num");
             $update_dob->bindParam(':dob',$dob);
             $update_dob->bindParam(':id_num',$id_num);

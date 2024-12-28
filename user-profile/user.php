@@ -17,11 +17,12 @@ if (!isset($_SESSION['user_id'])) {
 
 <body>
     <?php include '../layout/nav.htm'?>
+    <?php include '../layout/skeleton.htm' ?>
     <main>
     <div class="container">
         <div class="profile-header">
             <div>
-                <img id="userImage" class="user-image" src="" alt=""><br>
+                <img id="userImage" class="user-image" src="" alt="user-image"><br>
                 <label for="photoUpload">Upload Photo</label>
                 <input type="file" id="photoUpload" accept="image/*" style="display: none;">
             </div>
