@@ -124,9 +124,9 @@ function togglePassword(inputId, toggleIcon) {
     const input = document.getElementById(inputId);
     if (input.type === "password") {
         input.type = "text";
-        toggleIcon.innerHTML = "&#x1F441;";
+        toggleIcon.innerHTML = "<span class='crossed'>&#x1F441;</span>";
     } else {
         input.type = "password";
-        toggleIcon.innerHTML = "<span class='crossed'>&#x1F441;</span>";
+        toggleIcon.innerHTML = "&#x1F441;";
     }
 }

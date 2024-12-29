@@ -17,7 +17,7 @@ if (isset($_SESSION['user_id'])) {
 
 <body>
     <nav class="navbar">
-        <div class="container">
+        <div class="nav-container">
             <div class="logo">
                 <a href="#" class="logo">
                     <img src="./assets/images/Student.png" alt="Student Academic Portal">
@@ -138,7 +138,7 @@ if (isset($_SESSION['user_id'])) {
         </div>
     </section>
     <footer id="contact" class="contact">
-        <div class="container">
+        <div class="nav-container">
             <p>&copy; 2024 Student Academic Portal. All Rights Reserved.</p>
         </div>
     </footer>

@@ -59,7 +59,7 @@ updateCarousel();
 //redirect to register page
 const register = document.getElementById('register');
 register.addEventListener('click', () => {
-  window.location.href = "authentication/sign-up.htm";
+  window.location.href = "authentication/sign-up.php";
 });
 //redirect to login page for admin
 const login_admin = document.getElementById('login-admin');

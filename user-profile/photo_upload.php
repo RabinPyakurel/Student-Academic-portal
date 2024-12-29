@@ -44,7 +44,6 @@ if (isset($_FILES['photo'])) {
                 ':url' => $publicPath,
                 ':user_id' => $user_id
             ]);
-
             echo json_encode([
                 'success' => true,
                 'message' => 'Image uploaded successfully',

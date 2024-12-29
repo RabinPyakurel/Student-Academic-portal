@@ -49,8 +49,77 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reset Password</title>
+    <title>Reset Password Request</title>
+    <link rel="stylesheet" href="../assets/css/form.css">
     <style>
+        body {
+            background-color: var(--background-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .form-container {
+            position: relative;
+            width: clamp(320px, 90%, 430px);
+            padding: 2rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .close-button {
+            position: absolute;
+            top: -3px;
+            right: -200px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #aaa;
+            transition: color 0.3s;
+        }
+
+        .close-button:hover {
+            color: #000;
+        }
+
+        form {
+            margin: 0;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 5px;
+            background-color: var(--btn-color);
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        button:disabled {
+            background-color: #ccc;
+        }
+
         #loader {
             display: none;
             position: fixed;
@@ -59,14 +128,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             transform: translate(-50%, -50%);
             z-index: 1000;
         }
-        #form-container {
-            position: relative;
-            z-index: 1;
-        }
     </style>
 </head>
 <body>
-    <div id="form-container">
+    <div class="form-container" id="form-container">
+        <button class="close-button" onclick="redirectToSignup()">×</button>
+        <h1>Request Password Reset</h1>
         <form method="POST" id="reset-form">
             <label for="email">Enter your email:</label>
             <input type="email" name="email" required>
@@ -84,6 +151,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             loader.style.display = 'block';
             formContainer.style.opacity = '0.5'; // Optional: Dim the form during the loading
         });
+
+        const redirectToSignup = () => {
+            window.location.href = 'sign-up.php';
+        };
     </script>
 </body>
 </html>

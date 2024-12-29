@@ -31,7 +31,7 @@ $tables = [ "CREATE TABLE IF NOT EXISTS department (
                 std_id int NOT NULL,
                 email varchar(255) NOT NULL,
                 name varchar(100) NOT NULL,
-                semester int NOT NULL,
+                semester varchar(20) NOT NULL,
                 program_id int NOT NULL,
                 enrollment_year int NOT NULL,
                 dob date DEFAULT NULL,
@@ -68,7 +68,7 @@ $tables = [ "CREATE TABLE IF NOT EXISTS department (
                 "CREATE TABLE IF NOT EXISTS attendance (
                 attendance_id int NOT NULL AUTO_INCREMENT,
                 std_id int DEFAULT NULL,
-                semester int DEFAULT NULL,
+                semester varchar(20) DEFAULT NULL,
                 date date NOT NULL,
                 status enum('Present','Absent','Late') NOT NULL,
                 remarks text,
@@ -78,14 +78,15 @@ $tables = [ "CREATE TABLE IF NOT EXISTS department (
                 CONSTRAINT attendance_ibfk_1 FOREIGN KEY (std_id) REFERENCES student (std_id)
             );",
                 "CREATE TABLE IF NOT EXISTS billing (
-                  billing_id int NOT NULL,
-                  std_id int DEFAULT NULL,
-                  amount decimal(10,2) NOT NULL,
-                  billing_date date DEFAULT NULL,
-                  status enum('Paid','Unpaid') DEFAULT 'Unpaid',
-                  PRIMARY KEY (billing_id),
-                  KEY bi_sid_fk (std_id),
-                  CONSTRAINT bi_sid_fk FOREIGN KEY (std_id) REFERENCES student (std_id)
+                    billing_id INT AUTO_INCREMENT PRIMARY KEY,
+                    std_id INT NOT NULL,
+                    semester VARCHAR(50) NOT NULL,
+                    total_fee DECIMAL(10, 2) NOT NULL,
+                    amount_paid DECIMAL(10, 2) DEFAULT 0.00,
+                    payment_status ENUM('Paid', 'Partially Paid', 'Unpaid') DEFAULT 'Unpaid',
+                    payment_method VARCHAR(50) DEFAULT NULL,
+                    payment_date DATE DEFAULT NULL,
+                    FOREIGN KEY (std_id) REFERENCES students(std_id)
             );",
                 "CREATE TABLE IF NOT EXISTS borrowedbooks (
                   borrow_id int NOT NULL,
@@ -103,7 +104,7 @@ $tables = [ "CREATE TABLE IF NOT EXISTS department (
                   course_id int NOT NULL,
                   course_name varchar(100) NOT NULL,
                   program_id int DEFAULT NULL,
-                  semester int DEFAULT NULL,
+                  semester varchar(20) DEFAULT NULL,
                   PRIMARY KEY (course_id),
                   KEY co_oid_fk (program_id),
                   CONSTRAINT co_oid_fk FOREIGN KEY (program_id) REFERENCES program (program_id)

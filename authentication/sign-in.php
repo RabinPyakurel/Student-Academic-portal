@@ -44,7 +44,7 @@
             <input type="submit" class="btn ml-auto" value="Login">
         </div>
         <div class="link text-center">
-            Don't have an account? <a href="./sign-up.htm"> Register here</a>
+            Don't have an account? <a href="./sign-up.php"> Register here</a>
         </div>
     </form>
     <script src="../assets/js/loginValidation.js"></script>
