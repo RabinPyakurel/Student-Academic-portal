@@ -38,22 +38,22 @@ if (!isset($_SESSION['user_id'])) {
                     <div class="carousel-item">
                         <img src="./assets/images/EVENT.jpeg" alt="Event 1">
                         <h3>HACKATHON</h3>
-                        <p><i>Click to view more details about the event.</i></p>
+                        <p><a href="./events/events.php">Click to view more details about the event.</a></p>
                     </div>
                     <div class="carousel-item">
                         <img src="./assets/images/EVENT2.jpeg" alt="Event 2">
                         <h3>KATHFORD SPARKS</h3>
-                        <p><i>Click to view more details about the event.</i></p>
+                        <p><a href="./events/events.php">Click to view more details about the event.</a></p>
                     </div>
                     <div class="carousel-item">
                         <img src="./assets/images/EVENTS3.jpeg" alt="Event 3">
                         <h3>FAREWELL PROGRAM</h3>
-                        <p><i>Click to view more details about the event.</i></p>
+                        <p><a href="./events/events.php">Click to view more details about the event.</a></p>
                     </div>
                     <div class="carousel-item">
                         <img src="./assets/images/events4.jpeg" alt="Event 3">
                         <h3>QUIZ COMPETITION</h3>
-                        <p><i>Click to view more details about the event.</i></p>
+                        <p><a href="./events/events.php">Click to view more details about the event.</a></p>
                     </div>
                 </div>
                 <button class="carousel-btn prev" id="prev-btn">&lt;</button>

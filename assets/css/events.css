@@ -1,0 +1,63 @@
+
+h2 {
+  text-align: center;
+  color: #333;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+.event-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Two items per row */
+  gap: 20px; /* Space between items */
+  padding: 0;
+  margin: 0 auto;
+  max-width: 1000px; /* Adjust the maximum width of the grid */
+}
+.event-item {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: linear-gradient(to right, #ffffff, #f7f7f7);
+  padding: 20px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.event-item:hover {
+  transform: scale(1.02);
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
+}
+.event-details {
+  flex: 1;
+}
+.event-item h3 {
+  margin: 0 0 10px;
+  color: #095C78;
+  font-size: 1.5rem;
+}
+.event-item p {
+  margin: 5px 10px;
+  line-height: 1.6;
+  color: #555;
+}
+.event-item strong {
+  color: #25314A;
+}
+.event-description {
+  font-style: italic;
+  margin-top: 10px;
+}
+
+.event-image {
+  max-width: 150px;
+  height: auto;
+  border-radius: 10px;
+  margin-left: 20px; /* Space between image and event details */
+}
+
+/* Media Query for small screens */
+@media (max-width: 768px) {
+  .event-list {
+      grid-template-columns: 1fr; /* Stack items on top of each other */
+  }
+}

@@ -1,0 +1,112 @@
+/* styles.css */
+
+/* Body and page layout */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+/* Container for the entire page content */
+.edit-container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Header (first div) */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+/* Styling for the Student ID display */
+.std_id {
+  font-size: 18px;
+  color: #555;
+  background-color: #e0e0e0;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+/* Form container (second div) */
+.form-container {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Label and form input fields */
+label {
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Submit button styling */
+input[type="submit"] {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+/* Close button (X) */
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 24px;
+  color: #333;
+  text-decoration: none;
+}
+
+.close-btn:hover {
+  color: red;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 600px) {
+  .edit-container {
+    padding: 15px;
+    margin: 20px;
+  }
+
+  .header h1 {
+    font-size: 24px;
+  }
+
+  input[type="text"],
+  input[type="email"] {
+    font-size: 14px;
+  }
+
+  input[type="submit"] {
+    font-size: 16px;
+  }
+
+  .std_id {
+    font-size: 16px;
+  }
+}
