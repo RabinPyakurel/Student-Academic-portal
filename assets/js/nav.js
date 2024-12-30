@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     window.addEventListener('resize', () => {
-        const isWideScreen = window.innerWidth > 813;
+        const isWideScreen = window.innerWidth > 963;
         if (isWideScreen) {
             navLinks.classList.remove('active');
             removeDynamicItems();

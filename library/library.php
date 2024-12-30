@@ -84,9 +84,9 @@
   <!-- Footer -->
   <?php
   
-  include "../layout/footer1.php";
+  include "../layout/footer.htm";
   ?>
-  <script src="../assets/js/navdropdow.js"></script>
+ 
   <script>
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');

@@ -323,7 +323,7 @@ footer {
   }
 }
 
-@media (max-width: 813px) {
+@media(max-width:963px) {
   .nav-links {
     display: none;
     flex-direction: column;
@@ -344,41 +344,26 @@ footer {
     display: flex;
   }
 
-  .footer-section {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .footer-column {
-    margin-bottom: 15px;
-  }
-
-  .social-icons {
-    justify-content: center;
-  }
-
-  .faq-modal {
-    width: 80%;
-    bottom: 100px;
-    right: 10px;
-  }
-
   #profile-dropdown {
     display: none;
   }
 }
 
+
 @media (max-width: 600px) {
-  .faq-modal {
-    width: 90%;
-    bottom: 90px;
-    right: 5px;
+  .footer-section {
+    flex-direction: column;
+    text-align: center;
+    gap: 0;
+  }
+
+  .social-icons {
+    justify-content: center;
   }
 }
 
 @media (max-width: 480px) {
   .faq-modal {
-    width: 95%;
-    bottom: 80px;
+    width: 80%;
   }
 }
