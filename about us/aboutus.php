@@ -12,8 +12,7 @@ if(!isset($_SESSION['user_id'])){
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About Us</title>
-  <link rel="stylesheet" href="aboutus.css">
-  <link rel="stylesheet" href="../assets/css/footer.css">
+  <link rel="stylesheet" href="/assets/css/aboutus.css">
   <link href='https://fonts.googleapis.com/css?family=Alegreya SC' rel='stylesheet'>
 
 </head>

@@ -75,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Settings</title>
-    <link rel="stylesheet" href="./settings.css">  <!-- Your custom CSS -->
+    <link rel="stylesheet" href="/assets/css/settings.css">  <!-- Your custom CSS -->
 </head>
 <body>
     <h1>Admin Settings</h1>

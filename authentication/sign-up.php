@@ -121,7 +121,7 @@
     <div id="termsModal" class="modal">
         <div class="modal-content">
             <span class="close-btn close-model-btn">&times;</span>
-            <iframe src="terms.htm"></iframe>
+            <iframe src="/layout/terms.htm"></iframe>
         </div>
     </div>
     <script src="../assets/js/terms.js"></script>
