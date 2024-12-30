@@ -74,7 +74,7 @@ if(!isset($_SESSION['user_id'])){
                     <thead>
                     <tr>
                         <th>Date</th>
-                        <th>Attendance (in %)</th>
+                        <th>Attendance</th>
                         <th>In Detail</th>
                     </tr>
                     </thead>

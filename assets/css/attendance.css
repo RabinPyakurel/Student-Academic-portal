@@ -229,8 +229,7 @@ main {
 }
 
 .attendance-table {
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -246,6 +245,8 @@ main {
     border-collapse: collapse;
     text-align: center;
     margin-bottom: 3px;
+    table-layout: fixed;
+    /* Ensures columns adjust proportionally */
 }
 
 .attendance-table th,
@@ -354,8 +355,13 @@ main {
     }
 
     .attendance-table {
-        width: 100%;
-        max-width: 600px;
+        max-width: 700px;
+    }
+
+    .attendance-table th,
+    .attendance-table td {
+        font-size: 0.9rem;
+        padding: 0.4rem;
     }
 
     .modal-content {
@@ -385,12 +391,30 @@ main {
         line-height: 25px;
     }
 
+    .attendance-table {
+        max-width: 100%;
+        border: none;
+        overflow-x: auto;
+    }
+
+    .attendance-table table {
+        font-size: 0.8rem;
+    }
+
     .attendance-table th,
-    .attendance-table td,
-    .modal th,
-    .modal td {
-        font-size: 0.9rem;
-        padding: 0.5rem;
+    .attendance-table td {
+        font-size: 0.8rem;
+        padding: 0.3rem;
+    }
+
+    .attendance-table th {
+        white-space: nowrap;
+    }
+
+    .attendance-table td {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 }
 
@@ -411,11 +435,43 @@ main {
     }
 
     .attendance-table {
-        width: 100%;
+        border: none;
+        border-radius: 0;
     }
 
     .attendance-table table {
+        font-size: 0.75rem;
+    }
+
+    .attendance-table th,
+    .attendance-table td {
+        padding: 0.2rem;
+    }
+
+    .attendance-table th {
+        white-space: nowrap;
         font-size: 0.8rem;
+    }
+
+    .attendance-table td {
+        font-size: 0.75rem;
+        text-align: left;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .attendance-table::-webkit-scrollbar {
+        height: 6px;
+    }
+
+    .attendance-table::-webkit-scrollbar-thumb {
+        background-color: #ccc;
+        border-radius: 3px;
+    }
+
+    .attendance-table::-webkit-scrollbar-track {
+        background-color: #f5f5f5;
     }
 
     .modal-content {
