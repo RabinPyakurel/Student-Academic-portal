@@ -35,10 +35,10 @@ try {
     // If data is found, store it in session and send back the response
     if ($response) {
         if (!isset($_SESSION['username'])) {
-            $_SESSION['username'] = $response['name'];
+            $_SESSION['username'] = $response[0]['name'];
         }
         if (!isset($_SESSION['semester'])) {
-            $_SESSION['semester'] = $response['semester'];
+            $_SESSION['semester'] = $response[0]['semester'];
         }
 
         echo json_encode([
