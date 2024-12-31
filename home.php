@@ -75,14 +75,14 @@ if (!isset($_SESSION['user_id'])) {
     </section>
 
     <!-- Features Section -->
-    <section id="features" class="features">
+    <section id="features" class="features"><br><br>
         <div class="container">
             <h2>Our Features</h2>
             <div class="card-container">
                 <div class="card">
                     <img src="/assets/images/marks.jpeg" alt="Marks Tracking">
-                    <h3>Marks Tracking</h3>
-                    <p>Easily monitor your academic progress.</p>
+                    <h3>Fee</h3>
+                    <p>Easily monitor your bills.</p>
                 </div>
                 <div class="card">
                     <img src="/assets/images/attendance.jpg" alt="Attendance Tracking">
