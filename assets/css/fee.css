@@ -71,37 +71,24 @@ input:checked+.slider:before {
 }
 
 /* Student Info */
-/* Student Info */
 .student-info {
     display: flex;
     justify-content: center;
-    /* Center content horizontally */
     align-items: center;
-    /* Align content vertically */
     flex-wrap: wrap;
-    /* Allow the button to move below details on smaller screens */
     margin-bottom: 20px;
 }
 
-.profile-pic .image-placeholder {
+.profile-pic img {
     width: 100px;
     height: 100px;
-    background: #ddd;
-    border: 1px solid #ccc;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
     border-radius: 50%;
-    margin-right: 20px;
-    /* Spacing between image and details */
+    background: #ddd;
 }
 
 .details {
     text-align: left;
-    /* Keep text aligned to the left within the details */
     max-width: 300px;
-    /* Prevent details from taking up too much space */
 }
 
 .details p {
@@ -116,13 +103,10 @@ input:checked+.slider:before {
     border-radius: 5px;
     cursor: pointer;
     margin-top: 20px;
-    /* Add spacing between details and button */
     align-self: flex-start;
     margin-left: 80%;
-    /* Align button with the details */
 }
 
-/* Payment History */
 .payment-history h2 {
     margin-bottom: 10px;
 }
@@ -158,16 +142,59 @@ input:checked+.slider:before {
     background-color: #ff6f61;
 }
 
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Semi-transparent background */
+    padding-top: 60px;
+    /* Top space for modal */
+}
+
+.modal-content {
+    background-color: white;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 8px;
+}
+
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal.hidden {
+    display: none;
+}
+
 /* Responsive Design */
 @media (max-width: 1024px) {
     .container {
         width: 80%;
-        /* Adjust container width for medium screens */
     }
 
     .payment-due {
         margin-left: 0;
-        /* Align the "Payment Due" button properly */
         align-self: center;
     }
 }
@@ -181,64 +208,40 @@ input:checked+.slider:before {
 
     .student-info {
         flex-direction: column;
-        /* Stack profile pic and details vertically */
         text-align: center;
-    }
-
-    .profile-pic .image-placeholder {
-        margin: 0 auto 10px;
-        /* Center image placeholder and add spacing */
-    }
-
-    .details {
-        text-align: center;
-        /* Center text in smaller screens */
-        margin-bottom: 20px;
     }
 
     .payment-due {
         margin-left: 0;
-        /* Remove alignment offset for small screens */
         align-self: center;
-        /* Center the button */
     }
 
     .payment-history table {
         display: block;
-        /* Make table scrollable */
         overflow-x: auto;
-        /* Enable horizontal scrolling */
         white-space: nowrap;
-        /* Prevent content from wrapping */
     }
 
     .payment-history table th,
     .payment-history table td {
         text-align: left;
-        /* Align text for better readability */
         font-size: 12px;
-        /* Reduce font size */
         padding: 8px;
-        /* Adjust padding */
     }
 
     .payment-history h2 {
         text-align: center;
-        /* Center heading for smaller screens */
     }
 }
 
 @media (max-width: 480px) {
     .container {
         width: 90%;
-        /* Reduce width further for smaller screens */
         padding: 15px;
-        /* Adjust padding */
     }
 
     .switch {
         width: 41px;
-        /* Reduce toggle size for smaller screens */
         height: 18px;
     }
 
@@ -246,27 +249,22 @@ input:checked+.slider:before {
         width: 12px;
         height: 12px;
         transform: translateX(12px);
-        /* Adjust slider size */
     }
 
     .status span {
         font-size: 12px;
-        /* Reduce status text size */
     }
 
     .pay-now button {
         width: 100%;
-        /* Make "Pay Now" button full width */
     }
 
     .payment-history table {
         font-size: 10px;
-        /* Reduce font size further for small screens */
     }
 
     .payment-history table th,
     .payment-history table td {
         padding: 6px;
-        /* Reduce padding for compactness */
     }
 }

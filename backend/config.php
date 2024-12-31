@@ -78,16 +78,16 @@ $tables = [ "CREATE TABLE IF NOT EXISTS department (
                 CONSTRAINT attendance_ibfk_1 FOREIGN KEY (std_id) REFERENCES student (std_id)
             );",
                 "CREATE TABLE IF NOT EXISTS billing (
-                    billing_id INT AUTO_INCREMENT PRIMARY KEY,
-                    std_id INT NOT NULL,
-                    semester VARCHAR(50) NOT NULL,
-                    total_fee DECIMAL(10, 2) NOT NULL,
-                    amount_paid DECIMAL(10, 2) DEFAULT 0.00,
-                    payment_status ENUM('Paid', 'Partially Paid', 'Unpaid') DEFAULT 'Unpaid',
-                    payment_method VARCHAR(50) DEFAULT NULL,
-                    payment_date DATE DEFAULT NULL,
-                    FOREIGN KEY (std_id) REFERENCES students(std_id)
-            );",
+                  billing_id INT AUTO_INCREMENT PRIMARY KEY,
+                  std_id INT NOT NULL,
+                  semester VARCHAR(50) NOT NULL,
+                  total_fee DECIMAL(10, 2),
+                  amount_paid DECIMAL(10, 2) DEFAULT 0.00,
+                  payment_status VARCHAR(20) DEFAULT 'Unpaid',
+                  payment_method VARCHAR(50) DEFAULT NULL,
+                  payment_date DATE DEFAULT NULL,
+                  FOREIGN KEY (std_id) REFERENCES student(std_id)
+                );",
                 "CREATE TABLE IF NOT EXISTS borrowedbooks (
                   borrow_id int NOT NULL,
                   std_id int DEFAULT NULL,
@@ -205,8 +205,35 @@ $tables = [ "CREATE TABLE IF NOT EXISTS department (
                   is_2fa_enabled enum('off','on') DEFAULT 'off',
                   PRIMARY KEY (user_id),
                   CONSTRAINT us_uid_fk FOREIGN KEY (user_id) REFERENCES student (std_id)
-                );"
-            ];
+                );",
+                "CREATE TRIGGER billing_insert_trigger
+                  BEFORE INSERT ON billing
+                  FOR EACH ROW
+                  BEGIN
+                      IF NEW.total_fee IS NULL THEN
+                          SET NEW.payment_status = 'No Fee';
+                      ELSEIF NEW.amount_paid IS NULL OR NEW.amount_paid = 0 THEN
+                          SET NEW.payment_status = 'Unpaid';
+                      ELSEIF NEW.amount_paid < NEW.total_fee THEN
+                          SET NEW.payment_status = 'Partially Paid';
+                      ELSEIF NEW.amount_paid >= NEW.total_fee THEN
+                          SET NEW.payment_status = 'Paid';
+                      END IF;
+                  END;",
+              "CREATE TRIGGER billing_update_trigger
+                BEFORE UPDATE ON billing
+                FOR EACH ROW
+                BEGIN
+                    IF NEW.total_fee IS NULL THEN
+                        SET NEW.payment_status = 'No Fee';
+                    ELSEIF NEW.amount_paid IS NULL OR NEW.amount_paid = 0 THEN
+                        SET NEW.payment_status = 'Unpaid';
+                    ELSEIF NEW.amount_paid < NEW.total_fee THEN
+                        SET NEW.payment_status = 'Partially Paid';
+                    ELSEIF NEW.amount_paid >= NEW.total_fee THEN
+                        SET NEW.payment_status = 'Paid';
+                    END IF;
+                END;"];
 
             foreach ($tables as $sql) {
                 try {

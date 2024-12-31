@@ -40,7 +40,9 @@ try {
         if (!isset($_SESSION['semester'])) {
             $_SESSION['semester'] = $response[0]['semester'];
         }
-
+        if (!isset($_SESSION['email'])) {
+            $_SESSION['email'] = $response[0]['email'];
+        }
         echo json_encode([
             'success' => true,
             'data' => $response
