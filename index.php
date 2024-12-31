@@ -27,7 +27,7 @@ if (isset($_SESSION['user_id'])) {
                 <span></span>
             </button>
             <ul class="nav-links" id="nav-links">
-                <li><a href="#home">Home</a></li>
+                <li><a href="#">Home</a></li>
                 <li><a href="./about us/aboutus.htm">About</a></li>
                 <li><a href="#features">Features</a></li>
                 <li><a href="#program">Programs</a></li>
