@@ -1,194 +1,166 @@
-/* General Styles */
-body {
-  font-family: Arial, sans-serif;
+/* General Reset */
+body,
+h1,
+h2,
+p,
+div,
+button {
   margin: 0;
   padding: 0;
-  line-height: 1.6;
-  background-color: #f9f9f9;
+  box-sizing: border-box;
+  font-family: "Arial", sans-serif;
+}
+
+body {
+  background-color: #f8f9fa;
   color: #333;
+  line-height: 1.6;
 }
 
-/* Header */
-header {
-  background-color: #313131;
+/* Hero Section */
+.hero {
+  position: relative;
+  height: 60vh; /* Adjust height as needed */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url("../assets/images/con2.jpg"); /* Update the path to your image */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   color: white;
+  background-color: #555;
   text-align: center;
-  padding: 20px 0;
 }
 
-header h1 {
-  margin: 0;
-  font-size: 2.5rem;
+.hero-content {
+  padding: 20px;
+  border-radius: 8px;
 }
 
-header p {
-  margin: 0;
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.hero p {
   font-size: 1.2rem;
+  margin-bottom: 20px;
 }
 
-/* Contact Us Button Section */
-#contact-us {
-  text-align: center;
-  margin: 30px 0;
-}
-
-#contact-button {
+.hero button {
+  background-color: #01b6a0;
+  color: white;
+  border: none;
   padding: 10px 20px;
   font-size: 1rem;
-  color:whitesmoke;
-  background-color:#42a5bb;
-  border: none;
-  border-radius: 5px;
   cursor: pointer;
+  border-radius: 4px;
   transition: background-color 0.3s ease;
 }
 
-#contact-button:hover {
-  background-color:whitesmoke;
-  color: #34a4d0;
-  border: 2px solid #d3cccc;
-}
-
-/* Blogs Section */
-#blogs {
-  padding: 20px;
-  background-color: #f0f0f0;
-}
-
-#blogs h2 {
-  text-align: center;
-  margin-bottom: 20px;
-  font-size: 1.8rem;
-}
-
-.blog-container {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-}
-
-.blog {
-  width: 45%;
+.hero button:hover {
   background-color: white;
-  border-radius: 5px;
-  padding: 10px;
-  text-align: center;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
+  color: #01b6a0;
 }
 
-.blog-image {
-  height: 150px;
-  background-color: #ccc;
-  line-height: 150px;
-  margin-bottom: 10px;
-  font-size: 1rem;
-  font-weight: bold;
-  
 
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-/* Footer */
-footer {
-  background-color: #333;
-  color: white;
-  text-align: center;
-  padding: 20px 0;
-}
 
-footer .footer-section {
-  margin-bottom: 10px;
-}
-
-footer h3 {
-  margin-bottom: 5px;
-  font-size: 1.2rem;
-}
-
-footer p {
-  margin: 0;
-  font-size: 0.9rem;
-}
-
-footer p:last-child {
-  margin-top: 10px;
-}
-
-/* Modal Styles */
-.modal {
+#contact-modal {
   display: none; /* Hidden by default */
   position: fixed;
-  z-index: 1000;
-  left: 0;
   top: 0;
+  left: 100;
   width: 100%;
   height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Centers content horizontally and vertically */
 }
 
 .modal-content {
   background-color: white;
-  margin: 10% auto;
   padding: 20px;
-  border-radius: 10px;
-  width: 50%;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  left: 60vw;
+  top: 20vh;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  position: relative; /* Needed for the close button to position correctly */
+  text-align: left;
 }
 
 .modal-content h2 {
-  text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 1vh;
+  padding-left: 0.1rem;
   font-size: 1.5rem;
 }
 
-.modal-content form {
-  display: flex;
-  flex-direction: column;
-}
-
 .modal-content label {
-  margin-top: 10px;
-  font-size: 1rem;
-  font-weight: bold;
+  display: block;
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+  color: #555;
 }
 
 .modal-content input,
 .modal-content textarea {
-  margin-top: 5px;
-  padding: 10px;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
   width: 100%;
-  box-sizing: border-box;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
 }
 
 .modal-content button {
-  margin-top: 20px;
-  padding: 10px;
-  font-size: 1rem;
-  background-color: #42a5bb;
+  background-color: #01b6a0;
   color: white;
   border: none;
-  border-radius: 5px;
+  padding: 10px;
+  width: 100%;
+  border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 .modal-content button:hover {
-  background-color: #34a4d0;
+  background-color: #0056b3;
 }
-
 .close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
+  position: absolute;
+  top: 12px;
+  left: 31vw;
+  font-size: 1.5rem;
+  color: #333;
   cursor: pointer;
+  font-weight: bold;
+}
+.close:hover{
+  color: red;
 }
 
-.close:hover {
-  color: #000;
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .blog-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .blog {
+    width: 100%;
+  }
+
+  .modal-content {
+    padding: 15px;
+  }
 }

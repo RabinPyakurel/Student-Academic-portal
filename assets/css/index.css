@@ -1,283 +1,357 @@
 :root {
-    --footer-color: #25314a;
-    --btn-color: #095c78;
-    --primary-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    --secondary-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    --transition-duration: 0.3s;
-    --background-light: #f9f9f9;
-    --text-primary: #333;
-    --text-secondary: #666;
+  --footer-color: #25314a;
+  --btn-color: #095c78;
+  --primary-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --secondary-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  --transition-duration: 0.3s;
+  --background-light: #f9f9f9;
+  --text-primary: #333;
+  --text-secondary: #666;
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
 }
 
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 .hero {
-    position: relative;
-    color: white;
-    text-align: center;
-    min-height: 86.9vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem;
-    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)),
-        url(../images/hero.jpg);
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
-    transition: background-attachment var(--transition-duration) ease;
+  position: relative;
+  color: white;
+  text-align: center;
+  min-height: 86.9vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background-image: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.7),
+      rgba(0, 0, 0, 0.3)
+    ),
+    url(../images/hero.jpg);
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  transition: background-attachment var(--transition-duration) ease;
 }
 
 .hero-content {
-    max-width: 600px;
-    animation: fadeIn var(--transition-duration) ease-in-out;
+  max-width: 600px;
+  animation: fadeIn var(--transition-duration) ease-in-out;
 }
 
 .hero h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
 }
 
 .hero p {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
 }
 
 .hero .btn {
-    padding: 0.8rem 2rem;
-    background-color: #fff;
-    color: var(--btn-color);
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color var(--transition-duration);
+  padding: 0.8rem 2rem;
+  background-color: #fff;
+  color: var(--btn-color);
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color var(--transition-duration);
 }
 
 .hero .btn:hover {
-    background-color: var(--btn-color);
-    color: white;
+  background-color: var(--btn-color);
+  color: white;
 }
 
 .about {
-    padding: 4rem 1rem;
-    background-color: var(--background-light);
-    text-align: center;
+  padding: 4rem 1rem;
+  background-color: var(--background-light);
+  text-align: center;
 }
 
 .btn-about {
-    display: inline-block;
-    padding: 12px 24px;
-    background-color: #007BFF;
-    color: #fff;
-    font-size: 16px;
-    font-weight: bold;
-    text-decoration: none;
-    border: none;
-    border-radius: 8px;
-    box-shadow: var(--primary-shadow);
-    transition: all var(--transition-duration) ease;
-    text-align: center;
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  border: none;
+  border-radius: 8px;
+  box-shadow: var(--primary-shadow);
+  transition: all var(--transition-duration) ease;
+  text-align: center;
 }
 
 .btn-about:hover {
-    background-color: #0056b3;
-    transform: translateY(-2px);
-    box-shadow: var(--secondary-shadow);
+  background-color: #0056b3;
+  transform: translateY(-2px);
+  box-shadow: var(--secondary-shadow);
 }
 
 .btn-about:active {
-    background-color: #003d80;
-    transform: translateY(0);
-    box-shadow: var(--primary-shadow);
+  background-color: #003d80;
+  transform: translateY(0);
+  box-shadow: var(--primary-shadow);
 }
 
 .features {
-    padding: 4rem 1rem;
-    background-color: #fff;
-    text-align: center;
+  padding: 4rem 1rem;
+  background-color: #fff;
+  text-align: center;
 }
 
 .card-container {
-    display: flex;
-    gap: 2rem;
-    flex-wrap: wrap;
-    justify-content: center;
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .container h2 {
-    font-size: 2rem;
-    margin-bottom: 2rem;
+  font-size: 2rem;
+  margin-bottom: 1rem;
 }
 
 .card {
-    background: #f4f4f4;
-    border-radius: 10px;
-    padding: 1.5rem;
-    text-align: center;
-    width: 300px;
-    height: 300px;
-    box-shadow: var(--primary-shadow);
-    transition: transform var(--transition-duration), box-shadow var(--transition-duration);
+  background: #f4f4f4;
+  border-radius: 10px;
+  padding: 1.5rem;
+  text-align: center;
+  width: 300px;
+  height: 300px;
+  box-shadow: var(--primary-shadow);
+  transition: transform var(--transition-duration),
+    box-shadow var(--transition-duration);
 }
 
 .card:hover {
-    transform: translateY(-10px);
-    box-shadow: var(--secondary-shadow);
+  transform: translateY(-10px);
+  box-shadow: var(--secondary-shadow);
 }
 
 .card img {
-    width: 100%;
-    margin-bottom: 0.7rem;
-    height: 60%;
+  width: 100%;
+  margin-bottom: 0.7rem;
+  height: 60%;
 }
 
 .card h3 {
-    font-size: 1.5rem;
-    margin: 0.5rem 0;
-    color: var(--text-primary);
-    transition: color var(--transition-duration);
+  font-size: 1.5rem;
+  margin: 0.5rem 0;
+  color: var(--text-primary);
+  transition: color var(--transition-duration);
 }
 
 .card h3:hover {
-    color: var(--btn-color);
+  color: var(--btn-color);
 }
 
 .program-carousel {
-    padding: 4rem 1rem;
-    background-color: var(--background-light);
-    text-align: center;
+  padding: 4rem 1rem;
+  background-color: var(--background-light);
+  text-align: center;
 }
 
 .program-carousel h2 {
-    font-size: 2rem;
-    margin-bottom: 2rem;
-    color: var(--text-primary);
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: var(--text-primary);
 }
 
 .carousel {
-    position: relative;
-    overflow: hidden;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .carousel-track {
-    display: flex;
-    gap: 2rem;
-    transition: transform 0.5s ease;
+  display: flex;
+  gap: 2rem;
+  transition: transform 0.5s ease;
+  display: flex;
+  gap: 2rem;
+  transition: transform 0.5s ease;
 }
 
 .carousel-item {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 1.5rem;
-    box-shadow: var(--primary-shadow);
-    text-align: center;
-    flex: 0 0 calc(100% / 3 - 2rem);
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: var(--primary-shadow);
+  text-align: center;
+  flex: 0 0 calc(100% / 3 - 2rem);
 }
 
 .carousel-item img {
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 1rem;
-    border-radius: 5px;
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 1rem;
+  border-radius: 5px;
 }
 
 .carousel-item h3 {
-    font-size: 1.5rem;
-    margin: 1rem 0;
-    color: var(--text-primary);
-    transition: color var(--transition-duration);
+  font-size: 1.5rem;
+  margin: 1rem 0;
+  color: var(--text-primary);
+  transition: color var(--transition-duration);
 }
 
 .carousel-item:hover h3 {
-    color: var(--btn-color);
+  color: var(--btn-color);
 }
 
 .carousel-item p {
-    font-size: 1rem;
-    color: var(--text-secondary);
+  font-size: 1rem;
+  color: var(--text-secondary);
 }
 
 .carousel-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: var(--btn-color);
-    color: #fff;
-    border: none;
-    border-radius: 50%;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-    font-size: 1.5rem;
-    box-shadow: var(--primary-shadow);
-    transition: background-color var(--transition-duration);
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: var(--btn-color);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-size: 1.5rem;
+  box-shadow: var(--primary-shadow);
+  transition: background-color var(--transition-duration);
 }
 
 .carousel-btn:hover {
-    background-color: #084053;
-    box-shadow: var(--secondary-shadow);
+  background-color: #084053;
+  box-shadow: var(--secondary-shadow);
 }
 
 .carousel-btn.prev {
-    left: 1rem;
+  left: 1rem;
 }
 
 .carousel-btn.next {
-    right: 1rem;
+  right: 1rem;
+}
+.testimonial-section {
+  text-align: center;
+  padding: 50px 20px;
+  background: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 50px auto;
+  border-radius: 10px;
+}
+
+.testimonial-section h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.testimonial-container {
+  position: relative;
+  overflow: hidden;
+  height: 150px;
+}
+
+.testimonial {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  font-size: 16px;
+  color: #555;
+  position: absolute;
+  width: 100%;
+}
+
+.testimonial.active {
+  display: block;
+  opacity: 1;
+}
+
+.testimonial h4 {
+  margin-top: 15px;
+  color: #000;
+  font-weight: bold;
+}
+
+.controls {
+  margin-top: 20px;
+}
+
+.controls button {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 0 5px;
+  transition: background 0.3s;
+}
+
+.controls button:hover {
+  background: #0056b3;
 }
 
 @media (max-width: 768px) {
-    .hero {
-        background-attachment: scroll;
-    }
+  .hero {
+    background-attachment: scroll;
+  }
 
-    .carousel-item {
-        flex: 0 0 100%;
-    }
+  .carousel-item {
+    flex: 0 0 100%;
+  }
 
-    .card-container {
-        flex-direction: column;
-        gap: 1rem;
-    }
+  .card-container {
+    flex-direction: column;
+    gap: 1rem;
+  }
 
-    .card {
-        height: 450px;
-    }
+  .card {
+    height: 450px;
+  }
 }
 
 @media (max-width: 480px) {
-    .hero h1 {
-        font-size: 2rem;
-    }
+  .hero h1 {
+    font-size: 2rem;
+  }
 
-    .hero p {
-        font-size: 1rem;
-    }
+  .hero p {
+    font-size: 1rem;
+  }
 
-    .btn-about {
-        font-size: 14px;
-        padding: 10px 20px;
-    }
+  .btn-about {
+    font-size: 14px;
+    padding: 10px 20px;
+  }
 }
 
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

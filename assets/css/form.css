@@ -1,7 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
 :root {
     --background-color: #f5f5f5;
-    --btn-color: #7731D8;
-    --hover-color: #ba83f7;
+    --btn-color: #095c78;
+    --hover-color: #42A1C4;
     --primary-color: rgb(11, 78, 179);
 }
 

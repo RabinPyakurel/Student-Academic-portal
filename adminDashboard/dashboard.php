@@ -1,5 +1,12 @@
 <?php
  include "./db_connection.php";
+ // if (isset($_SESSION['admin_id'])) {
+//     $admin_id = $_SESSION['admin_id'];
+//     echo '<a href="../pages/settings.php?admin_id=' . $admin_id . '">Go to Settings</a>';
+// } else {
+//     echo "<script>alert('Admin not logged in!'); window.location.href = 'login.php';</script>";
+// }
+$admin_id = 1; 
 ?>
 
 
@@ -20,18 +27,15 @@
             <li><a href="#" class="active">Dashboard</a></li>
             <li><a href="./pages/addStudents.php">New Student</a></li>
             <li><a href="./student_list.php">Student List</a></li>
-            <li><a href="#">Department</a></li>
+            <li><select name="department" id="dept">Department
+                <option value="event"><a href="./pages/Events manage/managevents.php">Events</a></option>
+            </select></li>
             <li><a href="#">Course</a></li>
             <li><a href="#">Exams</a></li>
             <li><a href="#">Results</a></li>
+            <li><a href="../adminDashboard/pages/Contact Us manage/ContactResponse.htm">Contact</a></li>
             <li><?php
-// if (isset($_SESSION['admin_id'])) {
-//     $admin_id = $_SESSION['admin_id'];
-//     echo '<a href="../pages/settings.php?admin_id=' . $admin_id . '">Go to Settings</a>';
-// } else {
-//     echo "<script>alert('Admin not logged in!'); window.location.href = 'login.php';</script>";
-// }
-$admin_id = 1; 
+
 echo "<a href='../pages/settings.php?admin_id=" . $admin_id . "'>Go to Settings</a>";
 ?>
 </li>
@@ -73,6 +77,8 @@ echo "<a href='../pages/settings.php?admin_id=" . $admin_id . "'>Go to Settings<
 </div>
 
     </div>
+  
+
     <script src="script.js"></script>
 </body>
 </html>

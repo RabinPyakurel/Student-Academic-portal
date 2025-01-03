@@ -73,3 +73,8 @@ const login_user = document.getElementById('login-user');
 login_user.addEventListener('click', () => {
   window.location.href = "authentication/sign-in.php";
 });
+
+//onclick
+document.getElementById('signUpButton').addEventListener('click', () => {
+  window.location.href = './authentication/sign-up.php';
+});

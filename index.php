@@ -33,7 +33,7 @@ if (isset($_SESSION['user_id'])) {
             </button>
             <ul class="nav-links" id="nav-links">
                 <li><a href="#">Home</a></li>
-                <li><a href="./about us/aboutus.htm">About</a></li>
+                <li><a href="./about us/indexaboutus.php">About</a></li>
                 <li><a href="#features">Features</a></li>
                 <li><a href="#program">Programs</a></li>
                 <li>
@@ -77,24 +77,46 @@ if (isset($_SESSION['user_id'])) {
         <div class="container">
             <h2>Our Features</h2>
             <div class="card-container">
-                <div class="card">
-                    <img src="/assets/images/marks.jpeg" alt="Marks Tracking">
-                    <h3>Marks Tracking</h3>
-                    <p>Easily monitor your academic progress.</p>
+                <div class="card" id="signUpButton">
+                    <img src="/assets/images/fee-removebg-preview.png" alt="fee management">
+                    <h3>Fee Management</h3>
+                    <p>Check fee payment status,due dates and Pay fees online.</p>
                 </div>
-                <div class="card">
+                <div class="card" id="signUpButton">
                     <img src="/assets/images/attendance.jpg" alt="Event Notifications">
                     <h3>Attendance Tracking</h3>
                     <p>Track your Attendance on regular basis.</p>
                 </div>
-                <div class="card">
-                    <img src="/assets/images/exam-form.jpeg" alt="Online Exam Registration">
-                    <h3>Online Exam Registration</h3>
-                    <p>Register for exams from the comfort of your home.</p>
+                <div class="card" id="signUpButton">
+                    <img src="/assets/images/examresult.png" alt="Online Exam Registration">
+                    <h3>Exam Registration and Results</h3>
+                    <p>Register for exams online and access detailed results from your comfort place.</p>
                 </div>
             </div>
         </div>
     </section>
+    <!-- TESTIMONIAL KO SECTION -->
+    <section class="testimonial-section">
+    <h2>What Our Clients Say</h2>
+    <div class="testimonial-container">
+      <div class="testimonial active">
+        <p>"This service is amazing! It has completely changed the way I work."</p>
+        <h4>- John Doe</h4>
+      </div>
+      <div class="testimonial">
+        <p>"Outstanding experience! Highly recommend to anyone looking for quality."</p>
+        <h4>- Jane Smith</h4>
+      </div>
+      <div class="testimonial">
+        <p>"Exceptional support and a fantastic team. I am beyond impressed."</p>
+        <h4>- Michael Brown</h4>
+      </div>
+    </div>
+    <div class="controls">
+      <button id="prev">❮</button>
+      <button id="next">❯</button>
+    </div>
+  </section>
 
     <section id="program" class="program-carousel"><br><br>
         <div class="container">
@@ -190,6 +212,7 @@ if (isset($_SESSION['user_id'])) {
 
     <script src="./assets/js/index.js"></script>
     <script src="./assets/js/nav.js"></script>
+    <script src="./assets/js/TESTIMONIAL.js"></script>
 </body>
 
 </html>

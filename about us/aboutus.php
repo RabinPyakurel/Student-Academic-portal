@@ -14,7 +14,22 @@ if(!isset($_SESSION['user_id'])){
   <title>About Us</title>
   <link rel="stylesheet" href="/assets/css/aboutus.css">
   <link href='https://fonts.googleapis.com/css?family=Alegreya SC' rel='stylesheet'>
-
+<style>
+  .hero{
+    background-image : url("../assets/images/aboutus.png");
+  }
+  .hero-content h1{
+      font-size : 2.5rem;
+      color: #132944;
+      margin-top:-10vh;
+      
+    }
+    .hero-content p{
+      color: #132944;
+      margin-top:10vh;
+      
+    }
+</style>
 </head>
 
 <body>
@@ -23,7 +38,10 @@ if(!isset($_SESSION['user_id'])){
   <section id="home" class="hero">
     <div class="hero-content">
       <h1>About Us</h1>
-      <p>Empowering students with easy access to their academic information.</p>
+      <br><br><br>
+      <p> This website is the culmination of the collaborative efforts of Rabin and Ritika, who turned their shared
+        vision into reality.</p>
+
     </div>
   </section>
 
@@ -34,6 +52,7 @@ if(!isset($_SESSION['user_id'])){
         class="section-image">
       <div class="section-content">
         <h2>Our Mission</h2>
+        
         <p>Our mission is to enhance student engagement and streamline academic processes by providing a centralized
           platform where students can access and manage their academic information.</p>
       </div>
@@ -74,6 +93,22 @@ if(!isset($_SESSION['user_id'])){
       </div>
     </div>
   </div>
+  <section class="team-section">
+  <h2>Meet Our Dedicated Team</h2>
+  <div class="team">
+
+    <div class="team-member1">
+      <img src="../assets/images/rabin.jpg" alt="Rabin" class="team-photo">
+      <h3>Rabin Pyakurel</h3>
+      <p>Rabin is the mastermind behind creating the backend structure and ensuring the smooth operation of the portal. <br> <br>With a strong background in programming and problem-solving, he worked on integrating key features like exam results, attendance tracking, and fee management into the platform.</p>
+    </div>
+    <div class="team-member2">
+      <img src="../assets/images/ritika.jpg" alt="Ritika" class="team-photo">
+      <h3>Ritika Suwal</h3>
+      <p>Ritika played a key role in the platform’s design and development. <br><br>Her expertise in web development and user experience ensures that the platform is both functional and visually appealing.</p>
+    </div>
+  </div>
+</section>
 <?php include '../layout/footer.htm' ?>
 </body>
 

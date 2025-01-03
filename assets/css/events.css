@@ -1,17 +1,45 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
+body {
+  background-color: #f7f7f7;
+  font-family: "Poppins";
+}
 h2 {
   text-align: center;
   color: #333;
   font-size: 2rem;
   margin-bottom: 20px;
 }
+.header {
+  background-image: url("../images/aboutus.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 70vh;
+  background-size: cover;
+  transition: background-attachment 0.3s ease;
+  margin-bottom: 2rem;
+}
+.header h2{
+  padding-top: 15vh;
+}
+.header p {
+  text-align: center;
+  padding: 1.5rem;
+  padding-top: 8vh;
+  font-weight: 500;
+}
+.header span {
+  font-size: 1.2rem;
+}
 .event-list {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Two items per row */
-  gap: 20px; /* Space between items */
+ 
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
   padding: 0;
   margin: 0 auto;
-  max-width: 1000px; /* Adjust the maximum width of the grid */
+  max-width: 1000px;
 }
 .event-item {
   display: flex;
@@ -22,6 +50,7 @@ h2 {
   padding: 20px;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s, box-shadow 0.3s;
+  width: 100%;
 }
 .event-item:hover {
   transform: scale(1.02);
@@ -32,7 +61,7 @@ h2 {
 }
 .event-item h3 {
   margin: 0 0 10px;
-  color: #095C78;
+  color: #095c78;
   font-size: 1.5rem;
 }
 .event-item p {
@@ -41,7 +70,7 @@ h2 {
   color: #555;
 }
 .event-item strong {
-  color: #25314A;
+  color: #25314a;
 }
 .event-description {
   font-style: italic;
@@ -49,15 +78,57 @@ h2 {
 }
 
 .event-image {
-  max-width: 150px;
+  max-width: 250px;
   height: auto;
   border-radius: 10px;
   margin-left: 20px; /* Space between image and event details */
 }
 
-/* Media Query for small screens */
-@media (max-width: 768px) {
+@media (max-width: 500px) {
   .event-list {
-      grid-template-columns: 1fr; /* Stack items on top of each other */
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+  .event-item {
+    flex-direction: column; /* Stack the items vertically */
+    align-items: center;
+  }
+
+  .event-image {
+    order: 1; /* Image comes first */
+    width: 100%;
+    height: 100%; /* Image takes full width on small screens */
+    margin-bottom: 15px; /* Space between image and text */
+  }
+
+  .event-details {
+    order: 2; /* Details come after image */
+  }
+  .header h2 {
+    padding-top: 2vh;
+  }
+  .header p{
+    padding-top: 0;
+    margin-top: -10vh;
+  }
+  .header {
+    background-image: url("../images/eventchoto.png");
+
+    min-height: 50vh;
+    background-size: cover;
+  }
+}
+
+@media (min-width: 500px) and (max-width: 700px) {
+  .event-image {
+    height: 80%;
+  }
+  .event-item h3 {
+    margin: 0px 10px 10px;
+  }
+  .event-item p {
+    margin: 5px 10px;
+    line-height: 1.6;
+    color: #555;
   }
 }
