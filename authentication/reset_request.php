@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $body = "Click the link below to reset your password:\n\n$resetLink";
 
     if (sendMail($email, $subject, $body)) {
-        echo "Password reset email sent.";
+        echo "<script>alert('Password reset email sent.')</script>";
     } else {
         echo "Failed to send email.";
     }

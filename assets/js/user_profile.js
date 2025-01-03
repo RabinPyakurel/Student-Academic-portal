@@ -150,10 +150,6 @@ $(document).ready(function () {
                     alert('Error fetching profile: ' + response.message);
                 }
             },
-            error: function (err) {
-                console.error('Fetch Error:', err);
-                alert('Failed to fetch profile data.');
-            }
         });
     }
 

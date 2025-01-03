@@ -232,6 +232,7 @@ $tables = [ "CREATE TABLE IF NOT EXISTS department (
                         SET NEW.payment_status = 'Partially Paid';
                     ELSEIF NEW.amount_paid >= NEW.total_fee THEN
                         SET NEW.payment_status = 'Paid';
+                        SET NEW.payment_date = CURRENT_TIMESTAMP;
                     END IF;
                 END;"];
 

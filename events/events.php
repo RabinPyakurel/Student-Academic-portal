@@ -9,12 +9,11 @@
 </head>
 <body>
     <?php include "../layout/nav.htm"; ?>
-
+<main>
     <h2>Upcoming Events</h2>
-    <div class="event-list" id="eventList">
-        
+    <div class="event-list" id="eventList"> 
     </div>
-
+    </main>
     <script>
         const eventList = document.getElementById('eventList');
 

@@ -1,4 +1,9 @@
 <link rel="stylesheet" href="/assets/css/nav.css">
+<style>
+    .navbar .dropdown-menu {
+        width: 107px;
+    }
+</style>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"
     integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <nav class="navbar">
@@ -8,7 +13,6 @@
                 <img src="/assets/images/Student.png" alt="Student Academic Portal">
             </a>
         </div>
-
         <button class="hamburger" id="hamburger" aria-label="Toggle Navigation">
             <span></span>
             <span></span>
@@ -16,14 +20,13 @@
         </button>
         <ul class="nav-links" id="nav-links">
             <li><a href="/home.php" class="nav-item">Home</a></li>
-            <li><a href="/department/attendance.php" class="nav-item">Attendance</a></li>
-            <li><a href="/account/fee.php" class="nav-item">Fee</a></li>
-            <li><a href="/exams/exam.php" class="nav-item">Exam</a></li>
-            <li><a href="/exams/results.php" class="nav-item">Result</a></li>
+            <li><a href="/account/fee.php">Fee</a></li>
+            <li><a href="/department/attendance.php">Attendance</a></li>
+            <li><a href="/exams/exam.php">Exam</a></li>
+            <li><a href="/exams/results.php">Result</a></li>
             <li><a href="/library/library.php" class="nav-item">Library</a></li>
             <li><a href="/about us/aboutus.php" class="nav-item">About Us</a></li>
-
-
+            <li>Notification</li>
             <li class="dropdown" id="profile-dropdown">
                 <a href="/user-profile/user.php" class="profile-icon" id="profile-icon" aria-label="Profile Menu">
                     <img id="userImage" src="" class="profile-img user-image" alt="user-image">
@@ -37,5 +40,6 @@
 
     </div>
 </nav>
+
 <script src="/assets/js/nav.js"></script>
 <script src="/assets/js/getPhoto.js"></script>

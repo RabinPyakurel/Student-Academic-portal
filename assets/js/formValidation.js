@@ -50,9 +50,27 @@ const validateCourse = () => {
 };
 const validateYear = () => {
   enroll.value = enroll.value.replace(/\s+/g, "");
+  const today = new Date();
+  const englishYear = today.getFullYear();
+  const englishMonth = today.getMonth() + 1;
+  const englishDay = today.getDate();
+
+  const newYearMonth = 4;
+  const newYearDay = 14;
+
+  let nepaliYear = englishYear + 56;
+
+  if (englishMonth > newYearMonth || (englishMonth === newYearMonth && englishDay >= newYearDay)) {
+    nepaliYear += 1;
+  }
+
+
   const enrollYearPattern = /^2[0-9]{3}$/;
   if (!enroll.value.match(enrollYearPattern)) {
     error[3].innerHTML = "year must be numeric and in B.S.";
+    return false;
+  } else if (enroll.value > nepaliYear) {
+    error[3].innerHTML = "Invalid year";
     return false;
   } else {
     error[3].innerHTML = "";
@@ -197,32 +215,32 @@ const validation = () => {
 };
 
 $(document).ready(function () {
-    $(".form").submit(function (event) {
-        event.preventDefault();
-        if (validation()) {
-            var formData = $(this).serialize();
-            $("#loader-container").show();
-            $.ajax({
-                type: "POST",
-                url: "/backend/registration.php",
-                data: formData,
-                success: function (response) {
-                    $("#loader-container").hide();
-                    alert(response);
-                    $("#password").val("");
-                    $("#cpass").val("");
-                    if (response.includes("Registration successful.")) {
-                        window.location.href = "sign-in.php";
-                    }
-                },
-                error: function (xhr, status, error) {
-                    $("#loader-container").hide();
-                    $("#password").val("");
-                    $("#cpass").val("");
-                    alert("Error occurred while processing your data");
-                    console.error("Status:", status, "Error:", error, "Response:", xhr.responseText);
-                }
-            });
+  $(".form").submit(function (event) {
+    event.preventDefault();
+    if (validation()) {
+      var formData = $(this).serialize();
+      $("#loader-container").show();
+      $.ajax({
+        type: "POST",
+        url: "/backend/registration.php",
+        data: formData,
+        success: function (response) {
+          $("#loader-container").hide();
+          alert(response);
+          $("#password").val("");
+          $("#cpass").val("");
+          if (response.includes("Registration successful.")) {
+            window.location.href = "sign-in.php";
+          }
+        },
+        error: function (xhr, status, error) {
+          $("#loader-container").hide();
+          $("#password").val("");
+          $("#cpass").val("");
+          alert("Error occurred while processing your data");
+          console.error("Status:", status, "Error:", error, "Response:", xhr.responseText);
         }
-    });
+      });
+    }
+  });
 });

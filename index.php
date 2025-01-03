@@ -13,6 +13,11 @@ if (isset($_SESSION['user_id'])) {
     <title>Student Academic Portal</title>
     <link rel="stylesheet" href="./assets/css/index.css">
     <link rel="stylesheet" href="./assets/css/nav.css">
+    <style>
+        .nav-links{
+            gap:4rem;
+        }
+    </style>
 </head>
 
 <body>

@@ -14,10 +14,6 @@ if (!isset($_SESSION['user_id'])) {
     <title>Student Academic Portal</title>
     <link rel="stylesheet" href="./assets/css/index.css">
 </head>
-<style>
-   
-</style>
-
 <body>
     <?php include 'layout/nav.htm' ?>
     <!-- Hero Section (Carousel) -->

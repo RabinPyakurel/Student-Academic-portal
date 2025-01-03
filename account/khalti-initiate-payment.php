@@ -17,18 +17,18 @@ $stmt->execute([':user_id' => $user_id]);
 $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
-$query = "SELECT total_fee FROM billing WHERE billing_id = :bill_id";
+$query = "SELECT total_fee - COALESCE(amount_paid,0) as payable_fee FROM billing WHERE billing_id = :bill_id";
 $stmt = $pdo->prepare($query);
 $stmt->execute([':bill_id' =>$billing_id]);
 $bill = $stmt->fetch(PDO::FETCH_ASSOC);
-$totalFee = $bill['total_fee'];
+$totalFee = $bill['payable_fee'];
 $curl = curl_init();
 $data = [
-    "return_url" => "http://localhost:8000/account/fee.php", // Local URL for testing
+    "return_url" => "http://localhost:8000/account/khalti-payment-controller.php", // Local URL for testing
     "website_url" => "http://localhost:8000/account/fee.php",              // Local URL for testing
     "amount" => $totalFee * 100,
-    "purchase_order_id" => "Order01".'abc',
-    "purchase_order_name" => " Payment for ",
+    "purchase_order_id" => $billing_id,
+    "purchase_order_name" => "Khalti",
     "customer_info" => [
         "name" => $user['name'],
         "email" => $user['email'],
