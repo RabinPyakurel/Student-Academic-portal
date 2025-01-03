@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    table, th, td {
+      border: 1px solid #ddd;
+    }
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+    .email-button {
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    .email-button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h1>Admin Dashboard</h1>
+  <h2>Contact Form Submissions</h2>
+  <table id="contacts-table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Subject</th>
+        <th>Message</th>
+        <th>Date Submitted</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Contact submissions will appear here -->
+    </tbody>
+  </table>
+
+  <script>
+    // Fetch stored contact data from localStorage
+    let contactData = JSON.parse(localStorage.getItem('contactData')) || [];
+
+    const tableBody = document.querySelector('#contacts-table tbody');
+
+    // Display contact data in the table
+    contactData.forEach((contact, index) => {
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${contact.name}</td>
+        <td>${contact.email}</td>
+        <td>${contact.subject}</td>
+        <td>${contact.message}</td>
+        <td>${new Date().toLocaleDateString()}</td>
+        <td>
+          <button class="email-button" onclick="emailUser('${contact.email}')">Respond</button>
+        </td>
+      `;
+      tableBody.appendChild(row);
+    });
+
+    // Function to open the email client with the user's email pre-filled
+    function emailUser(userEmail) {
+      const subject = "Response to your inquiry";
+      const body = "Dear User, \n\nThank you for reaching out. We will get back to you shortly.\n\nBest Regards,\nAdmin";
+      window.location.href = `mailto:${userEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    }
+  </script>
+</body>
+</html>

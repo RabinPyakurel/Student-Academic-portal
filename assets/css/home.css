@@ -1,0 +1,39 @@
+.container h2 {
+  margin-top: 2rem;
+  margin-left: 7rem;
+  color: #095c78;
+  
+}
+
+#back-to-top {
+  bottom: 2rem;
+  right: 2vw;
+  padding: 10px 15px;
+  font-size: 14px;
+  background-color: #095c78;
+  color: white;
+  border: none;
+  border-radius: 0px;
+  cursor: pointer;
+  display: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+#back-to-top:hover {
+  background-color: #0a7595;
+  transform: translateY(-3px);
+}
+@media (max-width: 768px) {
+  .container h2 {
+    font-size: 1.8rem;
+  }
+  .container {
+    align-items: center;
+  }
+}
+@media (max-width: 480px) {
+  .container h2 {
+    font-size: 1.5rem;
+  }
+}
