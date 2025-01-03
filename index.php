@@ -73,7 +73,7 @@ if (isset($_SESSION['user_id'])) {
     </section>
 
 
-    <section id="features" class="features">
+    <section id="features" class="features"><br><br>
         <div class="container">
             <h2>Our Features</h2>
             <div class="card-container">
@@ -96,7 +96,7 @@ if (isset($_SESSION['user_id'])) {
         </div>
     </section>
 
-    <section id="program" class="program-carousel">
+    <section id="program" class="program-carousel"><br><br>
         <div class="container">
             <h2>Our Programs</h2>
             <div class="carousel">
