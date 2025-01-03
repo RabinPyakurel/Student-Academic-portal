@@ -60,7 +60,7 @@ if (isset($_SESSION['user_id'])) {
 
 
     <section id="about" class="about">
-        <div class="container">
+        <div class="content-container">
             <h2>Streamlining Your Academic Journey</h2>
             <p>
                 Student Academic Portal (SAPO) is a secure platform developed exclusively for Kathford International
@@ -74,7 +74,7 @@ if (isset($_SESSION['user_id'])) {
 
 
     <section id="features" class="features"><br><br>
-        <div class="container">
+        <div class="content-container">
             <h2>Our Features</h2>
             <div class="card-container">
                 <div class="card" id="signUpButton">
@@ -119,7 +119,7 @@ if (isset($_SESSION['user_id'])) {
   </section>
 
     <section id="program" class="program-carousel"><br><br>
-        <div class="container">
+        <div class="content-container">
             <h2>Our Programs</h2>
             <div class="carousel">
                 <div class="carousel-track">

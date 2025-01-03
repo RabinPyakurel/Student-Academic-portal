@@ -29,7 +29,6 @@ if (!isset($_SESSION['user_id'])) {
     <!-- Events Carousel Section -->
     <section id="events" class="events-carousel">
         <div class="container">
-           
 
                 <h2>Exciting Events Ahead</h2>
             
