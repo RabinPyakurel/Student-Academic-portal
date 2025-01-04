@@ -1,0 +1,97 @@
+/* Notification Icon with Image */
+.notification-icon {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.notification-icon .bell-image {
+    width: 40px;
+    /* Adjust the size */
+    height: 40px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Notification Badge */
+.notification-badge {
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    background: red;
+    color: white;
+    border-radius: 50%;
+    font-size: 0.5rem;
+    padding: 2px 5px;
+    font-weight: bold;
+}
+
+/* Jiggle Animation */
+@keyframes jiggle {
+
+    0%,
+    100% {
+        transform: rotate(0);
+    }
+
+    25% {
+        transform: rotate(-15deg);
+    }
+
+    50% {
+        transform: rotate(15deg);
+    }
+
+    75% {
+        transform: rotate(-10deg);
+    }
+}
+
+.notification-icon.jiggle .bell-image {
+    animation: jiggle 0.5s ease-in-out infinite;
+}
+
+.notification-icon.jiggle .bell-image:hover {
+    animation: jiggle 0.5s ease-in-out infinite;
+}
+
+/* Notification Dropdown */
+.notification-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 50px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    min-width: 250px;
+    z-index: 1000;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.notification-menu li {
+    border-bottom: 1px solid #eee;
+}
+
+.notification-menu li:last-child {
+    border-bottom: none;
+}
+
+.notification-menu li a {
+    display: block;
+    padding: 10px;
+    color: #333;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.notification-menu li a:hover {
+    background-color: #f9f9f9;
+}
+
+.notification-menu.show {
+    display: block;
+}

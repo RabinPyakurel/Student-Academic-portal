@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="/assets/css/nav.css">
+<link rel="stylesheet" href="/assets/css/notification.css">
 <style>
     .navbar .dropdown-menu {
         width: 107px;
@@ -13,6 +14,7 @@
                 <img src="/assets/images/Student.png" alt="Student Academic Portal">
             </a>
         </div>
+        <div id="static-notification"></div>
         <button class="hamburger" id="hamburger" aria-label="Toggle Navigation">
             <span></span>
             <span></span>
@@ -26,7 +28,21 @@
             <li><a href="/exams/results.php">Result</a></li>
             <li><a href="/library/library.php" class="nav-item">Library</a></li>
             <li><a href="/about us/aboutus.php" class="nav-item">About Us</a></li>
-            <li>Notification</li>
+            <li class="dropdown" id="notification-dropdown">
+                <a href="#" class="notification-icon" id="notification-icon" aria-label="Notifications">
+                    <img src="/assets/images/notification.png" alt="Notification Bell" class="bell-image">
+                    <span class="notification-badge" id="notification-badge">3</span>
+                </a>
+                <ul class="dropdown-menu notification-menu" id="notification-menu">
+                    <li><a href="#">New message from admin</a></li>
+                    <li><a href="#">Exam results published</a></li>
+                    <li><a href="#">Library book due date</a></li>
+                    <li><a href="/notifications.php">See all notifications</a></li>
+                </ul>
+            </li>
+
+
+            </li>
             <li class="dropdown" id="profile-dropdown">
                 <a href="/user-profile/user.php" class="profile-icon" id="profile-icon" aria-label="Profile Menu">
                     <img id="userImage" src="" class="profile-img user-image" alt="user-image">
@@ -43,3 +59,4 @@
 
 <script src="/assets/js/nav.js"></script>
 <script src="/assets/js/getPhoto.js"></script>
+<script src="/assets/js/notification.js"></script>

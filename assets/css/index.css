@@ -24,16 +24,14 @@ html {
   position: relative;
   color: white;
   text-align: center;
-  min-height: 86.9vh;
+  min-height: 88vh;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 1rem;
-  background-image: linear-gradient(
-      0deg,
+  background-image: linear-gradient(0deg,
       rgba(0, 0, 0, 0.7),
-      rgba(0, 0, 0, 0.3)
-    ),
+      rgba(0, 0, 0, 0.3)),
     url(../images/hero.jpg);
   background-size: cover;
   background-attachment: fixed;
@@ -241,6 +239,7 @@ html {
 .carousel-btn.next {
   right: 1rem;
 }
+
 .testimonial-section {
   text-align: center;
   padding: 50px 20px;
@@ -343,6 +342,7 @@ html {
     opacity: 0;
     transform: translateY(10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);

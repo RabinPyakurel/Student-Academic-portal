@@ -126,6 +126,7 @@ $tables = [ "CREATE TABLE IF NOT EXISTS department (
                   event_date date DEFAULT NULL,
                   event_description text,
                   created_by int DEFAULT NULL,
+                  event_image VARCHAR(255),
                   PRIMARY KEY (event_id),
                   KEY evt_cb_fk (created_by),
                   CONSTRAINT evt_cb_fk FOREIGN KEY (created_by) REFERENCES admin (admin_id)
