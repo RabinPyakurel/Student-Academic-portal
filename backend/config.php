@@ -93,7 +93,7 @@ $tables = [ "CREATE TABLE IF NOT EXISTS department (
                   CONSTRAINT bb_sid_fk FOREIGN KEY (std_id) REFERENCES student (std_id)
                 );",
                 "CREATE TABLE IF NOT EXISTS course (
-                  course_id int NOT NULL,
+                  course_id varchar(20) NOT NULL,
                   course_name varchar(100) NOT NULL,
                   program_id int DEFAULT NULL,
                   semester varchar(20) DEFAULT NULL,
@@ -129,7 +129,7 @@ $tables = [ "CREATE TABLE IF NOT EXISTS department (
                   program_id int DEFAULT NULL,
                   exam_name varchar(100) NOT NULL,
                   exam_date date DEFAULT NULL,
-                  course_id int DEFAULT NULL,
+                  course_id varchar(20) DEFAULT NULL,
                   PRIMARY KEY (exam_id),
                   KEY ex_pid_fk (program_id),
                   KEY ex_cid_fk (course_id),
@@ -163,7 +163,7 @@ $tables = [ "CREATE TABLE IF NOT EXISTS department (
                 "CREATE TABLE IF NOT EXISTS marks (
                   marks_id int NOT NULL,
                   std_id int DEFAULT NULL,
-                  course_id int DEFAULT NULL,
+                  course_id varchar(20) DEFAULT NULL,
                   marks_obtained decimal(5,2) DEFAULT NULL,
                   exam_id int DEFAULT NULL,
                   PRIMARY KEY (marks_id),
@@ -177,12 +177,12 @@ $tables = [ "CREATE TABLE IF NOT EXISTS department (
                 "CREATE TABLE IF NOT EXISTS notification (
                   notification_id INT NOT NULL AUTO_INCREMENT,
                   message TEXT NOT NULL,
-                  link VARCHAR(255) NOT NULL, -- Link to redirect (e.g., attendance.php, marks.php)
+                  link VARCHAR(255) NOT NULL,
                   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                  expires_at TIMESTAMP NULL, -- For auto-deletion
-                  std_id INT DEFAULT NULL, -- For student-specific notifications
-                  semester VARCHAR(20) DEFAULT NULL, -- Semester-specific notifications
-                  admin_id INT DEFAULT NULL, -- Admin reference
+                  expires_at TIMESTAMP NULL, 
+                  std_id INT DEFAULT NULL, 
+                  semester VARCHAR(20) DEFAULT NULL,
+                  admin_id INT DEFAULT NULL,
                   status ENUM('read', 'unread') DEFAULT 'unread',
                   is_seen ENUM('yes', 'no') DEFAULT 'no',
                   PRIMARY KEY (notification_id),
