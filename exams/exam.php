@@ -93,7 +93,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['exam_name'])) {
             min-height: 75vh;
         }
 
-        h3 {
+        .h3 {
             margin-top: 30px;
             color: #0073e6;
             font-size: 1.4em;
@@ -154,6 +154,40 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['exam_name'])) {
             color: #721c24;
             border: 1px solid #f5c6cb;
         }
+        .status {
+        display: inline-block;
+        padding: 6px 12px;
+        border-radius: 4px;
+        font-weight: bold;
+        text-align: center;
+        color: white;
+    }
+
+    .status.pending {
+        background-color: yellow;
+        color: black;
+    }
+
+    .status.approved {
+        background-color: green;
+    }
+
+    .status.rejected {
+        background-color: red;
+    }
+
+    .form-button {
+        background-color: #007bff;
+        color: white;
+        padding: 6px 12px;
+        border-radius: 4px;
+        border: none;
+        cursor: pointer;
+    }
+
+    .form-button:hover {
+        background-color: #0056b3;
+    }
     </style>
 </head>
 
@@ -172,7 +206,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['exam_name'])) {
     <p class="message error">No exams available for this semester and program.</p>
 <?php else: ?>
     <?php foreach ($groupedExams as $examName => $examList): ?>
-        <h3><?= htmlspecialchars($examName) ?></h3>
+        <h3 class="h3"><?= htmlspecialchars($examName) ?></h3>
         <table>
             <thead>
                 <tr>
@@ -190,9 +224,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['exam_name'])) {
             </tbody>
         </table>
         <form method="POST">
-            <input type="hidden" name="exam_name" value="<?= htmlspecialchars($examName) ?>">
-            <button type="submit" class="form-button">Fill <?= htmlspecialchars($examName) ?> Exam Form</button>
-        </form>
+    <input type="hidden" name="exam_name" value="<?= htmlspecialchars($examName) ?>">
+
+    <?php
+    // Check if the student has already filled the form and retrieve its status
+    $stmt = $pdo->prepare("
+        SELECT ef.status
+        FROM examform ef
+        JOIN exam e ON ef.exam_id = e.exam_id
+        WHERE ef.std_id = ? AND e.exam_name = ?
+        LIMIT 1
+    ");
+    $stmt->execute([$student_id, $examName]);
+    $status = $stmt->fetchColumn();
+
+    // Display based on the retrieved status
+    if ($status): ?>
+        <b>Form Status:</b> <span class="status <?= strtolower($status) ?>"><?= htmlspecialchars($status) ?></span>
+    <?php else: ?>
+        <button type="submit" class="form-button">Fill <?= htmlspecialchars($examName) ?> Exam Form</button>
+    <?php endif; ?>
+</form>
+
     <?php endforeach; ?>
 <?php endif; ?>
     </main>
