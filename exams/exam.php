@@ -130,7 +130,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['exam_name'])) {
     $stmt->execute([$student_id, $examName]);
     $status = $stmt->fetchColumn();
 
-    // Display based on the retrieved status
+  s
     if ($status): ?>
         <b>Form Status:</b> <span class="status <?= strtolower($status) ?>"><?= htmlspecialchars($status) ?></span>
     <?php else: ?>
