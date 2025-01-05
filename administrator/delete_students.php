@@ -7,17 +7,17 @@ if (isset($_GET['id'])) {
 
     if (is_numeric($student_id)) {
         
-        $sql = "DELETE FROM student WHERE std_id = ?";
+        $sql = "DELETE FROM student WHERE std_id = :std_id";
         
-        if ($stmt = $connection->prepare($sql)) {
-            $stmt->bind_param("i", $student_id); // 
+        if ($stmt = $pdo->prepare($sql)) {
+            $stmt->bindParam(":std_id",$student_id); // 
             if ($stmt->execute()) {
                 echo "<script>alert('Student deleted successfully!'); window.location.href='student_list.php';</script>";
                 exit;
             } else {
               echo "<script>alert('Error deleting student!'); window.location.href='student_list.php';</script>";
             }
-            $stmt->close();
+           
         } else {
             echo "Error preparing the query.";
         }

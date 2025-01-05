@@ -1,0 +1,59 @@
+/* Styles for Billing & Account Management Page */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.billing-page {
+    padding: 20px;
+}
+
+header h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.filters {
+    margin-bottom: 20px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.filters label, .filters input, .filters select, .filters button {
+    margin-right: 10px;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #01b6a0;
+    color: #fff;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}

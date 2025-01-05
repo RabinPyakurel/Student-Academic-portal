@@ -39,7 +39,6 @@ function cancelChanges() {
     toggleEditMode();
 }
 
-//handle uploaded photo and store to database
 document.getElementById('photoUpload').addEventListener('change', function () {
     const file = this.files[0];
     if (file) {
@@ -71,7 +70,7 @@ document.getElementById('photoUpload').addEventListener('change', function () {
     }
 });
 
-//update changes and reflect
+
 function saveChanges() {
     const updatedData = new FormData();
     updatedData.append('personalEmail', $('#personal-email').val());
@@ -107,7 +106,6 @@ function saveChanges() {
 $(document).ready(function () {
     $('.skeleton-container').show();
     $('main').hide();
-    // ✅ Fetch User Data on Page Load
     function fetchUserProfile() {
         $.ajax({
             url: 'fetchData.php',
@@ -153,5 +151,5 @@ $(document).ready(function () {
         });
     }
 
-    fetchUserProfile(); // Call on page load
+    fetchUserProfile();
 });

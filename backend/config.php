@@ -67,12 +67,12 @@ $tables = [ "CREATE TABLE IF NOT EXISTS department (
                 remarks text,
                 PRIMARY KEY (attendance_id),
                 KEY std_id (std_id),
-                KEY course_id (semester),
                 CONSTRAINT attendance_ibfk_1 FOREIGN KEY (std_id) REFERENCES student (std_id)
             );",
                 "CREATE TABLE IF NOT EXISTS billing (
                   billing_id INT AUTO_INCREMENT PRIMARY KEY,
                   std_id INT NOT NULL,
+                  billing_date date,
                   semester VARCHAR(50) NOT NULL,
                   total_fee DECIMAL(10, 2),
                   amount_paid DECIMAL(10, 2) DEFAULT 0.00,
@@ -162,7 +162,7 @@ $tables = [ "CREATE TABLE IF NOT EXISTS department (
                   CONSTRAINT identification_ibfk_1 FOREIGN KEY (std_id) REFERENCES student (std_id)
                 );",
                 "CREATE TABLE IF NOT EXISTS marks (
-                  marks_id int NOT NULL,
+                  marks_id int NOT NULL AUTO_INCREMENT,
                   std_id int DEFAULT NULL,
                   course_id varchar(20) DEFAULT NULL,
                   marks_obtained decimal(5,2) DEFAULT NULL,
@@ -213,6 +213,7 @@ $tables = [ "CREATE TABLE IF NOT EXISTS department (
                   BEFORE INSERT ON billing
                   FOR EACH ROW
                   BEGIN
+                      SET NEW.billing_date = CURDATE();
                       IF NEW.total_fee IS NULL THEN
                           SET NEW.payment_status = 'No Fee';
                       ELSEIF NEW.amount_paid IS NULL OR NEW.amount_paid = 0 THEN
@@ -297,7 +298,7 @@ $tables = [ "CREATE TABLE IF NOT EXISTS department (
                           VALUES (
                               CONCAT('New Event: ', NEW.event_name, ' scheduled on ', NEW.event_date),
                               'event.php',
-                              NULL, -- Semester-wide or all students
+                              NULL, 
                               NEW.created_by,
                               NOW() + INTERVAL 14 DAY
                           );

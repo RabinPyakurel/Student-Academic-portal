@@ -11,7 +11,7 @@ main {
 
 .h3 {
     margin-top: 30px;
-    color: #0073e6;
+    color: #095c78;
     font-size: 1.4em;
     border-bottom: 2px solid #ccc;
     padding-bottom: 5px;
@@ -31,7 +31,7 @@ td {
 }
 
 th {
-    background-color: #0073e6;
+    background-color: #095c78;
     color: white;
 }
 
@@ -39,18 +39,6 @@ tr:nth-child(even) {
     background-color: #f9f9f9;
 }
 
-.form-button {
-    background-color: #28a745;
-    color: white;
-    border: none;
-    padding: 6px 12px;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.form-button:hover {
-    background-color: #218838;
-}
 
 .message {
     padding: 10px;
@@ -94,7 +82,7 @@ tr:nth-child(even) {
 }
 
 .form-button {
-    background-color: #007bff;
+    background-color: #0a7595;
     color: white;
     padding: 6px 12px;
     border-radius: 4px;
@@ -103,5 +91,5 @@ tr:nth-child(even) {
 }
 
 .form-button:hover {
-    background-color: #0056b3;
+    background-color: #095c78;
 }
