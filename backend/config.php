@@ -1,8 +1,8 @@
 <?php
 try{
     $pdo = new PDO("mysql:host=localhost",'root','rabin');
-    $pdo->exec("create database IF NOT EXISTS sapo");
-    $pdo->exec("use sapo");
+    $pdo->exec("create database IF NOT EXISTS sapo_test");
+    $pdo->exec("use sapo_test");
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 }catch(PDOException $e){
     echo 'connection failed: '.$e->getMessage();
@@ -13,11 +13,6 @@ $tables = [ "CREATE TABLE IF NOT EXISTS department (
                 dept_id int NOT NULL,
                 dept_name varchar(50) NOT NULL,
                  PRIMARY KEY (dept_id)
-            );",
-            "CREATE TABLE IF NOT EXISTS role (
-                role_id int NOT NULL AUTO_INCREMENT,
-                role_name varchar(50) NOT NULL,
-                PRIMARY KEY (role_id)
             );",
               "CREATE TABLE IF NOT EXISTS program (
                 program_id int NOT NULL,
@@ -48,12 +43,9 @@ $tables = [ "CREATE TABLE IF NOT EXISTS department (
                 "CREATE TABLE IF NOT EXISTS admin (
                   admin_id int NOT NULL,
                   username varchar(50) NOT NULL,
-                  role_id int DEFAULT NULL,
                   password varchar(255) DEFAULT NULL,
                   PRIMARY KEY (admin_id),
-                  UNIQUE KEY ad_username_un (username),
-                  KEY ad_rid_fk (role_id),
-                  CONSTRAINT ad_rid_fk FOREIGN KEY (role_id) REFERENCES role (role_id)
+                  UNIQUE KEY ad_username_un (username)
             );",
                 "CREATE TABLE IF NOT EXISTS library (
                   book_id int NOT NULL,
@@ -101,7 +93,7 @@ $tables = [ "CREATE TABLE IF NOT EXISTS department (
                   CONSTRAINT bb_sid_fk FOREIGN KEY (std_id) REFERENCES student (std_id)
                 );",
                 "CREATE TABLE IF NOT EXISTS course (
-                  course_id int NOT NULL,
+                  course_id varchar(20) NOT NULL,
                   course_name varchar(100) NOT NULL,
                   program_id int DEFAULT NULL,
                   semester varchar(20) DEFAULT NULL,
@@ -133,11 +125,15 @@ $tables = [ "CREATE TABLE IF NOT EXISTS department (
                 );",
                 "CREATE TABLE IF NOT EXISTS exam (
                   exam_id int NOT NULL,
+                  semester varchar(20) DEFAULT NULL,
+                  program_id int DEFAULT NULL,
                   exam_name varchar(100) NOT NULL,
                   exam_date date DEFAULT NULL,
-                  course_id int DEFAULT NULL,
+                  course_id varchar(20) DEFAULT NULL,
                   PRIMARY KEY (exam_id),
+                  KEY ex_pid_fk (program_id),
                   KEY ex_cid_fk (course_id),
+                  CONSTRAINT ex_pid_fk FOREIGN KEY (program_id) REFERENCES program (program_id),
                   CONSTRAINT ex_cid_fk FOREIGN KEY (course_id) REFERENCES course (course_id)
                 );",
                 "CREATE TABLE IF NOT EXISTS examform (
@@ -167,7 +163,7 @@ $tables = [ "CREATE TABLE IF NOT EXISTS department (
                 "CREATE TABLE IF NOT EXISTS marks (
                   marks_id int NOT NULL,
                   std_id int DEFAULT NULL,
-                  course_id int DEFAULT NULL,
+                  course_id varchar(20) DEFAULT NULL,
                   marks_obtained decimal(5,2) DEFAULT NULL,
                   exam_id int DEFAULT NULL,
                   PRIMARY KEY (marks_id),
@@ -179,17 +175,22 @@ $tables = [ "CREATE TABLE IF NOT EXISTS department (
                   CONSTRAINT ma_sid_fk FOREIGN KEY (std_id) REFERENCES student (std_id)
                 );",
                 "CREATE TABLE IF NOT EXISTS notification (
-                  notification_id int NOT NULL,
-                  message text NOT NULL,
-                  created_at timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-                  std_id int DEFAULT NULL,
-                  admin_id int DEFAULT NULL,
-                  status enum('read','unread') DEFAULT 'unread',
+                  notification_id INT NOT NULL AUTO_INCREMENT,
+                  message TEXT NOT NULL,
+                  link VARCHAR(255) NOT NULL,
+                  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                  expires_at TIMESTAMP NULL, 
+                  std_id INT DEFAULT NULL, 
+                  semester VARCHAR(20) DEFAULT NULL,
+                  admin_id INT DEFAULT NULL,
+                  status ENUM('read', 'unread') DEFAULT 'unread',
+                  is_seen ENUM('yes', 'no') DEFAULT 'no',
                   PRIMARY KEY (notification_id),
                   KEY nt_sid_fk (std_id),
+                  KEY nt_semester_idx (semester),
                   KEY nt_aid_fk (admin_id),
-                  CONSTRAINT nt_aid_fk FOREIGN KEY (admin_id) REFERENCES admin (admin_id),
-                  CONSTRAINT nt_sid_fk FOREIGN KEY (std_id) REFERENCES student (std_id)
+                  CONSTRAINT nt_sid_fk FOREIGN KEY (std_id) REFERENCES student (std_id),
+                  CONSTRAINT nt_aid_fk FOREIGN KEY (admin_id) REFERENCES admin (admin_id)
                 );",
                 "CREATE TABLE IF NOT EXISTS password_reset_requests (
                   reset_id int NOT NULL AUTO_INCREMENT,
@@ -235,7 +236,71 @@ $tables = [ "CREATE TABLE IF NOT EXISTS department (
                         SET NEW.payment_status = 'Paid';
                         SET NEW.payment_date = CURRENT_TIMESTAMP;
                     END IF;
-                END;"];
+                END;",
+               "CREATE TRIGGER after_attendance_insert
+                AFTER INSERT ON attendance
+                FOR EACH ROW
+                BEGIN
+                    INSERT INTO notification (message, link, std_id, semester, expires_at)
+                    VALUES (
+                        CONCAT('Attendance updated for Student ID: ', NEW.std_id, ' on ', NEW.date),
+                        'attendance.php',
+                        NEW.std_id,
+                        NEW.semester,
+                        NOW() + INTERVAL 7 DAY
+                    );
+                END;",
+                "CREATE TRIGGER after_marks_insert
+                  AFTER INSERT ON marks
+                  FOR EACH ROW
+                  BEGIN
+                      INSERT INTO notification (message, link, std_id, semester, expires_at)
+                      VALUES (
+                          CONCAT('Marks updated for Student ID: ', NEW.std_id),
+                          'marks.php',
+                          NEW.std_id,
+                          (SELECT semester FROM student WHERE std_id = NEW.std_id),
+                          NOW() + INTERVAL 30 DAY
+                      );
+                  END;",
+                  "CREATE TRIGGER after_billing_insert
+                    AFTER INSERT ON billing
+                    FOR EACH ROW
+                    BEGIN
+                        INSERT INTO notification (message, link, std_id, semester, expires_at)
+                        VALUES (
+                            CONCAT('Billing update for Semester: ', NEW.semester),
+                            'billing.php',
+                            NEW.std_id,
+                            NEW.semester,
+                            NOW() + INTERVAL 14 DAY
+                        );
+                    END;",
+                  "CREATE TRIGGER after_exam_insert
+                    AFTER INSERT ON exam
+                    FOR EACH ROW
+                    BEGIN
+                        INSERT INTO notification (message, link, semester, expires_at)
+                        VALUES (
+                            CONCAT('New Exam: ', NEW.exam_name, ' scheduled on ', NEW.exam_date),
+                            'exam.php',
+                            (SELECT semester FROM course WHERE course_id = NEW.course_id),
+                            NOW() + INTERVAL 7 DAY
+                        );
+                    END;",
+                    "CREATE TRIGGER after_event_insert
+                      AFTER INSERT ON event
+                      FOR EACH ROW
+                      BEGIN
+                          INSERT INTO notification (message, link, semester, admin_id, expires_at)
+                          VALUES (
+                              CONCAT('New Event: ', NEW.event_name, ' scheduled on ', NEW.event_date),
+                              'event.php',
+                              NULL, -- Semester-wide or all students
+                              NEW.created_by,
+                              NOW() + INTERVAL 14 DAY
+                          );
+                      END;"];
 
             foreach ($tables as $sql) {
                 try {

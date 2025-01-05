@@ -32,7 +32,7 @@ if(!isset($_SESSION['user_id'])){
                         <div class="percentage">0% <br>Attendance</div>
                     </div>
                 </div>
-                <p class="sem"><bold>Semester: </bold>Fourth</p>
+                <p class="sem"><bold>Semester: </bold></p>
             </div>
             <div class="wrapper">
                 <header>

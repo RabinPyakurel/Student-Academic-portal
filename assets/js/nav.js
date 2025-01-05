@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (notificationDropdown) {
                 notificationDropdown.style.display = "none"; // Ensure notification is hidden
                 staticNotification.style.display = "block";
-               
+
             }
         }
     }

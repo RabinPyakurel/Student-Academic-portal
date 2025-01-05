@@ -64,11 +64,9 @@ if (!isset($_SESSION['user_id'])) {
     <!-- About Section -->
     <section id="about" class="about">
         <div class="container">
-            <h2>Streamlining Your Academic Journey</h2>
+            <h2>Empowering Your Academic Journey</h2>
             <p>
-                Student Academic Portal (SAPO) is a secure platform developed exclusively for Kathford International
-                College. Our mission is to simplify your academic processes and provide features like marks tracking,
-                event notifications, and online exam registration.
+            Effortlessly track your marks, stay informed with event updates, and register for exams online—all on a secure, intuitive platform.
             </p>
         </div>
     </section>

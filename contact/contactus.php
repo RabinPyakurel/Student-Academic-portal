@@ -10,7 +10,7 @@
 
 <body>
   <?php include "../layout/nav.htm"; ?>
-
+<main>
   <section class="hero">
   <div class="hero-content">
     <h1>Get in Touch</h1>
@@ -46,7 +46,7 @@
       </form>
     </div>
   </div>
-
+  </main>
   <?php include "../layout/footer.htm"; ?>
   <script src="../assets/js/contact.js"></script>
 </body>
