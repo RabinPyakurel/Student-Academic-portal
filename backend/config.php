@@ -55,6 +55,7 @@ $tables = [ "CREATE TABLE IF NOT EXISTS department (
                   year_published int DEFAULT NULL,
                   available_copies int DEFAULT NULL,
                   total_copies int DEFAULT NULL,
+                  book_image varchar(200),
                   PRIMARY KEY (book_id)
             );",
                 "CREATE TABLE IF NOT EXISTS attendance (
