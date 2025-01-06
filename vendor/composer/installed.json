@@ -40,7 +40,7 @@
             },
             "time": "2024-12-27T20:27:37+00:00",
             "type": "library",
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Dompdf\\": "src/"
@@ -91,7 +91,7 @@
             },
             "time": "2024-12-02T14:37:59+00:00",
             "type": "library",
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "FontLib\\": "src/FontLib"
@@ -140,7 +140,7 @@
             },
             "time": "2024-04-29T13:26:35+00:00",
             "type": "library",
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Svg\\": "src/Svg"
@@ -193,7 +193,7 @@
                     "dev-master": "2.7-dev"
                 }
             },
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Masterminds\\": "src"
@@ -278,7 +278,7 @@
             },
             "time": "2024-11-24T18:04:13+00:00",
             "type": "library",
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "PHPMailer\\PHPMailer\\": "src/"
@@ -350,7 +350,7 @@
                     "dev-main": "9.0.x-dev"
                 }
             },
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Sabberworm\\CSS\\": "src/"

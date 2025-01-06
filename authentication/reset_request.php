@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->execute([$email, $token]);
 
     require 'send_mail.php'; // PHPMailer setup
-    $resetLink = "http://7f65-120-89-104-48.ngrok-free.app/authentication/reset_password.php?token=" . $token;
+    $resetLink = "http://localhost:8000/authentication/reset_password.php?token=" . $token;
 
     $subject = "Password Reset Request";
     $body = "Click the link below to reset your password:\n\n$resetLink";
@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (sendMail($email, $subject, $body)) {
         echo "<script>alert('Password reset email sent.')</script>";
     } else {
-        echo "Failed to send email.";
+        echo "<script>alert('Failed to send email.')</script>";
     }
 }
 ?>

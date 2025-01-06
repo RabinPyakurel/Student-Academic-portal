@@ -123,7 +123,7 @@ form input[readonly] {
     color: #6c757d;
 }
 
-/* Info Section */
+
 .info h2,
 p {
     padding: 0.5rem;
@@ -133,9 +133,18 @@ p {
     margin-left: 6rem;
 }
 
-/* Responsive Design */
+.form-field {
+    display: flex;
+    gap: 10px;
+    position: relative;
+}
 
-/* Medium Devices */
+.error-message {
+    color: red;
+    font-size: 12px;
+    display: inline;
+}
+
 @media (max-width: 768px) {
     .container {
         padding: 1rem;
@@ -179,6 +188,7 @@ p {
     .profile-tabs button {
         font-size: 0.8rem;
     }
+
     .edit-controls button {
         margin-top: 0.5rem;
     }

@@ -402,6 +402,8 @@ main {
         overflow: hidden;
         text-overflow: ellipsis;
     }
+
+
 }
 
 @media (max-width: 480px) {
@@ -468,5 +470,13 @@ main {
     .modal td {
         font-size: 0.8rem;
         padding: 6px;
+    }
+
+    .percentage {
+        font-size: 0.65rem;
+    }
+
+    .user-info h1 {
+        font-size: 1.5rem;
     }
 }

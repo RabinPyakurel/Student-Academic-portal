@@ -14,7 +14,7 @@ $user_id = $_SESSION['user_id'];
 $billing_id = htmlspecialchars($_GET['billing_id']); // Sanitize input
 
 
-$query = "SELECT b.billing_id, b.semester, b.total_fee, b.amount_paid, b.payment_status, b.payment_method, b.payment_date,
+$query = "SELECT b.billing_id, b.semester, b.total_fee, b.amount_paid, b.payment_status, b.payment_method, b.payment_date, b.billing_date,
                  s.name AS student_name, s.email
           FROM billing b
           JOIN student s ON b.std_id = s.std_id
@@ -52,7 +52,7 @@ function generateHtml($billing, $balance_due, $remarks) {
             <table class='details'>
                 <tr>
                     <td><strong>Bill No:</strong> {$billing['billing_id']}</td>
-                    <td><strong>Date:</strong> {$billing['payment_date']}</td>
+                    <td><strong>Date:</strong> {$billing['billing_date']}</td>
                 </tr>
                 <tr>
                     <td><strong>Student Name:</strong> {$billing['student_name']}</td>

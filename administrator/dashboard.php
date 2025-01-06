@@ -66,9 +66,9 @@ $students = $result->fetch(PDO::FETCH_ASSOC);
 
                     <!-- Manage Programs -->
                     <div class="module">
-                        <h3>Manage Programs</h3>
-                        <p>Edit, delete, or add new academic programs.</p>
-                        <a href="#" class="btn">Manage Programs</a>
+                        <h3>Manage Exams and form</h3>
+                        <p>Edit, delete, or add new exam and analyze the form</p>
+                        <a href="#" class="btn">Manage Exams and forms</a>
                     </div>
 
                     <!-- Event Management -->

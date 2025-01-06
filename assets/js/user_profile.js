@@ -1,5 +1,12 @@
 let isEditing = false;
-const editableFields = ['personal-email', 'phone-number', 'emg-contact-name', 'emg-contact-rel', 'emg-contact-num', 'emg-grd-contact', 'id-number', 'university-reg'];
+const editableFields = [
+    'personal-email',
+    'phone-number',
+    'emg-contact-name',
+    'emg-contact-rel',
+    'emg-contact-num',
+    'emg-grd-contact'
+];
 const originalValues = {};
 
 function showTab(tabId) {
@@ -13,6 +20,7 @@ function showTab(tabId) {
     event.target.classList.add('active');
 }
 
+
 function toggleEditMode() {
     isEditing = !isEditing;
 
@@ -23,53 +31,80 @@ function toggleEditMode() {
     editableFields.forEach(field => {
         const input = document.getElementById(field);
         if (isEditing) {
-            originalValues[field] = input.value; // Save original value
+            originalValues[field] = input.value;
             input.readOnly = false;
         } else {
             input.readOnly = true;
         }
     });
-}
 
+    validateAllFields();
+}
 
 function cancelChanges() {
     editableFields.forEach(field => {
-        document.getElementById(field).value = originalValues[field];
+        const inputElement = document.getElementById(field);
+        inputElement.value = originalValues[field];
+
+        inputElement.classList.remove('valid', 'invalid');
+
+        const errorMessageElement = inputElement.nextElementSibling;
+        if (errorMessageElement && errorMessageElement.classList.contains('error-message')) {
+            errorMessageElement.remove();
+        }
     });
+
     toggleEditMode();
 }
 
-document.getElementById('photoUpload').addEventListener('change', function () {
-    const file = this.files[0];
-    if (file) {
-        const reader = new FileReader();
+function validateAllFields() {
+    let allValid = true;
 
-        reader.onload = function (event) {
-            document.getElementById('userImage').setAttribute('src', event.target.result);
+    editableFields.forEach(field => {
+        const input = document.getElementById(field);
+
+        if (input.classList.contains('invalid') || !input.value.trim()) {
+            allValid = false;
         }
+    });
 
-        reader.readAsDataURL(file);
+    document.getElementById('save-btn').disabled = !allValid;
+}
 
-        const formData = new FormData();
-        formData.append('photo', file)
 
-        $.ajax({
-            url: 'photo_upload.php',
-            type: 'POST',
-            data: formData,
-            processData: false,
-            contentType: false,
-            success: function (response) {
-                if (response.success) {
-                    alert(response.message);
-                } else {
-                    alert(response.message);
-                }
-            }
-        })
+function validateField(input) {
+    const fieldName = input.getAttribute('data-validate');
+    const fieldValue = input.value;
+
+    if (!fieldValue) {
+        $(input).removeClass('valid invalid');
+        $(input).next('.error-message').remove();
+        validateAllFields();
+        return;
     }
-});
 
+    $.ajax({
+        url: 'user_data_validation.php',
+        method: 'POST',
+        data: { fieldName, fieldValue },
+        dataType: 'json',
+        success: function (response) {
+            $(input).next('.error-message').remove();
+
+            if (response.valid) {
+                $(input).removeClass('invalid').addClass('valid');
+            } else {
+                $(input).removeClass('valid').addClass('invalid');
+                $('<span class="error-message">' + response.message + '</span>').insertAfter(input);
+            }
+
+            validateAllFields();
+        },
+        error: function () {
+            console.error('Validation error occurred.');
+        }
+    });
+}
 
 function saveChanges() {
     const updatedData = new FormData();
