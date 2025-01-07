@@ -72,6 +72,13 @@ main {
   background-color: white;
 }
 
+.nav-links a.active-link {
+  color: #095c78;
+  font-weight: bold;
+  border-bottom: 2px solid #095c78;
+}
+
+
 .nav-links .register {
   padding: 10px;
   border-radius: 7px;

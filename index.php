@@ -27,7 +27,7 @@ if (isset($_SESSION['user_id'])) {
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">
-                    <img src="./assets/images/Student.png" alt="Student Academic Portal">
+                    <img src="./assets/images/final-logo.png" alt="Student Academic Portal">
             </div>
             <button class="hamburger" id="hamburger">
                 <span></span>

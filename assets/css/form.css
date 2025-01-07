@@ -22,7 +22,7 @@ body {
 }
 
 .input-group {
-    margin: 2rem 0;
+    margin: 1.5rem 0;
     position: relative;
 }
 
@@ -188,7 +188,6 @@ a:hover {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     background-color: white;
     margin: auto;
-    margin-right: 20%;
 }
 
 .form:hover {
@@ -220,7 +219,6 @@ a:hover {
     color: #000;
 }
 
-/* Style for the crossed-out eye */
 .crossed {
     position: relative;
 }
@@ -236,6 +234,8 @@ a:hover {
     color: black;
     z-index: 1;
 }
+
+
 
 @keyframes animate {
     from {
@@ -274,9 +274,27 @@ a:hover {
     color: black;
 }
 
+.logo-container {
+    margin-top: 0;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.form-logo {
+    width: 80px;
+    height: auto;
+    display: inline-block;
+    border-radius: 8px;
+
+}
+
+h1.text-center {
+    margin-top: -30px;
+    margin-bottom: 0;
+    padding: 0;
+}
+
 @media (max-width: 600px) {
-
-
     .error {
         font-size: 0.9rem;
         min-height: 1.2rem;
@@ -330,6 +348,10 @@ a:hover {
         font-weight: bold;
         font-size: 1.2rem;
     }
+
+    .form-logo {
+        width: 60px;
+    }
 }
 
 @media (max-width: 360px) {
@@ -354,6 +376,10 @@ a:hover {
         left: 4.5px;
         font-weight: bold;
         font-size: 1rem;
+    }
+
+    .form-logo {
+        width: 50px;
     }
 }
 

@@ -8,11 +8,19 @@
     <link rel="preload" href="../assets/css/form.css" as="style" onload="this.rel='stylesheet'">
     <link rel="preload" href="../assets/css/terms.css" as="style" onload="this.rel='stylesheet'">
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <style>
+        .form{
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 
 <body>
 <?php include '../layout/loader.htm' ?>
     <form class="form" method="post">
+    <div class="logo-container">
+        <img src="../assets/images/final-logo.png" alt="Logo" class="form-logo">
+    </div>
         <span class="close-btn redirect-index">&times;</span>
         <h1 class="text-center">Registration Form</h1>
         <div class="progressbar">
