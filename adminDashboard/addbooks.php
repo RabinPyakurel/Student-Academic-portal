@@ -97,10 +97,10 @@ input[type="submit"]:hover {
 
     <label for="category">Category:</label>
     <select name="category" id="category" required>
-        <option value="fiction">Fiction</option>
-        <option value="technology">Technology</option>
-        <option value="history">History</option>
-        <option value="science">Science</option>
+        <option value="Fiction">Fiction</option>
+        <option value="Text Book">Text Book</option>
+        <option value="Technology">Technology</option>
+        <option value="Self-Help">Self-Help</option>
         <option value="biography">Biography</option>
         <option value="mystery">Mystery</option>
     </select><br><br>

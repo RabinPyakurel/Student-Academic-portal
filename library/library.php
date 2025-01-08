@@ -1,3 +1,11 @@
+
+<?php
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    include 'not-found.htm';
+    exit();
+}
+?>
 <?php
 // Database connection
 $servername = "localhost";
@@ -11,11 +19,11 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT book_id, title, author, category, book_image FROM library ORDER BY book_id DESC limit 4";
+// Query for Featured Books
+$sql = "SELECT book_id, title, author, category, book_image FROM library ORDER BY book_id DESC LIMIT 4";
 
 $result = $conn->query($sql);
 
-// Fetch the books data into an array
 $featuredBooks = [];
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
@@ -52,11 +60,11 @@ $conn->close();
     </div>
   </section>
 
-  <!-- Featured Books -->
+  <!-- Featured Books Section -->
   <section id="featured" class="featured">
     <div class="container">
       <h2>Featured Books</h2>
-      <div class="book-grid" id="book-grid">
+      <div class="book-grid" id="featured-grid">
         <?php
         foreach ($featuredBooks as $book) {
           echo '<div class="book-card">';
@@ -66,8 +74,7 @@ $conn->close();
           echo '<p>Category: ' . $book['category'] . '</p>';
           echo '<a href="checkavailability.php?book_id=' . $book['book_id'] . '"><button class="action-button">Check Availability</button></a>';
           echo '</div>';
-      }
-      
+        }
         ?>
       </div>
     </div>
@@ -79,16 +86,24 @@ $conn->close();
       <h2>Categories</h2>
       <div class="category-grid">
         <div class="category-card" onclick="filterBooks('Fiction')">Fiction</div>
-        <div class="category-card" onclick="filterBooks('Science')">Science</div>
-        <div class="category-card" onclick="filterBooks('History')">History</div>
+        <div class="category-card" onclick="filterBooks('Self-Help')">Self-Help</div>
+        <div class="category-card" onclick="filterBooks('Text Book')">Text Book</div>
         <div class="category-card" onclick="filterBooks('Technology')">Technology</div>
         <div class="category-card" onclick="filterBooks('Biography')">Biography</div>
         <div class="category-card" onclick="filterBooks('Mystery')">Mystery</div>
       </div>
     </div>
-    
+    <div id="category-books" class="category-books">
+      <!-- Books from selected category will be displayed here -->
+    </div>
   </section>
+  
+  
+  <h2>Books We Love</h2>
+  <div id="book-container" class="book-container"></div>
 
+
+  
   <?php include "../layout/footer.htm"; ?>
 
   <script src="./library.js"></script>
