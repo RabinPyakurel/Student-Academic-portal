@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="../assets/css/aboutus.css">
   <link rel="stylesheet" href="../assets/css/nav.css">
   <link rel="stylesheet" href="../assets/css/index.css">
+ 
 
   <link href='https://fonts.googleapis.com/css?family=Alegreya SC' rel='stylesheet'>
   <style>
@@ -42,9 +43,9 @@
       </button>
       <ul class="nav-links" id="nav-links">
         <li><a href="../index.php">Home</a></li>
-        <li><a href="./about us/aboutus.htm">About</a></li>
-        <li><a href="../index.php/#features">Features</a></li>
-        <li><a href="#program">Programs</a></li>
+        <li><a href=".#">About</a></li>
+        <li><a href="#">Features</a></li>
+        <li><a href="#">Programs</a></li>
         <li>
           <a id="register" class="register-btn">Register</a>
         </li>

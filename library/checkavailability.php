@@ -1,13 +1,12 @@
 <?php
 session_start();
 
-// Check if user is logged in (if user_id exists in session)
 if (!isset($_SESSION['user_id'])) {
     echo json_encode(["status" => "error", "message" => "User not logged in."]);
     exit();
 }
 
-$std_id = $_SESSION['user_id'];  // Set student ID to the logged-in user's ID
+$std_id = $_SESSION['user_id'];  
 
 // Database connection
 $servername = "localhost";
@@ -22,6 +21,7 @@ if ($conn->connect_error) {
     die(json_encode(["status" => "error", "message" => "Connection failed: " . $conn->connect_error]));
 }
 
+
 $book_id = isset($_GET['book_id']) ? intval($_GET['book_id']) : 0;
 
 // Validate the book ID
@@ -29,7 +29,6 @@ if ($book_id <= 0) {
     echo json_encode(["status" => "error", "message" => "Invalid book ID."]);
     exit();
 }
-
 // Fetch book details
 $sql = "SELECT title,book_id, author, available_copies FROM library WHERE book_id = ?";
 $stmt = $conn->prepare($sql);
@@ -47,15 +46,13 @@ if ($result->num_rows > 0) {
 $stmt->close();
 $conn->close();
 
-// If it's an AJAX request, return JSON data (for booking)
 if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest') {
-    // Handle AJAX request (reserve book)
+   
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $book_id = isset($_POST['book_id']) ? intval($_POST['book_id']) : 0;
 
-        // Check availability before reserving
         if ($book['available_copies'] > 0) {
-            // Reserve the book by reducing available copies
+            
             $conn = new mysqli($servername, $username, $password, $database);
             $update_sql = "UPDATE library SET available_copies = available_copies - 1 WHERE book_id = ?";
             $update_stmt = $conn->prepare($update_sql);
@@ -74,7 +71,6 @@ if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQU
     }
 }
 
-// HTML Rendering (for non-AJAX requests)
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -88,17 +84,21 @@ if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQU
 <div class="book-card">
     <h3>Book Title: <?php echo htmlspecialchars($book['title'] ?? ''); ?></h3>
     <p>Author: <?php echo htmlspecialchars($book['author'] ?? ''); ?></p>
+    <p>Book ID: <?php echo htmlspecialchars($book['book_id'] ?? ''); ?></p>
     <p>Availability: 
         <span id="availability-status" class="<?php echo $book['available_copies'] > 0 ? 'available' : 'not-available'; ?>">
             <?php echo $book['available_copies'] > 0 ? 'Available' : 'Not Available'; ?>
         </span>
     </p>
 
-    <button id="reserve-button" class="borrow-button"
-        <?php echo $book['available_copies'] > 0 ? '' : 'disabled'; ?>
-        onclick="reserveBook(<?php echo $book_id; ?>)">
-        Reserve
-    </button>
+    
+    <button id="reserve-button" class="borrow-button" 
+        data-book-id="<?php echo $book_id; ?>" 
+        <?php echo $book['available_copies'] > 0 ? '' : 'disabled'; ?>>
+    Reserve
+</button>
+
+
 
     <p id="availability-message">
         <?php echo $book['available_copies'] > 0 ? '' : 'Please wait for some more days.'; ?>

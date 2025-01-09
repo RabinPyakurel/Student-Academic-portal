@@ -20,6 +20,7 @@ if (isset($_SESSION['user_id'])) {
         .dropdown .dropdown-menu{
             margin-right: -20%;
         }
+        
     </style>
 </head>
 
@@ -70,7 +71,7 @@ if (isset($_SESSION['user_id'])) {
                 Our mission is to simplify your academic processes and provide features like marks tracking, event
                 notifications, and online exam registration.
             </p>
-            <a href="./about us/aboutus.htm" class="btn-about">About us</a>
+            <a href="./about us/indexaboutus.php" class="btn-about">About us</a>
         </div>
     </section>
 
@@ -97,28 +98,8 @@ if (isset($_SESSION['user_id'])) {
             </div>
         </div>
     </section>
-    <!-- TESTIMONIAL KO SECTION -->
-    <section class="testimonial-section">
-    <h2>What Our Clients Say</h2>
-    <div class="testimonial-container">
-      <div class="testimonial active">
-        <p>"This service is amazing! It has completely changed the way I work."</p>
-        <h4>- John Doe</h4>
-      </div>
-      <div class="testimonial">
-        <p>"Outstanding experience! Highly recommend to anyone looking for quality."</p>
-        <h4>- Jane Smith</h4>
-      </div>
-      <div class="testimonial">
-        <p>"Exceptional support and a fantastic team. I am beyond impressed."</p>
-        <h4>- Michael Brown</h4>
-      </div>
-    </div>
-    <div class="controls">
-      <button id="prev">❮</button>
-      <button id="next">❯</button>
-    </div>
-  </section>
+    
+
 
     <section id="program" class="program-carousel"><br><br>
         <div class="content-container">

@@ -75,9 +75,10 @@ html {
 }
 
 .btn-about {
+  margin-top: 2rem;
   display: inline-block;
   padding: 12px 24px;
-  background-color: #007bff;
+  background-color: var(--btn-color);
   color: #fff;
   font-size: 16px;
   font-weight: bold;
@@ -90,9 +91,10 @@ html {
 }
 
 .btn-about:hover {
-  background-color: #0056b3;
+  background-color:white;
   transform: translateY(-2px);
   box-shadow: var(--secondary-shadow);
+  color: var(--btn-color);
 }
 
 .btn-about:active {
@@ -103,10 +105,15 @@ html {
 
 .features {
   padding: 4rem 1rem;
+  margin-top: -3rem;
   background-color: #fff;
   text-align: center;
 }
-
+.features h2{
+  font-size: 2rem;
+  margin-top: -2rem;
+  margin-bottom: 2rem;
+}
 .card-container {
   display: flex;
   gap: 2rem;
