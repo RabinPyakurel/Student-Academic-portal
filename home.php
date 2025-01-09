@@ -35,8 +35,8 @@ if (!isset($_SESSION['user_id'])) {
             <div class="carousel">
                 <div class="carousel-track">
                     <div class="carousel-item">
-                        <img src="./assets/images/eventsimage/6.jpg" alt="Event 1">
-                        <h3>TREASURE HUNT</h3>
+                        <img src="./assets/images/eventsimage/1.png" alt="Event 1">
+                        <h3>HACKATHON</h3>
                         <p><a href="./events/events.php">Click to view more details about the event.</a></p>
                     </div>
                     <div class="carousel-item">
