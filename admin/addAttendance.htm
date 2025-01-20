@@ -5,47 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Attendance Adding</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-
-        #attendance table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        #attendance th,
-        td {
-            border: 1px solid #ddd;
-            text-align: center;
-            padding: 8px;
-        }
-
-        .present {
-            background-color: #c8e6c9;
-            /* Green */
-        }
-
-        .absent {
-            background-color: #ffcdd2;
-            /* Red */
-        }
-
-        .late {
-            background-color: #fff9c4;
-            /* Yellow */
-        }
-    </style>
+    <link rel="stylesheet" href="./addAttendance.css">
+    
 </head>
 
 <body>
     <form id="mark-attendance" action="add_attendance.php" method="post">
+        <button class="close-button" onclick="window.history.back();">&times;</button>
+        <h2>Mark Attendance</h2>
         <label for="student_id">Student ID:</label>
         <input type="text" id="student_id" name="student_id" required>
 
         <label for="course_id">Course ID:</label>
-        <input type="text" id="course_id" name="course_id" required> <!-- Added course_id input -->
+        <input type="text" id="course_id" name="course_id" required>
 
         <label for="date">Date:</label>
         <input type="date" id="date" name="date" required>
@@ -54,15 +26,14 @@
         <select id="status" name="status">
             <option value="Present">Present</option>
             <option value="Absent">Absent</option>
-            <option value="Late">Late</option> <!-- Added Late option -->
+            <option value="Late">Late</option>
         </select>
 
         <label for="remarks">Remarks:</label>
-        <textarea id="remarks" name="remarks"></textarea> <!-- Added remarks textarea -->
+        <textarea id="remarks" name="remarks"></textarea>
 
         <button type="submit">Mark Attendance</button>
     </form>
-
 </body>
 
 </html>
