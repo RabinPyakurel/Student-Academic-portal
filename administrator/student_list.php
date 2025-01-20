@@ -25,8 +25,15 @@ $result = $connection->query($query);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student List</title>
     <link rel="stylesheet" href="/assets/css/student_list.css">
+    <style>
+        main{
+            color: black;
+        }
+    </style>
 </head>
 <body>
+    <?php include './sidebar.htm' ?>
+    <main>
     <h1>Student List</h1>
     <div class="filter-container">
         <form method="GET" action="">
@@ -80,5 +87,6 @@ $result = $connection->query($query);
             </tbody>
         </table>
     </div>
+    </main>
 </body>
 </html>

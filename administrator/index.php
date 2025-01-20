@@ -18,28 +18,11 @@ $students = $result->fetch(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="dashboard_styles.css">
+    <link rel="stylesheet" href="/administrator/dashboard_styles.css">
+    
 </head>
 <body>
-    <div class="admin-dashboard">
-        <!-- Sidebar -->
-        <aside class="sidebar">
-    <h2>SAPO</h2>
-    <ul>
-        <li><a href="#" class="active">Dashboard</a></li>
-        <li><a href="./pages/addStudents.php">New Student</a></li>
-        <li><a href="./student_list.php">Student List</a></li>
-        <li><a href="./pages/events_manage.php">Manage Events</a></li>
-        <li><a href="#">Courses</a></li>
-        <li><a href="examAdmin.php">Exams</a></li>
-        <li><a href="#">Results</a></li>
-        <li><a href="./contact_responses.php">Contact</a></li>
-        <li><a href="billing.php">Billing & Account</a></li>
-        <li><a href="../pages/settings.php?admin_id=<?= $admin_id ?>">Settings</a></li>
-        <li><a href="../logout.php">Logout</a></li>
-    </ul>
-</aside>
-
+<?php include 'sidebar.htm' ?>
         <!-- Main Content -->
         <main class="main-content">
             <header>

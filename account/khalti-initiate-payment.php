@@ -26,8 +26,8 @@ $curl = curl_init();
 $data = [
     "return_url" => "http://localhost:8000/account/khalti-payment-controller.php", // Local URL for testing
     "website_url" => "http://localhost:8000/account/fee.php",              // Local URL for testing
-    "amount" => $totalFee * 100,
-    "purchase_order_id" => $billing_id,
+    "amount" => $totalFee * 100, //amount must be less than 1000 rupees (but here we nee to send amount in paisa so max amt = 99900)
+    "purchase_order_id" => $billing_id, 
     "purchase_order_name" => "Khalti",
     "customer_info" => [
         "name" => $user['name'],

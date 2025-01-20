@@ -68,6 +68,11 @@ $unpaid_students = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Billing & Account Management</title>
     <link rel="stylesheet" href="billing_styles.css">
+    <style>
+        main{
+            color:black;
+        }
+    </style>
 </head>
 <body>
     <div class="billing-page">

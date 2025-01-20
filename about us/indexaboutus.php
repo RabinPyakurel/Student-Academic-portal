@@ -43,9 +43,9 @@
       </button>
       <ul class="nav-links" id="nav-links">
         <li><a href="../index.php">Home</a></li>
-        <li><a href=".#">About</a></li>
-        <li><a href="#">Features</a></li>
-        <li><a href="#">Programs</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="/index.php#features">Features</a></li>
+        <li><a href="/index.php#programs">Programs</a></li>
         <li>
           <a id="register" class="register-btn">Register</a>
         </li>

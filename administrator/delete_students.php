@@ -1,5 +1,5 @@
 <?php
-include "db_connection.php"; 
+include "../backend/db_connection.php"; 
 
 
 if (isset($_GET['id'])) {
