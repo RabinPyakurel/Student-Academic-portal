@@ -43,13 +43,7 @@ if (isset($_SESSION['user_id'])) {
                 <li>
                     <a id="register" class="register-btn">Register</a>
                 </li>
-                <li class="dropdown">
-                    <a href="#" class="login-dropdown">Login</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="register-btn" id="login-admin" href="./administrator/admin-login.php">Login as Admin</a></li>
-                        <li><a class="register-btn" id="login-user" href="./authentication/sign-in.php">Login as Student</a></li>
-                    </ul>
-                </li>
+                <li><a class="register-btn" id="login-user" href="./authentication/sign-in.php">Login </a></li>
             </ul>
         </div>
     </nav>

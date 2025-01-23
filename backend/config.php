@@ -47,7 +47,7 @@ $tables = [ "CREATE TABLE IF NOT EXISTS department (
                   PRIMARY KEY (admin_id),
                   UNIQUE KEY ad_username_un (username)
             );",
-                "CREATE TABLE IF NOT EXISTS library (
+                "CREATE TABLE IF NOT EXISTS books (
                   book_id int NOT NULL,
                   title varchar(100) NOT NULL,
                   author varchar(100) DEFAULT NULL,
