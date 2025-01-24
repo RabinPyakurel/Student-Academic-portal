@@ -42,7 +42,7 @@ curl_setopt_array($curl, [
     CURLOPT_CUSTOMREQUEST => 'POST',
     CURLOPT_POSTFIELDS => json_encode($data),
     CURLOPT_HTTPHEADER => [
-       'Authorization: key live_secret_key_68791341fdd94846a146f0457ff7b455',
+       'Authorization: Key ' . $_ENV['KHALTI_KEY'],
         'Content-Type: application/json',
     ],
     CURLOPT_SSL_VERIFYHOST => false,
