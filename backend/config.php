@@ -1,6 +1,7 @@
 <?php
+require_once '../secret.php';
 try{
-    $pdo = new PDO("mysql:host=localhost",'root','rabin');
+    $pdo = new PDO("mysql:host=localhost",'root',$pass);
     $pdo->exec("create database IF NOT EXISTS sapo_test");
     $pdo->exec("use sapo_test");
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

@@ -1,9 +1,6 @@
 <?php
 include '../backend/db_connection.php';
-require_once __DIR__ . '/vendor/autoload.php';
-
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-$dotenv->load();
+require_once '../secret.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $billingId = $_POST['billing_id'];
@@ -20,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $cancelUrl = 'http://localhost:8000/account/cancel.php'; // Cancel URL
     
         // Test Merchant Code
-        $merchantCode = $_ENV['ESEWA_MERCHANT_CODE']; 
+        $merchantCode = 'epay_payment'; 
         $paymentUrl = "https://uat.esewa.com.np/epay/main";
         
         // Generate unique pid

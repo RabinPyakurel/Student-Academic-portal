@@ -1,7 +1,6 @@
 <?php
 include '../backend/db_connection.php';
-
-
+require_once '../secret.php';
 session_start();
 
 $user_id = $_SESSION['user_id'];
@@ -42,7 +41,7 @@ curl_setopt_array($curl, [
     CURLOPT_CUSTOMREQUEST => 'POST',
     CURLOPT_POSTFIELDS => json_encode($data),
     CURLOPT_HTTPHEADER => [
-       'Authorization: Key ' . $_ENV['KHALTI_KEY'],
+       'Authorization: Key '.$khalti_api_key,
         'Content-Type: application/json',
     ],
     CURLOPT_SSL_VERIFYHOST => false,
