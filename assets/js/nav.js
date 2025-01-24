@@ -62,12 +62,26 @@ document.addEventListener("DOMContentLoaded", () => {
         if (myProfileItem) myProfileItem.remove();
         if (logoutItem) logoutItem.remove();
     }
-
     // Handle resize event for Profile and Notification Dropdowns
     window.addEventListener('resize', () => {
         initializeDropdowns();
         navLinks.classList.remove('active');
         removeDynamicItems();
         dynamicItemsAdded = false;
+    });
+});
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const currentPath = window.location.pathname; // Get current page path
+    const navLinks = document.querySelectorAll(".nav-links a"); // Select all nav links
+
+    navLinks.forEach(link => {
+        // Match current path with the href of the link
+        if (link.getAttribute("href") === currentPath) {
+            link.classList.add("active-link"); // Add active class
+        } else {
+            link.classList.remove("active-link"); // Remove active class from others
+        }
     });
 });

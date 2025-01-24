@@ -51,15 +51,22 @@ if (!isset($_SESSION['user_id'])) {
             <form id="basic-info-form">
                 <label>Full Name:</label>
                 <input type="text" id="full-name" value="" readonly>
-
+                
                 <label>Primary Email:</label>
                 <input type="email" id="primary-email" value="" readonly>
 
                 <label>Personal Email:</label>
-                <input type="email" id="personal-email" value="" readonly>
+<div class="form-field">
+              
+                <input data-validate="p_email" type="email" id="personal-email" value="" oninput="validateField(this)" readonly>
+                <span class="error-message" ></span>
+                </div>
 
                 <label>Phone Number:</label>
-                <input type="tel" id="phone-number" value="" readonly>
+                <div class="form-field">
+                <input data-validate="p_contact" type="tel" id="phone-number" value="" oninput="validateField(this)" readonly>
+                <span class="error-message" ></span>
+                </div>
 
                 <label>Date of Birth:</label>
                 <input type="date" id="dob" value="" readonly>
@@ -69,16 +76,28 @@ if (!isset($_SESSION['user_id'])) {
         <div id="contact" class="form-section">
             <form>
                 <label>Emergency Contact Name:</label>
-                <input type="text" id="emg-contact-name" placeholder="Emergency Contact Name" value="" readonly>
+                <div class="form-field">
+                <input data-validate="emg_name" type="text" id="emg-contact-name" placeholder="Emergency Contact Name" oninput="validateField(this)" value="" readonly>
+                <span class="error-message" ></span>
+                </div>
 
                 <label>Emergency Contact Relation:</label>
-                <input type="text" id="emg-contact-rel" placeholder="Relation (e.g., Father)" value="" readonly>
+                <div class="form-field">
+                <input data-validate="emg_rel" type="text" id="emg-contact-rel" placeholder="Relation (e.g., Father)" value="" oninput="validateField(this)" readonly>
+                <span class="error-message" ></span>
+                </div>
 
                 <label>Emergency Contact Number:</label>
-                <input type="tel" id="emg-contact-num" placeholder="Emergency Contact Number" value="" readonly>
+                <div class="form-field">
+                <input data-validate="emg_contact" type="tel" id="emg-contact-num" placeholder="Emergency Contact Number" value="" oninput="validateField(this)" readonly>
+                <span class="error-message" ></span>
+                </div>
 
                 <label>Guardian Contact:</label>
-                <input type="tel" id="emg-grd-contact" placeholder="Guardian Contact" value="" readonly>
+                <div class="form-field">
+                <input data-validate="grd_contact" type="tel" id="emg-grd-contact" placeholder="Guardian Contact" value="" oninput="validateField(this)" readonly>
+                <span class="error-message" ></span>
+                </div>
             </form>
         </div>
 

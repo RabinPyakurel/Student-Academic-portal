@@ -1,5 +1,6 @@
 <?php
 include '../backend/db_connection.php';
+require_once '../secret.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $billingId = $_POST['billing_id'];

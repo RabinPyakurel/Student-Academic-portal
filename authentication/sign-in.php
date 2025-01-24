@@ -23,6 +23,9 @@
         </div>
     </div>
     <form class="form" method="post">
+    <div class="logo-container">
+        <img src="../assets/images/final-logo.png" alt="Logo" class="form-logo">
+    </div>
         <span class="close-btn redirect-index">&times;</span>
         <h1 class="text-center">Login Form</h1>
         <div class="input-group">

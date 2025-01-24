@@ -38,7 +38,7 @@
                     item.innerHTML = `
                         <h3>${event.event_name}</h3>
                         <p><strong>Date:</strong> ${event.event_date}</p>
-                        <a href="#">
+                        <a href="${event.event_description}">
                             <p class="event-description">${event.event_description}</p>
                         </a>
                         <p>Join us for the <strong>${event.event_name}</strong> happening on ${event.event_date}  to engage, learn, and enjoy with fellow participants! Don’t miss out on the excitement and opportunities to connect and collaborate.</p>
@@ -46,7 +46,7 @@
 
                     
                     const image = document.createElement('img');
-            image.src = `../assets/images/eventsimage/${event.event_id}.png`; // Image path based on event_id
+            image.src = event.event_image; 
             image.alt = event.event_name;
             image.className = 'event-image';
 

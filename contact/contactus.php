@@ -19,12 +19,6 @@
   </div>
 </section>
 <br><br>
-
-
-
-
-
-  <!-- Modal Contact Form -->
   <div id="contact-modal" style="display:none;" >
     <div class="modal-content">
       <span class="close" onclick="document.getElementById('contact-modal').style.display='none';" >&times;</span>

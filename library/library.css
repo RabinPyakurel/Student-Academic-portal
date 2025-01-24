@@ -1,56 +1,70 @@
 /* General Styles */
-
 .container {
-  width: 90%;
+  width: 100%;
   max-width: 1200px;
   margin: auto;
+  padding: 0 15px;
 }
+
 .container h2 {
-  font-family: "Alegreya SC";
+  font-family: "Poppins", sans-serif;
+  font-size: 1.8rem;
   margin-top: 15px;
-
+  text-align: center;
+  color: #333;
 }
 
+/* Navbar */
 .navbar {
-  font-family: "Alegreya SC";
-  
+  font-family: "Poppins", sans-serif;
+  background-color: #f8f9fa;
+  padding: 10px 20px;
 }
+
 .nav-links li a {
   text-decoration: none;
+  color: #333;
 }
 
 .action-button {
-  font-size: 10px;
-  padding: 6px 15px;
+  font-size: 12px;
+  padding: 8px 18px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  transition: all 0.3s ease;
-  background: linear-gradient(45deg, #557bcd, hsl(203, 72%, 47%));
+  transition: background 0.3s ease, border-color 0.3s ease;
+  background: linear-gradient(45deg, #557bcd, #4a90e2);
   color: white;
-  border: 2px solid transparent;
   text-transform: uppercase;
 }
-.action-button hover {
+
+.action-button:hover {
   background: linear-gradient(45deg, #4cadce, #5778bf);
 }
-/* Hero Section */
+
 .hero {
-  background: url("../assets/images/im.webp") no-repeat center/cover;
+  background: url("../assets/images/Student Academic Portal (6).png") no-repeat
+    center/cover;
+  background-clip: border-box;
+
   padding: 50px 0;
   text-align: center;
 }
 
 .hero h1 {
-  font-size: 48px;
-  margin-top: 50px;
+  font-size: 3rem;
+  margin-top: 3.2rem;
+  margin-left: -40rem;
 }
 
 .hero p {
   font-size: 18px;
   margin-bottom: 20px;
+  margin-left: -40.5rem;
 }
-
+.hero-content h1 {
+  color: #000000;
+}
 .search-bar {
   display: flex;
   justify-content: center;
@@ -79,69 +93,163 @@
   cursor: pointer;
 }
 
+
+
 /* Featured Section */
+.featured {
+  margin: 20px 0;
+}
+
 .featured .book-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.featured .book-card {
+  background-color: white;
+  text-align: center;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.featured .book-card:hover {
+  transform: translateY(-5px);
+}
+
+.featured .book-card img {
+  max-width: 100%;
+  width: 150px;
+  height: 200px;
+  object-fit: cover;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+/* Categories Section */
+.categories {
+  margin: 20px 0;
+}
+
+.categories .category-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 20px;
   
 }
-
-.featured .book-card {
-  background-color: #f3fefe;
-  text-align: center;
+#category-books{
+  width: 100%;
+  max-height: 100vh; /* Limits the height to the screen's height */
+  overflow-y: auto;  /* Allows scrolling if content overflows */
   padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.featured .book-card img {
-  max-width: 100%;
-  height: auto;
-  margin-bottom: 10px;
-}
-
-/* Categories */
-.categories .category-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 20px;
+  border: 1px solid #ccc;
 }
 
 .categories .category-card {
-  padding: 10px;
+  padding: 15px;
   background-color: #095c78;
   color: #fff;
   text-align: center;
   border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .categories .category-card:hover {
   background-color: #6db3c0;
-  color: white;
+  transform: scale(1.05);
 }
 
-/* Footer */
-.footer {
-  background-color: #333;
-  color: #fff;
-  padding: 20px 0;
+/* General Book Grid */
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+.category-books{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+   
+  overflow: hidden;
+}
+.book-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
   text-align: center;
+  background: #fff;
 }
 
-.footer .social-links a {
-  color: #f7c04a;
-  margin: 0 10px;
-  text-decoration: none;
+.book-card:hover {
+  transform: scale(1.05);
+}
+.book-card img {
+  max-width: 100%;
+  width: 150px;
+  height: 200px;
+  object-fit: cover;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+.check-availability-btn {
+  height: 40px; /* Set a fixed height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #007bff; /* Customize button color */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-.footer .social-links a:hover {
-  color: #fff;
+.check-availability-btn:hover {
+  background-color: #0056b3; /* Optional hover effect */
 }
 
 /* Responsive Design */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 1.7rem;
+  }
+
+  .hero p {
+    font-size: 0.9rem;
+  }
+
+  .search-bar input {
+    width: 90%;
+  }
+}
 @media (max-width: 768px) {
   .nav-links {
     display: none;
@@ -157,3 +265,49 @@
     display: flex;
   }
 }
+@media (max-width: 1360px) {
+  .hero h1 {
+    font-size: 2.5rem;
+    margin-left: -30rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+    margin-left: -29rem;
+  }
+}
+@media (max-width: 963px) {
+  .hero {
+    background-image: none;
+  }
+  .hero h1 {
+    font-size: 3rem;
+    margin-top: 1rem;
+    margin-left: 0;
+  }
+
+  .hero p {
+    font-size: 1rem;
+    margin-left: 0;
+  }
+}
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 1.7rem;
+    margin-top: -12px;
+    margin-left: 0;
+  }
+
+  .hero p {
+    font-size: 0.7rem;
+    margin-bottom: 2rem;
+    margin-left: 0;
+  }
+  .search-bar input {
+    padding: 10px;
+    width: 17rem;
+  }
+}
+
+
+

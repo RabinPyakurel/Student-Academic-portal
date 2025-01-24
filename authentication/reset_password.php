@@ -41,7 +41,7 @@ if (isset($_GET['token'])) {
         $stmt = $pdo->prepare("DELETE FROM password_reset_requests WHERE token = ?");
         $stmt->execute([$token]);
 
-        echo "alert('Password reset successful.')";
+        echo "<script>alert('Password reset successful.')</script>";
         header("location:sign-in.php");
         exit;
     }

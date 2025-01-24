@@ -20,6 +20,7 @@ if (isset($_SESSION['user_id'])) {
         .dropdown .dropdown-menu{
             margin-right: -20%;
         }
+        
     </style>
 </head>
 
@@ -27,7 +28,7 @@ if (isset($_SESSION['user_id'])) {
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">
-                    <img src="./assets/images/Student.png" alt="Student Academic Portal">
+                    <img src="./assets/images/final-logo.png" alt="Student Academic Portal">
             </div>
             <button class="hamburger" id="hamburger">
                 <span></span>
@@ -42,13 +43,7 @@ if (isset($_SESSION['user_id'])) {
                 <li>
                     <a id="register" class="register-btn">Register</a>
                 </li>
-                <li class="dropdown">
-                    <a href="#" class="login-dropdown">Login</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="register-btn" id="login-admin" href="./authentication/">Login as Admin</a></li>
-                        <li><a class="register-btn" id="login-user" href="./authentication/sign-in.php">Login as Student</a></li>
-                    </ul>
-                </li>
+                <li><a class="register-btn" id="login-user" href="./authentication/sign-in.php">Login </a></li>
             </ul>
         </div>
     </nav>
@@ -70,7 +65,7 @@ if (isset($_SESSION['user_id'])) {
                 Our mission is to simplify your academic processes and provide features like marks tracking, event
                 notifications, and online exam registration.
             </p>
-            <a href="./about us/aboutus.htm" class="btn-about">About us</a>
+            <a href="./about us/indexaboutus.php" class="btn-about">About us</a>
         </div>
     </section>
 
@@ -97,28 +92,8 @@ if (isset($_SESSION['user_id'])) {
             </div>
         </div>
     </section>
-    <!-- TESTIMONIAL KO SECTION -->
-    <section class="testimonial-section">
-    <h2>What Our Clients Say</h2>
-    <div class="testimonial-container">
-      <div class="testimonial active">
-        <p>"This service is amazing! It has completely changed the way I work."</p>
-        <h4>- John Doe</h4>
-      </div>
-      <div class="testimonial">
-        <p>"Outstanding experience! Highly recommend to anyone looking for quality."</p>
-        <h4>- Jane Smith</h4>
-      </div>
-      <div class="testimonial">
-        <p>"Exceptional support and a fantastic team. I am beyond impressed."</p>
-        <h4>- Michael Brown</h4>
-      </div>
-    </div>
-    <div class="controls">
-      <button id="prev">❮</button>
-      <button id="next">❯</button>
-    </div>
-  </section>
+    
+
 
     <section id="program" class="program-carousel"><br><br>
         <div class="content-container">

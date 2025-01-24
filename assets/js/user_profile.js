@@ -1,5 +1,12 @@
 let isEditing = false;
-const editableFields = ['personal-email', 'phone-number', 'emg-contact-name', 'emg-contact-rel', 'emg-contact-num', 'emg-grd-contact', 'id-number', 'university-reg'];
+const editableFields = [
+    'personal-email',
+    'phone-number',
+    'emg-contact-name',
+    'emg-contact-rel',
+    'emg-contact-num',
+    'emg-grd-contact'
+];
 const originalValues = {};
 
 function showTab(tabId) {
@@ -13,33 +20,6 @@ function showTab(tabId) {
     event.target.classList.add('active');
 }
 
-function toggleEditMode() {
-    isEditing = !isEditing;
-
-    document.getElementById('edit-btn').style.display = isEditing ? 'none' : 'block';
-    document.getElementById('save-btn').style.display = isEditing ? 'inline' : 'none';
-    document.getElementById('cancel-btn').style.display = isEditing ? 'inline' : 'none';
-
-    editableFields.forEach(field => {
-        const input = document.getElementById(field);
-        if (isEditing) {
-            originalValues[field] = input.value; // Save original value
-            input.readOnly = false;
-        } else {
-            input.readOnly = true;
-        }
-    });
-}
-
-
-function cancelChanges() {
-    editableFields.forEach(field => {
-        document.getElementById(field).value = originalValues[field];
-    });
-    toggleEditMode();
-}
-
-//handle uploaded photo and store to database
 document.getElementById('photoUpload').addEventListener('change', function () {
     const file = this.files[0];
     if (file) {
@@ -47,13 +27,11 @@ document.getElementById('photoUpload').addEventListener('change', function () {
 
         reader.onload = function (event) {
             document.getElementById('userImage').setAttribute('src', event.target.result);
-        }
+        };
 
         reader.readAsDataURL(file);
-
         const formData = new FormData();
-        formData.append('photo', file)
-
+        formData.append('photo', file);
         $.ajax({
             url: 'photo_upload.php',
             type: 'POST',
@@ -67,11 +45,96 @@ document.getElementById('photoUpload').addEventListener('change', function () {
                     alert(response.message);
                 }
             }
-        })
+        });
     }
 });
 
-//update changes and reflect
+function toggleEditMode() {
+    isEditing = !isEditing;
+
+    document.getElementById('edit-btn').style.display = isEditing ? 'none' : 'block';
+    document.getElementById('save-btn').style.display = isEditing ? 'inline' : 'none';
+    document.getElementById('cancel-btn').style.display = isEditing ? 'inline' : 'none';
+
+    editableFields.forEach(field => {
+        const input = document.getElementById(field);
+        if (isEditing) {
+            originalValues[field] = input.value;
+            input.readOnly = false;
+        } else {
+            input.readOnly = true;
+        }
+    });
+
+    validateAllFields();
+}
+
+
+function cancelChanges() {
+    editableFields.forEach(field => {
+        const inputElement = document.getElementById(field);
+        inputElement.value = originalValues[field];
+
+        inputElement.classList.remove('valid', 'invalid');
+
+        const errorMessageElement = inputElement.nextElementSibling;
+        if (errorMessageElement && errorMessageElement.classList.contains('error-message')) {
+            errorMessageElement.remove();
+        }
+    });
+
+    toggleEditMode();
+}
+
+function validateAllFields() {
+    let allValid = true;
+
+    editableFields.forEach(field => {
+        const input = document.getElementById(field);
+
+        if (input.classList.contains('invalid') || !input.value.trim()) {
+            allValid = false;
+        }
+    });
+
+    document.getElementById('save-btn').disabled = !allValid;
+}
+
+
+function validateField(input) {
+    const fieldName = input.getAttribute('data-validate');
+    const fieldValue = input.value;
+
+    if (!fieldValue) {
+        $(input).removeClass('valid invalid');
+        $(input).next('.error-message').remove();
+        validateAllFields();
+        return;
+    }
+
+    $.ajax({
+        url: 'user_data_validation.php',
+        method: 'POST',
+        data: { fieldName, fieldValue },
+        dataType: 'json',
+        success: function (response) {
+            $(input).next('.error-message').remove();
+
+            if (response.valid) {
+                $(input).removeClass('invalid').addClass('valid');
+            } else {
+                $(input).removeClass('valid').addClass('invalid');
+                $('<span class="error-message">' + response.message + '</span>').insertAfter(input);
+            }
+
+            validateAllFields();
+        },
+        error: function () {
+            console.error('Validation error occurred.');
+        }
+    });
+}
+
 function saveChanges() {
     const updatedData = new FormData();
     updatedData.append('personalEmail', $('#personal-email').val());
@@ -107,7 +170,6 @@ function saveChanges() {
 $(document).ready(function () {
     $('.skeleton-container').show();
     $('main').hide();
-    // ✅ Fetch User Data on Page Load
     function fetchUserProfile() {
         $.ajax({
             url: 'fetchData.php',
@@ -153,5 +215,5 @@ $(document).ready(function () {
         });
     }
 
-    fetchUserProfile(); // Call on page load
+    fetchUserProfile();
 });
