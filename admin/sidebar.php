@@ -1,7 +1,7 @@
 <div class="sidebar">
     <h2>Admin Dashboard</h2>
     <a href="#">Home</a>
-    <a href="#">Exams</a>
+    <a href="../administrator/addExam.php">Exams</a>
     <a href="#">Results</a>
     <a href="#">Fees</a>
     <a href="#">Attendance</a>

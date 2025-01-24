@@ -99,9 +99,7 @@ $conn->close();
   </section>
   
   
-  <!-- <h2>Books We Love</h2>
-  <div id="book-container" class="book-container"></div>
- -->
+
 
   
   <?php include "../layout/footer.htm"; ?>
