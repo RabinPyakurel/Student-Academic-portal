@@ -30,7 +30,7 @@ if ($book_id <= 0) {
     exit();
 }
 // Fetch book details
-$sql = "SELECT title,book_id, author, available_copies FROM library WHERE book_id = ?";
+$sql = "SELECT title,book_id, author, available_copies FROM books WHERE book_id = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $book_id);
 $stmt->execute();
@@ -54,7 +54,7 @@ if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQU
         if ($book['available_copies'] > 0) {
             
             $conn = new mysqli($servername, $username, $password, $database);
-            $update_sql = "UPDATE library SET available_copies = available_copies - 1 WHERE book_id = ?";
+            $update_sql = "UPDATE books SET available_copies = available_copies - 1 WHERE book_id = ?";
             $update_stmt = $conn->prepare($update_sql);
             $update_stmt->bind_param("i", $book_id);
             if ($update_stmt->execute()) {

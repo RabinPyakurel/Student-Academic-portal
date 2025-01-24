@@ -20,6 +20,34 @@ function showTab(tabId) {
     event.target.classList.add('active');
 }
 
+document.getElementById('photoUpload').addEventListener('change', function () {
+    const file = this.files[0];
+    if (file) {
+        const reader = new FileReader();
+
+        reader.onload = function (event) {
+            document.getElementById('userImage').setAttribute('src', event.target.result);
+        };
+
+        reader.readAsDataURL(file);
+        const formData = new FormData();
+        formData.append('photo', file);
+        $.ajax({
+            url: 'photo_upload.php',
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (response) {
+                if (response.success) {
+                    alert(response.message);
+                } else {
+                    alert(response.message);
+                }
+            }
+        });
+    }
+});
 
 function toggleEditMode() {
     isEditing = !isEditing;
@@ -40,6 +68,7 @@ function toggleEditMode() {
 
     validateAllFields();
 }
+
 
 function cancelChanges() {
     editableFields.forEach(field => {

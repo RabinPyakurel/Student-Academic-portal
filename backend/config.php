@@ -1,6 +1,7 @@
 <?php
+require_once '../secret.php';
 try{
-    $pdo = new PDO("mysql:host=localhost",'root','rabin');
+    $pdo = new PDO("mysql:host=localhost",'root',$pass);
     $pdo->exec("create database IF NOT EXISTS sapo_test");
     $pdo->exec("use sapo_test");
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -47,7 +48,7 @@ $tables = [ "CREATE TABLE IF NOT EXISTS department (
                   PRIMARY KEY (admin_id),
                   UNIQUE KEY ad_username_un (username)
             );",
-                "CREATE TABLE IF NOT EXISTS library (
+                "CREATE TABLE IF NOT EXISTS books (
                   book_id int NOT NULL,
                   title varchar(100) NOT NULL,
                   author varchar(100) DEFAULT NULL,

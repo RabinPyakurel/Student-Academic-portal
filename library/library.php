@@ -20,7 +20,7 @@ if ($conn->connect_error) {
 }
 
 // Query for Featured Books
-$sql = "SELECT book_id, title, author, category, book_image FROM library ORDER BY book_id DESC LIMIT 4";
+$sql = "SELECT book_id, title, author, category, book_image FROM books ORDER BY book_id DESC LIMIT 4";
 
 $result = $conn->query($sql);
 
