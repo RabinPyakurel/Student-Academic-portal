@@ -1,4 +1,4 @@
-<!-- <?php include("./header.php"); ?> -->
+<!-- <?php //include("./header.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="dashboard-container">
-        <?php include("./sidebar.php"); ?>
+        <?php //include("./sidebar.php"); ?>
 
         <main class="main-content">
             <h1>Welcome to the Admin Dashboard</h1>
@@ -42,4 +42,4 @@
     </div>
     <script src="./admin_script.js"></script>
 </body>
-</html>
+</html> -->

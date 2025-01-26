@@ -165,7 +165,7 @@ main p {
     border-radius: 1em;
     margin-bottom: 20px;
     padding: min(4em, 20%);
-
+padding-top: 4rem;
     h2,
     p {
         margin-top: 1em
@@ -185,6 +185,10 @@ main p {
         border: none;
         padding: 0;
     }
+label{
+    margin-left:1rem;
+}
+
 
     #sidebar {
         height: 60px;

@@ -58,7 +58,7 @@ $students = $result->fetch(PDO::FETCH_ASSOC);
                     <div class="module">
                         <h3>Event Management</h3>
                         <p>Organize and oversee upcoming events.</p>
-                        <a href="./pages/events_manage.php" class="btn">Manage Events</a>
+                        <a href="./add_events.php" class="btn">Manage Events</a>
                     </div>
                 </div>
             </section>
