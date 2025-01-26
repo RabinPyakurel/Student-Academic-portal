@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const notificationMenu = document.getElementById('notification-menu');
 
     // Add Jiggle Effect if there are notifications
-    if (notificationBadge && parseInt(notificationBadge.textContent) > 0) {
+    if (notificationBadge && parseInt(notificationBadge.textContent.trim()) > 0) {
         notificationIcon.classList.add('jiggle');
 
         // Stop jiggle after 5 seconds
