@@ -125,29 +125,32 @@ $tables = [ "CREATE TABLE IF NOT EXISTS department (
                   KEY evt_cb_fk (created_by),
                   CONSTRAINT evt_cb_fk FOREIGN KEY (created_by) REFERENCES admin (admin_id)
                 );",
+                "CREATE TABLE IF NOT EXISTS exam_type(
+	                id int primary key auto_increment,
+                  name varchar(100));",
                 "CREATE TABLE IF NOT EXISTS exam (
                   exam_id int NOT NULL,
                   semester varchar(20) DEFAULT NULL,
                   program_id int DEFAULT NULL,
-                  exam_name varchar(100) NOT NULL,
+                  exam_type int,
                   exam_date date DEFAULT NULL,
                   course_id varchar(20) DEFAULT NULL,
+                  status ENUM('Upcoming','Completed') default 'Upcoming',
                   PRIMARY KEY (exam_id),
+                  KEY ex_ext_fk (exam_type),
                   KEY ex_pid_fk (program_id),
                   KEY ex_cid_fk (course_id),
+                  CONSTRAINT ex_ext_fk FOREIGN KEY (exam_type) REFERENCES exam_type (id),
                   CONSTRAINT ex_pid_fk FOREIGN KEY (program_id) REFERENCES program (program_id),
                   CONSTRAINT ex_cid_fk FOREIGN KEY (course_id) REFERENCES course (course_id)
                 );",
                 "CREATE TABLE IF NOT EXISTS examform (
                   form_id int NOT NULL,
                   std_id int DEFAULT NULL,
-                  exam_id int DEFAULT NULL,
                   submission_date timestamp NULL DEFAULT CURRENT_TIMESTAMP,
                   status enum('Pending','Approved','Rejected') DEFAULT 'Pending',
                   PRIMARY KEY (form_id),
                   KEY ef_sid_fk (std_id),
-                  KEY ef_eid_fk (exam_id),
-                  CONSTRAINT ef_eid_fk FOREIGN KEY (exam_id) REFERENCES exam (exam_id),
                   CONSTRAINT ef_sid_fk FOREIGN KEY (std_id) REFERENCES student (std_id)
                 );",
                 "CREATE TABLE IF NOT EXISTS identification (
