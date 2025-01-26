@@ -1,6 +1,7 @@
 h1 {
-  text-align: center;
+  text-align: left;
   margin: 20px 0;
+  margin-left: 2vw;
   color: #fffdfd;
   font-size: 2rem;
   transition: font-size 0.3s ease;
@@ -28,7 +29,7 @@ table {
 
 table th,
 table td {
-  border: 1px solid #ddd;
+  border: 1px solid #3d3a3a;
   padding: 12px;
   text-align: center;
   transition: padding 0.3s ease;
@@ -53,6 +54,7 @@ table tr:hover {
   justify-content: center;
   margin: 20px;
   flex-wrap: wrap;
+  gap: 10px;
   /* Ensure proper layout on smaller screens */
 }
 
@@ -109,7 +111,12 @@ a.edit-link:hover {
 
   h1 {
     font-size: 1.5rem;
+   
   }
+}
+.filter-container {
+  flex-direction: column;
+  align-items: center;
 }
 
 @media screen and (max-width: 480px) {
@@ -144,8 +151,22 @@ a.edit-link:hover {
     font-weight: bold;
     color: #333;
   }
-}
+  .filter-container input[type="text"],
+  .filter-container button {
+    width: 100%;
+    margin: 5px 0;
+  }
 
+  h1 {
+    font-size: 1.2rem;
+  }
+
+  .table-container img {
+    width: 100%; /* Ensure images scale appropriately */
+    max-width: 100%;
+    height: auto;
+  }
+}
 
 /* Extra small screens (very small devices) */
 @media screen and (max-width: 320px) {
@@ -186,5 +207,9 @@ a.edit-link:hover {
   .filter-container button {
     width: 100%;
     margin: 5px 0;
+  }
+  .table-container img {
+    width: 100%;
+    height: auto;
   }
 }

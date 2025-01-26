@@ -5,95 +5,48 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Add Books</title>
-</head>
-<style>
- 
-/* General Form Styling */
-form {
-    width: 60%;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-/* Form Labels */
-label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-    color: #333;
-}
-
-/* Input Fields */
-input[type="text"],
-input[type="number"],
-input[type="file"],
-select {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    font-size: 14px;
-}
-
-/* Input Focus */
-input[type="text"]:focus,
-input[type="number"]:focus,
-input[type="file"]:focus,
-select:focus {
-    border-color: #007bff;
-    outline: none;
-}
-
-/* Submit Button */
-input[type="submit"] {
-    background-color: #007bff;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s;
-}
-
-/* Submit Button Hover */
-input[type="submit"]:hover {
-    background-color: #0056b3;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    form {
-        width: 90%;
-    }
-}
-
+  <link rel="stylesheet" href="../assets/css/addbooks.css">                 
+  <style>
+  .error-message {
+    color: red;
+    font-size: 12px;
+    display: none; /* Hidden by default */
+  }
 </style>
+  
+</head>
+
 <body>
-  <form method="POST" enctype="multipart/form-data" action="addbooks.php">
+    <?php
+    include "./sidebar.htm";
+    ?>
+   <div class="addbooks">
+  <form method="POST" enctype="multipart/form-data" action="addbooks.php" id="addBookForm">
     <h2> Add Books</h2>
+
     <label for="title">Title:</label>
-    <input type="text" name="title" id="title" required><br><br>
+    <input type="text" name="title" id="title" required>
+    <span id="titleError" class="error-message"></span><br><br>
 
     <label for="author">Author:</label>
-    <input type="text" name="author" id="author" required><br><br>
+    <input type="text" name="author" id="author" required>
+    <span id="authorError" class="error-message"></span><br><br>
 
     <label for="publisher">Publisher:</label>
-    <input type="text" name="publisher" id="publisher" required><br><br>
+    <input type="text" name="publisher" id="publisher" required>
+    <span id="publisherError" class="error-message"></span><br><br>
 
     <label for="year_published">Year Published:</label>
-    <input type="number" name="year_published" id="year_published" required><br><br>
+    <input type="number" name="year_published" id="year_published" required>
+    <span id="yearError" class="error-message"></span><br><br>
 
     <label for="available_copies">Available Copies:</label>
-    <input type="number" name="available_copies" id="available_copies" required><br><br>
+    <input type="number" name="available_copies" id="available_copies" required>
+    <span id="availableCopiesError" class="error-message"></span><br><br>
 
     <label for="total_copies">Total Copies:</label>
-    <input type="number" name="total_copies" id="total_copies" required><br><br>
+    <input type="number" name="total_copies" id="total_copies" required>
+    <span id="totalCopiesError" class="error-message"></span><br><br>
 
     <label for="category">Category:</label>
     <select name="category" id="category" required>
@@ -106,11 +59,98 @@ input[type="submit"]:hover {
     </select><br><br>
 
     <label for="image">Upload Image:</label>
-    <input type="file" name="image" id="image" required><br><br>
+    <input type="file" name="image" id="image" required>
+    <span id="imageError" class="error-message"></span><br><br>
 
     <input type="submit" value="Submit">
-</form>
+  </form>
+</div>
+<Script>
 
+    document.getElementById('addBookForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent form submission to perform validation first
+        
+        // Reset error messages
+        let isValid = true;
+        document.querySelectorAll('.error-message').forEach(error => {
+            error.style.display = 'none';
+    });
+    
+    // Title validation (non-empty, alphanumeric)
+    const title = document.getElementById('title');
+    const titlePattern = /^[a-zA-Z0-9:\s]+$/;
+    if (!titlePattern.test(title.value)) {
+        document.getElementById('titleError').textContent = 'Invalid title. Only alphanumeric characters allowed.';
+        document.getElementById('titleError').style.display = 'block';
+        isValid = false;
+    }
+    
+    // Author validation (non-empty, alphabetic)
+    const author = document.getElementById('author');
+    const authorPattern = /^([a-zA-Z\s]+,?\s*)+$/;
+    if (!authorPattern.test(author.value)) {
+        document.getElementById('authorError').textContent = 'Invalid author name. Only letters and spaces allowed.';
+        document.getElementById('authorError').style.display = 'block';
+        isValid = false;
+    }
+    
+    // Publisher validation (non-empty, alphanumeric)
+    const publisher = document.getElementById('publisher');
+    const publisherPattern = /^[a-zA-Z0-9\s]+$/;
+    if (!publisherPattern.test(publisher.value)) {
+        document.getElementById('publisherError').textContent = 'Invalid publisher name. Only alphanumeric characters allowed.';
+        document.getElementById('publisherError').style.display = 'block';
+        isValid = false;
+    }
+    
+    // Year Published validation (4 digits)
+    const yearPublished = document.getElementById('year_published');
+    const yearPattern = /^(19|20)\d{2}$/; // Years from 1900 to 2099
+    if (!yearPattern.test(yearPublished.value)) {
+        document.getElementById('yearError').textContent = 'Invalid year. Enter a valid 4-digit year.';
+        document.getElementById('yearError').style.display = 'block';
+        isValid = false;
+    }
+    
+    // Available Copies validation (positive number)
+    const availableCopies = document.getElementById('available_copies');
+    if (availableCopies.value <= 0) {
+        document.getElementById('availableCopiesError').textContent = 'Available copies must be a positive number.';
+        document.getElementById('availableCopiesError').style.display = 'block';
+        isValid = false;
+    }
+    
+    // Total Copies validation (positive number)
+    const totalCopies = document.getElementById('total_copies');
+    if (totalCopies.value <= 0) {
+        document.getElementById('totalCopiesError').textContent = 'Total copies must be a positive number.';
+        document.getElementById('totalCopiesError').style.display = 'block';
+        isValid = false;
+    }
+     // Available Copies should not be greater than Total Copies
+     if (parseInt(availableCopies.value) > parseInt(totalCopies.value)) {
+        document.getElementById('availableCopiesError').textContent = 'Available copies cannot be greater than total copies.';
+        document.getElementById('availableCopiesError').style.display = 'block';
+        isValid = false;
+    }
+
+    
+    // Image file validation (only image files)
+    const image = document.getElementById('image');
+    const imagePattern = /\.(jpg|jpeg|png|gif)$/i; // Only image formats
+    if (!imagePattern.test(image.value)) {
+        document.getElementById('imageError').textContent = 'Please upload a valid image file (jpg, jpeg, png, gif).';
+        document.getElementById('imageError').style.display = 'block';
+        isValid = false;
+    }
+    
+    // If everything is valid, submit the form
+    if (isValid) {
+        this.submit();
+    }
+});
+
+</Script>
 
 </body>
 </html>
@@ -152,12 +192,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             echo "Image uploaded successfully!<br>";
 
             
-            $result = $conn->query("SELECT MAX(book_id) AS max_id FROM library");
+            $result = $conn->query("SELECT MAX(book_id) AS max_id FROM books");
             $row = $result->fetch_assoc();
             $book_id = $row['max_id'] + 1; 
 
             // Prepare SQL query to insert book data along with the image URL and manually set book_id
-            $stmt = $conn->prepare("INSERT INTO library (book_id, title, author, publisher, year_published, available_copies, total_copies, book_image, category) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            $stmt = $conn->prepare("INSERT INTO books (book_id, title, author, publisher, year_published, available_copies, total_copies, book_image, category) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
             $stmt->bind_param("isssiisss", $book_id, $title, $author, $publisher, $year_published, $available_copies, $total_copies, $publicPath, $category);
 
             // Execute the statement

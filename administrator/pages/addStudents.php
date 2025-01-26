@@ -57,11 +57,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_student'])) {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding-top : 0px;
 }
 
 h1 {
     text-align: center;
     color: #333;
+    padding-top:0px;
 }
 
 .form-group {

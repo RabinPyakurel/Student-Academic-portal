@@ -71,8 +71,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;600;800&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Roboto', sans-serif;
-            background-color:rgb(235, 241, 243);
+            font-family: "poppins";
+            background-color:#1e1e2c;
             margin: 0;
             padding: 0;
             color: #333;
@@ -87,36 +87,48 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
          
         }
-        .form-logo {
-    width: auto;
-    height: 20vh;
-    display: inline-block;
-    border-radius: 8px;
-   margin-bottom:0;
-
-}
-img{
-    margin-left: 20rem;
+        .header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    text-align: center;
 }
 
-        h1 {
-            font-size: 2rem;
-            color: #333;
-            text-align: center;
-            margin-bottom: 10px;
-            margin-top:0;
-        }
+.form-logo {
+   
+    margin-right: 10px; /* Adjust if needed */
+    width: 8rem; /* Adjust size */
+}
+
+.form-logo img {
+    width: 100%;
+    max-width: 60px;
+    height: auto;
+}
+
+h1 {
+    text-align: center;
+    flex-grow: 1;
+    padding-right:5rem;
+    font-size: 2rem;
+            color: #1e1e2c;
+}
 
         .form-group {
             margin-bottom: 15px;
+            
         }
 
         label {
             display: block;
-            font-weight: 500;
+            font-weight: bold;
             margin-bottom: 5px;
-            color: #555;
+            color: #1e1e2c;
         }
+       
 
         input[type="text"],
         input[type="date"],
@@ -128,14 +140,15 @@ img{
             border: 1px solid #ddd;
             border-radius: 5px;
             transition: all 0.3s ease;
+            
         }
 
         input[type="text"]:focus,
         input[type="date"]:focus,
         textarea:focus {
-            border-color: #4CAF50;
+            border-color: #1e1e2c;
             outline: none;
-            box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+            
         }
 
         .btn {
@@ -151,7 +164,7 @@ img{
         }
 
         .btn-submit {
-            background-color: #4CAF50;
+            background-color: #01B6A0;
             color: white;
         }
 
@@ -160,38 +173,78 @@ img{
         }
 
         .btn-cancel {
-            background-color: #f44336;
+            background-color:rgb(224, 60, 57);
             color: white;
             margin-left: 10px;
         }
 
         .btn-cancel:hover {
-            background-color: #e53935;
+            background-color:rgb(255, 6, 1);
         }
 
         .form-actions {
             text-align: center;
             margin-top: 20px;
         }
-        @media (max-width: 600px) {
         
-        .form-logo {
-        width: 60px;
-        display :none;
+        .form-logo img {
+    width: 100%;
+    max-width: 80px; /* Adjust this as needed */
+    height: auto;
+}
+
+@media (max-width: 600px) {
+    .form-logo img {
+        max-width: 60px;
+    }
+    h1{
+        padding-right: 1rem;
+    }
+    label{
+        margin-left:1rem;
+    }
+    input[type="text"],
+        input[type="date"],
+        textarea,
+        input[type="file"] {
+            width: 80%;
+            margin-left: 1.2rem;
+            
+            
+        }
+}
+
+
+@media (max-width: 400px) {
+    .form-logo img {
+        max-width: 100px;
+    }
+    .header{
+        flex-direction: column;
+    }
+    .form-logo {
+        margin-bottom: 0px;
+    }
+
+    h1 {
+        margin-top: -2rem;
+        text-align: center;
+        padding-right:0rem;
     }
 }
-        @media (max-width: 360px) {
-        
-        .form-logo {
-        width: 50px;
-    }
-}
+
     </style>
 </head>
 <body>
+<?php include './sidebar.htm' ?>
     <div class="container">
-        <img src="../assets/images/final-logo.png" alt="logo" class="form-logo">
-        <h1>Add New Event</h1>
+        <div class="header">
+            <div class="form-logo">
+
+                <img src="../assets/images/final-logo.png" alt="logo">
+            </div>
+            <h1>Add New Event</h1>
+        </div>
         <form action="" method="POST" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="event_name">Event Name</label>
@@ -204,8 +257,8 @@ img{
             </div>
 
             <div class="form-group">
-                <label for="event_description">Event Description</label>
-                <textarea id="event_description" name="event_description" rows="4" required></textarea>
+                <label for="event_description">Event Form Link</label>
+                <textarea id="event_description" name="event_description" rows="2" required></textarea>
             </div>
 
             <div class="form-group">
@@ -219,5 +272,56 @@ img{
             </div>
         </form>
     </div>
+
+    
+    <script>
+document.querySelector('form').addEventListener('submit', function(e) {
+    // Event name validation
+    var eventName = document.getElementById('event_name').value.trim();
+    if (eventName === "") {
+        alert("Event Name cannot be empty.");
+        e.preventDefault();
+        return;
+    }
+
+    // Event date validation
+    var eventDate = document.getElementById('event_date').value;
+    if (eventDate === "") {
+        alert("Event Date cannot be empty.");
+        e.preventDefault();
+        return;
+    }
+
+    // Event description validation (should be a valid URL)
+    var eventDescription = document.getElementById('event_description').value.trim();
+    var urlRegex = /^(https?:\/\/[^\s$.?#].[^\s]*)$/;
+    if (eventDescription === "") {
+        alert("Event Description (Link) cannot be empty.");
+        e.preventDefault();
+        return;
+    } else if (!urlRegex.test(eventDescription)) {
+        alert("Please enter a valid URL for the Event Link.");
+        e.preventDefault();
+        return;
+    }
+
+    // Event image validation (optional, but if present, it should be an image)
+    var eventImage = document.getElementById('event_image').files[0];
+    if (eventImage) {
+        var validImageTypes = ['image/jpeg', 'image/png', 'image/gif'];
+        if (!validImageTypes.includes(eventImage.type)) {
+            alert("Please upload a valid image file (JPEG, PNG, or GIF).");
+            e.preventDefault();
+            return;
+        }
+        if (eventImage.size > 5 * 1024 * 1024) { // 5MB limit
+            alert("File size exceeds 5MB. Please upload a smaller image.");
+            e.preventDefault();
+            return;
+        }
+    }
+});
+</script>
+
 </body>
 </html>

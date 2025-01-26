@@ -42,6 +42,11 @@ $result = $connection->query($query);
                 <option value="1st" <?= $filter === '1st' ? 'selected' : '' ?>>1st Semester</option>
                 <option value="2nd" <?= $filter === '2nd' ? 'selected' : '' ?>>2nd Semester</option>
                 <option value="3rd" <?= $filter === '3rd' ? 'selected' : '' ?>>3rd Semester</option>
+                <option value="3rd" <?= $filter === '3rd' ? 'selected' : '' ?>>4th Semester</option>
+                <option value="3rd" <?= $filter === '3rd' ? 'selected' : '' ?>>5th Semester</option>
+                <option value="3rd" <?= $filter === '3rd' ? 'selected' : '' ?>>6th Semester</option>
+                <option value="3rd" <?= $filter === '3rd' ? 'selected' : '' ?>>7th Semester</option>
+                <option value="3rd" <?= $filter === '3rd' ? 'selected' : '' ?>>8th Semester</option>
             </select>
             <input type="text" name="search" placeholder="Search by name..." value="<?= htmlspecialchars($search) ?>">
             <button type="submit">Search</button>

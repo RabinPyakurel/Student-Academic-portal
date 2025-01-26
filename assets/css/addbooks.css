@@ -1,0 +1,151 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.addbooks {
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: -10vh; /* or any height you need */
+  width: 100%;
+}
+/* Body Styling */
+body {
+  font-family: "poppins";
+  background-color: #f0f4f8;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100vh;
+  padding: 20px;
+  margin: 0; /* Ensure there's no extra margin */
+}
+
+/* Form Container */
+form {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  width: 100%;
+  max-width: 600px;
+  overflow: hidden;
+}
+
+/* Form Heading */
+h2 {
+  text-align: center;
+  margin: 20px 0;
+  margin-left: 2vw;
+  color: black;
+  font-size: 2rem;
+
+  transition: font-size 0.3s ease;
+  font-family: Poppins, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Label Styling */
+label {
+  font-size: 14px;
+  color: black;
+  margin-bottom: 8px;
+  display: block;
+}
+
+/* Input Fields */
+input[type="text"],
+input[type="number"],
+input[type="file"],
+select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: #f9fafb;
+  transition: all 0.3s ease;
+}
+
+/* Input Fields Focus Effect */
+input[type="text"]:focus,
+input[type="number"]:focus,
+select:focus,
+input[type="file"]:focus {
+  border-color: #3e64ff;
+  background-color: #fff;
+  outline: none;
+}
+
+/* File Input Styling */
+input[type="file"] {
+  padding: 8px;
+  cursor: pointer;
+}
+
+/* Submit Button Styling */
+input[type="submit"] {
+  background-color: #1e7794;
+  color: white;
+  padding: 15px;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+
+/* Submit Button Hover Effect */
+input[type="submit"]:hover {
+  background-color: #105369;
+}
+#sidebar {
+  width: 250px; /* Sidebar width */
+  transition: all 0.3s ease; /* Smooth transition */
+}
+
+#sidebar.collapsed {
+  width: 0; /* Collapse the sidebar */
+  visibility: hidden; /* Hide when collapsed */
+}
+
+#content {
+  margin-left: 250px; /* Adjust content margin when sidebar is visible */
+  transition: margin-left 0.3s ease;
+}
+
+#sidebar.collapsed ~ #content {
+  margin-left: 0; /* Adjust content when sidebar is collapsed */
+}
+html,
+body {
+  overflow-x: hidden;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+  .addbooks {
+    padding: 0.5rem;
+  }
+  form {
+    padding: 20px;
+    width: 100%;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  input[type="submit"] {
+    padding: 12px;
+  }
+}
