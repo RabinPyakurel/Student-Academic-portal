@@ -2,6 +2,7 @@
 session_start();
 require_once '../backend/db_connection.php';
 
+// Check for session validity
 if (!isset($_SESSION['user_id'])) {
     include '../not-found.htm';
     exit();
@@ -22,61 +23,78 @@ try {
     $semester = $student['semester'];
     $program_id = $student['program_id'];
 
-    // Fetch exams grouped by exam_name
+    // Fetch exams grouped by exam type
     $stmt = $pdo->prepare("
-        SELECT e.exam_id, e.exam_name, e.exam_date, c.course_name
+        SELECT e.exam_id, et.name AS exam_type, e.exam_date, c.course_name
         FROM exam e
         JOIN course c ON e.course_id = c.course_id
+        JOIN exam_type et ON e.exam_type = et.id
         WHERE c.semester = ? AND c.program_id = ?
-        ORDER BY e.exam_name, e.exam_date
+        ORDER BY et.name, e.exam_date
     ");
     $stmt->execute([$semester, $program_id]);
     $exams = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+    // Group exams by exam type
     $groupedExams = [];
     foreach ($exams as $exam) {
-        $groupedExams[$exam['exam_name']][] = $exam;
+        $groupedExams[$exam['exam_type']][] = $exam;
     }
 
-    // Fetch exam form statuses in bulk
+    // Fetch exam form statuses
     $stmt = $pdo->prepare("
-        SELECT e.exam_type, ef.status
+        SELECT ef.form_id, et.name AS exam_type, ef.status
         FROM examform ef
-        JOIN exam e ON ef.exam_id = e.exam_id
+        JOIN exam_examform efe ON ef.form_id = efe.form_id
+        JOIN exam e ON efe.exam_id = e.exam_id
+        JOIN exam_type et ON e.exam_type = et.id
         WHERE ef.std_id = ?
     ");
     $stmt->execute([$student_id]);
-    $formStatuses = $stmt->fetchAll(PDO::FETCH_KEY_PAIR);
+    $formStatuses = [];
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        $formStatuses[$row['exam_type']] = $row['status'];
+    }
 
 } catch (Exception $e) {
     die("Error: " . htmlspecialchars($e->getMessage()));
 }
 
 // Handle form submission
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['exam_name'])) {
-    $examName = $_POST['exam_name'];
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['exam_type'])) {
+    $examType = $_POST['exam_type'];
     
     try {
-        // Fetch all exam IDs for the selected exam_name
+        // Start transaction
+        $pdo->beginTransaction();
+
+        // Insert new exam form
+        $stmt = $pdo->prepare("INSERT INTO examform (std_id) VALUES (?)");
+        $stmt->execute([$student_id]);
+        $formId = $pdo->lastInsertId();
+
+        // Fetch all exam IDs for the selected exam type
         $stmt = $pdo->prepare("
             SELECT e.exam_id
             FROM exam e
-            JOIN course c ON e.course_id = c.course_id
-            WHERE e.exam_name = ? AND c.semester = ? AND c.program_id = ?
+            JOIN exam_type et ON e.exam_type = et.id
+            WHERE et.name = ? AND e.program_id = ? AND e.semester = ?
         ");
-        $stmt->execute([$examName, $semester, $program_id]);
+        $stmt->execute([$examType, $program_id, $semester]);
         $examIds = $stmt->fetchAll(PDO::FETCH_COLUMN);
 
-        // Insert entries into examform
+        // Insert into examform_exams
+        $stmt = $pdo->prepare("INSERT INTO exam_examform (form_id, exam_id) VALUES (?, ?)");
         foreach ($examIds as $examId) {
-            $stmt = $pdo->prepare("
-                INSERT IGNORE INTO examform (std_id, exam_id) VALUES (?, ?)
-            ");
-            $stmt->execute([$student_id, $examId]);
+            $stmt->execute([$formId, $examId]);
         }
-        
-        $message = "$examName Exam Form submitted successfully!";
+
+        // Commit transaction
+        $pdo->commit();
+
+        $message = "Form for $examType submitted successfully!";
     } catch (Exception $e) {
+        $pdo->rollBack();
         $message = "Error: " . htmlspecialchars($e->getMessage());
     }
 }
@@ -105,8 +123,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['exam_name'])) {
         <?php if (empty($groupedExams)): ?>
             <p class="message error">No exams available for this semester and program.</p>
         <?php else: ?>
-            <?php foreach ($groupedExams as $examName => $examList): ?>
-                <h3 class="h3"><?= htmlspecialchars($examName) ?></h3>
+            <?php foreach ($groupedExams as $examType => $examList): ?>
+                <h3><?= htmlspecialchars($examType) ?></h3>
                 <table>
                     <thead>
                         <tr>
@@ -124,15 +142,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['exam_name'])) {
                     </tbody>
                 </table>
                 <form method="POST">
-                    <input type="hidden" name="exam_name" value="<?= htmlspecialchars($examName) ?>">
+                    <input type="hidden" name="exam_type" value="<?= htmlspecialchars($examType) ?>">
                     
-                    <?php if (isset($formStatuses[$examName])): ?>
+                    <?php if (isset($formStatuses[$examType])): ?>
                         <b>Form Status:</b> 
-                        <span class="status <?= strtolower($formStatuses[$examName]) ?>">
-                            <?= htmlspecialchars($formStatuses[$examName]) ?>
+                        <span class="status <?= strtolower($formStatuses[$examType]) ?>">
+                            <?= htmlspecialchars($formStatuses[$examType]) ?>
                         </span>
                     <?php else: ?>
-                        <button type="submit" class="form-button">Fill <?= htmlspecialchars($examName) ?> Exam Form</button>
+                        <button type="submit" class="form-button">Fill <?= htmlspecialchars($examType) ?> Exam Form</button>
                     <?php endif; ?>
                 </form>
             <?php endforeach; ?>
