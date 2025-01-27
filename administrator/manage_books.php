@@ -76,7 +76,14 @@ $result = $connection->query($query);
     width: 40%;
   }
 
-  #book_img {}
+  .btn-borrow {
+    background-color: white;
+    padding: 0.3rem;
+    border: 2px solid;
+    border-radius: 0.5rem;
+    margin-left: 2vw;
+    font-size: 0.8rem;
+  }
   </style>
 </head>
 
@@ -84,6 +91,7 @@ $result = $connection->query($query);
   <?php include './sidebar.htm'; ?>
   <main>
     <h1>Book List</h1>
+    <a href="borrowedbooks.php" class="btn-borrow">Borrowed List>></a>
     <div class="filter-container">
       <form method="GET" action="">
         <input type="text" name="search" placeholder="Search by Book Name..." value="<?= htmlspecialchars($search) ?>">
@@ -126,7 +134,7 @@ $result = $connection->query($query);
             <!-- Actions -->
             <td class="actions">
               <a class="edit-link" href="./edit_books.php?book_id=<?= $row['book_id'] ?>">Edit</a>
-              <a class="delete-link" href="./delete_books.php?book_id=<?= $row['book_id'] ?>"
+              <a class="delete-link" href="./delete_book.php?book_id=<?= $row['book_id'] ?>"
                 onclick="return confirm('Are you sure you want to delete this book?');">Delete</a>
             </td>
           </tr>
