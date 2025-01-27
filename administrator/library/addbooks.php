@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Add Books</title>
-  <link rel="stylesheet" href="../assets/css/addbooks.css">
+  <link rel="stylesheet" href="../assets/css/addbooks.css">                 
   <style>
   .error-message {
     color: red;
@@ -18,7 +18,7 @@
 </head>
 
 <body>
-  <?php
+    <?php
     include "./sidebar.htm";
     ?>
   <div class="addbooks">
@@ -186,7 +186,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
         $imageTmpName = $_FILES['image']['tmp_name'];
         $imageName = $_FILES['image']['name'];
-        $baseDirectory = __DIR__ . '/../assets/images/';
+        $baseDirectory = __DIR__ . '/../../assets/images/';
         $uploadDir = $baseDirectory . '/BooksUpload/';
         $publicDir = '/assets/images/BooksUpload/';
         $publicPath = $publicDir . $imageName;
