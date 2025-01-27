@@ -1,10 +1,14 @@
 <?php
-
+include 'backend/db_connection.php';
 session_start();
 if (!isset($_SESSION['user_id'])) {
     include 'not-found.htm';
     exit();
 }
+$stmt = $pdo->prepare("SELECT event_image,event_name from event;");
+$stmt->execute();
+$event = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,26 +39,14 @@ if (!isset($_SESSION['user_id'])) {
             
             <div class="carousel">
                 <div class="carousel-track">
-                    <div class="carousel-item">
-                        <img src="./assets/images/eventsimage/1.png" alt="Event 1">
-                        <h3>HACKATHON</h3>
-                        <p><a href="./events/events.php">Click to view more details about the event.</a></p>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="./assets/images/eventsimage/2.png" alt="Event 2">
-                        <h3>UI/UX WORKSHOP</h3>
-                        <p><a href="./events/events.php">Click to view more details about the event.</a></p>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="./assets/images/eventsimage/3.png" alt="Event 3">
-                        <h3>FAREWELL PROGRAM</h3>
-                        <p><a href="./events/events.php">Click to view more details about the event.</a></p>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="./assets/images/eventsimage/4.png" alt="Event 3">
-                        <h3>QUIZ COMPETITION</h3>
-                        <p><a href="./events/events.php">Click to view more details about the event.</a></p>
-                    </div>
+                <?php foreach ($event as $evt): ?>
+    <div class="carousel-item">
+        <img src="<?php echo $evt['event_image']; ?>" alt="Event Image">
+        <h3><?php echo $evt['event_name']; ?></h3>
+        <p><a href="./events/events.php">Click to view more details about the event.</a></p>
+    </div>
+<?php endforeach; ?>
+
                 </div>
                 <button class="carousel-btn prev" id="prev-btn">&lt;</button>
                 <button class="carousel-btn next" id="next-btn">&gt;</button>

@@ -40,7 +40,7 @@ try {
 
     // Fetch exam form statuses in bulk
     $stmt = $pdo->prepare("
-        SELECT e.exam_name, ef.status
+        SELECT e.exam_type, ef.status
         FROM examform ef
         JOIN exam e ON ef.exam_id = e.exam_id
         WHERE ef.std_id = ?

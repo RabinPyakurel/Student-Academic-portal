@@ -1,5 +1,5 @@
 <?php
-require_once '../secret.php';
+require_once __DIR__. '/../secret.php';
 try{
     $pdo = new PDO("mysql:host=localhost",'root',$pass);
     $pdo->exec("use sapo");

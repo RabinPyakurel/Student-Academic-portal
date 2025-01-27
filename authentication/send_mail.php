@@ -1,11 +1,12 @@
 <?php
+
+
 use PHPMailer\PHPMailer\PHPMailer;
 
 use PHPMailer\PHPMailer\Exception;
 
 require '../vendor/autoload.php'; // Composer autoload
-
-function sendMail($to, $subject, $body) {
+function sendMail($to,$gmail_pass, $subject, $body) {
     $mail = new PHPMailer(true);
 
     try {
@@ -13,14 +14,14 @@ function sendMail($to, $subject, $body) {
         $mail->Host = 'smtp.gmail.com'; // Your SMTP server
         $mail->SMTPAuth = true;
         $mail->Username = 'studentacademicportal@gmail.com'; // SMTP username
-        $mail->Password = 'qfvc lzfk wfsc pfol'; // SMTP password
+        $mail->Password = $gmail_pass; // SMTP password
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
         $mail->Port = 465;
 
         $mail->setFrom('noreply@sapo.com', 'sapo');
         $mail->addAddress($to);
 
-        $mail->isHTML(false);
+        $mail->isHTML(true);
         $mail->Subject = $subject;
         $mail->Body    = $body;
 

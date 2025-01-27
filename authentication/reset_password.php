@@ -2,6 +2,7 @@
 require '../backend/db_connection.php'; // PDO connection
 
 if (isset($_GET['token'])) {
+    date_default_timezone_set('Asia/Kathmandu');
     $token = $_GET['token'];
 
     // Verify the token
@@ -10,13 +11,16 @@ if (isset($_GET['token'])) {
     $resetRequest = $stmt->fetch();
 
     if (!$resetRequest) {
-        echo "Invalid or expired token.";
+        echo "<script>alert('Invalid or expired token.');
+                        window.location.href = 'reset_request.php';</script>";          
         exit;
     }
 
     // Check token expiration (1 hour validity)
     $createdAt = strtotime($resetRequest['created_at']);
-    if (time() - $createdAt > 3600) {
+    if (time() - $createdAt > 120) {
+        $stmt = $pdo->prepare("DELETE from password_reset_requests where token=?");
+        $stmt->execute([$token]);
         echo "Token expired.";
         exit;
     }
@@ -40,13 +44,12 @@ if (isset($_GET['token'])) {
         // Delete the reset request
         $stmt = $pdo->prepare("DELETE FROM password_reset_requests WHERE token = ?");
         $stmt->execute([$token]);
-
-        echo "<script>alert('Password reset successful.')</script>";
-        header("location:sign-in.php");
+        echo "<script>alert('Password reset successful.');
+                window.location.href='sign-in.php'</script>";
         exit;
     }
 } else {
-    echo "No token provided.";
+    echo "Check email for reset link if this is not intended get lost";
     exit;
 }
 ?>

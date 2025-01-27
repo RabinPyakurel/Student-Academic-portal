@@ -1,5 +1,6 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    require_once '../secret.php';
     require '../backend/db_connection.php'; // PDO connection
 
     $email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
@@ -34,10 +35,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $resetLink = "http://localhost:8000/authentication/reset_password.php?token=" . $token;
 
     $subject = "Password Reset Request";
-    $body = "Click the link below to reset your password:\n\n$resetLink";
-
-    if (sendMail($email, $subject, $body)) {
-        echo "<script>alert('Password reset email sent.')</script>";
+    $body = "
+<html>
+<head>
+    <title>Password Reset Request</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .container { width: 600px; margin: 0 auto; padding: 20px;}
+        .button { padding: 10px 20px; background-color: #007bff; color: white; text-decoration: none; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <div class='container'>
+        <h2>Password Reset Request</h2>
+        <p>We received a request to reset your password. Please click the link below to reset your password:</p>
+        <a href=\"$resetLink\" class='button'>Reset Password</a>
+        <p>If you did not request a password reset, please ignore this email.</p>
+        <p>Regards,<br>The SAPO Team</p>
+    </div>
+</body>
+</html>";
+    if (sendMail($email,$gmail_pass, $subject, $body)) {
+        echo "<script>alert('Password reset email sent.');
+                        window.location.href='reset_password.php'</script>";
     } else {
         echo "<script>alert('Failed to send email.')</script>";
     }
