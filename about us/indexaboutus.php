@@ -8,25 +8,26 @@
   <link rel="stylesheet" href="../assets/css/aboutus.css">
   <link rel="stylesheet" href="../assets/css/nav.css">
   <link rel="stylesheet" href="../assets/css/index.css">
- 
+
 
   <link href='https://fonts.googleapis.com/css?family=Alegreya SC' rel='stylesheet'>
   <style>
-    .hero {
-      background-image: url('../assets/images/aboutus.png');
-      
-    }
-    .hero-content h1{
-      font-size : 2.5rem;
-      color: #132944;
-      margin-top:-5vh;
-      
-    }
-    .hero-content p{
-      color: #132944;
-      
-    }
-    
+  .hero {
+    background-image: url('../assets/images/aboutus.png');
+
+  }
+
+  .hero-content h1 {
+    font-size: 2.5rem;
+    color: #132944;
+    margin-top: -5vh;
+
+  }
+
+  .hero-content p {
+    color: #132944;
+
+  }
   </style>
 </head>
 
@@ -34,7 +35,7 @@
   <nav class="navbar">
     <div class="nav-container">
       <div class="logo">
-        <img src="../assets/images/Student.png" alt="Student Academic Portal">
+        <img src="../assets/images/final-logo.png" alt=" Student Academic Portal">
       </div>
       <button class="hamburger" id="hamburger">
         <span></span>
@@ -42,25 +43,17 @@
         <span></span>
       </button>
       <ul class="nav-links" id="nav-links">
-        <li><a href="../index.php">Home</a></li>
-        <li><a href="#">About</a></li>
+        <li><a href="/index.php">Home</a></li>
+        <li><a href="./about us/indexaboutus.php">About</a></li>
         <li><a href="/index.php#features">Features</a></li>
-        <li><a href="/index.php#programs">Programs</a></li>
+        <li><a href="/index.php#program">Programs</a></li>
         <li>
-          <a id="register" class="register-btn">Register</a>
+          <a id="register" href="/authentication/sign-up.php" class="register-btn">Register</a>
         </li>
-        <li class="dropdown">
-          <a href="#" class="login-dropdown">Login</a>
-          <ul class="dropdown-menu">
-            <li><a class="register-btn" id="login-admin" href="./authentication/">Login as Admin</a></li>
-            <li><a class="register-btn" id="login-user" href="./authentication/sign-in.php">Login as
-                Student</a></li>
-          </ul>
-        </li>
+        <li><a class="register-btn" id="login-user" href="/authentication/sign-in.php">Login </a></li>
       </ul>
     </div>
   </nav>
-
   <section id="home" class="hero">
     <div class="hero-content">
       <h1>About Us</h1>
@@ -69,7 +62,7 @@
         vision into reality.</p>
 
     </div>
-    
+
   </section>
 
 
@@ -119,21 +112,24 @@
       </div>
     </div>
     <section class="team-section">
-  <h2>Meet Our Dedicated Team</h2>
-  <div class="team">
+      <h2>Meet Our Dedicated Team</h2>
+      <div class="team">
 
-    <div class="team-member1">
-      <img src="../assets/images/rabin.jpg" alt="Rabin" class="team-photo">
-      <h3>Rabin Pyakurel</h3>
-      <p>Rabin is the mastermind behind creating the backend structure and ensuring the smooth operation of the portal. <br> <br>With a strong background in programming and problem-solving, he worked on integrating key features like exam results, attendance tracking, and fee management into the platform.</p>
-    </div>
-    <div class="team-member2">
-      <img src="../assets/images/ritika.jpg" alt="Ritika" class="team-photo">
-      <h3>Ritika Suwal</h3>
-      <p>Ritika played a key role in the platform’s design and development. <br><br>Her expertise in web development and user experience ensures that the platform is both functional and visually appealing.</p>
-    </div>
-  </div>
-</section>
+        <div class="team-member1">
+          <img src="../assets/images/rabin.jpg" alt="Rabin" class="team-photo">
+          <h3>Rabin Pyakurel</h3>
+          <p>Rabin is the mastermind behind creating the backend structure and ensuring the smooth operation of the
+            portal. <br> <br>With a strong background in programming and problem-solving, he worked on integrating key
+            features like exam results, attendance tracking, and fee management into the platform.</p>
+        </div>
+        <div class="team-member2">
+          <img src="../assets/images/ritika.jpg" alt="Ritika" class="team-photo">
+          <h3>Ritika Suwal</h3>
+          <p>Ritika played a key role in the platform’s design and development. <br><br>Her expertise in web development
+            and user experience ensures that the platform is both functional and visually appealing.</p>
+        </div>
+      </div>
+    </section>
 
   </div>
 

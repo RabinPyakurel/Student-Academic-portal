@@ -56,8 +56,15 @@ input[type="submit"] {
   width: 100%;
   padding: 10px;
   margin-bottom: 15px;
+  padding: 10px 15px;
+  font-size: 1rem;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  /* Light border */
+  border-radius: 8px;
+  /* Rounded corners */
+  width: 100%;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
 }
 
 /* Submit button styling */

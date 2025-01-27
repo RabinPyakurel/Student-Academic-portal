@@ -24,13 +24,13 @@ if ($conn->connect_error) {
     exit();
 }
 
-if (!isset($_GET['book_id']) || !is_numeric($_GET['book_id'])) {
+if (!isset($_POST['book_id']) || !is_numeric($_POST['book_id'])) {
     error_log("Received GET data: " . json_encode($_GET));  // Log the GET parameters
     echo json_encode(["status" => "error", "message" => "Invalid or missing book ID in GET parameter."]);
     exit();
 }
 
-$book_id = intval($_GET['book_id']); // Ensure it's an integer
+$book_id = intval($_POST['book_id']); // Ensure it's an integer
 error_log("Received book_id: " . $book_id);  // Log the book_id
 
 
