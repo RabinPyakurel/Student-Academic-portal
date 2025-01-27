@@ -100,7 +100,23 @@ input[type="submit"] {
   width: 100%;
   transition: background-color 0.3s ease;
 }
+.error-message {
+  color: red;
+  font-size: 12px;
+  display: none;
+}
 
+input[type="text"],
+input[type="date"],
+textarea,
+input[type="file"] {
+  width: 97%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
 /* Submit Button Hover Effect */
 input[type="submit"]:hover {
   background-color: #105369;

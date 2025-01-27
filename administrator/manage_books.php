@@ -133,7 +133,7 @@ $result = $connection->query($query);
 
             <!-- Actions -->
             <td class="actions">
-              <a class="edit-link" href="./edit_books.php?book_id=<?= $row['book_id'] ?>">Edit</a>
+              <a class="edit-link" href="./edit_book.php?book_id=<?= $row['book_id'] ?>">Edit</a>
               <a class="delete-link" href="./delete_book.php?book_id=<?= $row['book_id'] ?>"
                 onclick="return confirm('Are you sure you want to delete this book?');">Delete</a>
             </td>
