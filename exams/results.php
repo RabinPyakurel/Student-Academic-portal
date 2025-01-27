@@ -17,11 +17,12 @@ try {
         SELECT 
             c.course_name,
             m.marks_obtained,
-            e.exam_name,
+            et.name,
             e.exam_date
         FROM marks m
         JOIN course c ON m.course_id = c.course_id
-        JOIN exam e ON m.exam_id = e.exam_id
+        JOIN exam e ON m.exam_id = e.exam_id 
+        join exam_type et on e.exam_type = et.id
         WHERE m.std_id = ?
         ORDER BY e.exam_date DESC, c.course_name ASC
     ");
@@ -62,7 +63,7 @@ try {
                         <?php foreach ($results as $result): ?>
                             <tr>
                                 <td><?= htmlspecialchars($result['course_name']); ?></td>
-                                <td><?= htmlspecialchars($result['exam_name']); ?></td>
+                                <td><?= htmlspecialchars($result['name']); ?></td>
                                 <td><?= htmlspecialchars($result['marks_obtained']); ?></td>
                                 <td><?= htmlspecialchars(date('d M Y', strtotime($result['exam_date']))); ?></td>
                             </tr>

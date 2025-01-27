@@ -30,10 +30,10 @@
             <li class="dropdown" id="notification-dropdown">
                 <a href="#" class="notification-icon" id="notification-icon" aria-label="Notifications">
                     <img src="/assets/images/notification.png" alt="Notification Bell" class="bell-image">
-                    <span class="notification-badge" id="notification-badge">5</span>
+                    <span class="notification-badge" id="notification-badge"></span>
                 </a>
                 <ul class="dropdown-menu notification-menu" id="notification-menu">
-                    <li><a href="/notifications.php">See all notifications</a></li>
+
                 </ul>
             </li>
             <li class="dropdown" id="profile-dropdown">
@@ -52,3 +52,68 @@
 <script src="/assets/js/nav.js"></script>
 <script src="/assets/js/getPhoto.js"></script>
 <script src="/assets/js/notification.js"></script>
+<script>
+    $(document).ready(function () {
+        // Fetch notifications
+        function fetchNotifications() {
+            $.ajax({
+                url: '/backend/fetch_notification.php',
+                method: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    $('#notification-menu').empty(); // Clear existing notifications
+
+                    // Update badge
+                    const unreadNotifications = data.filter(notification => notification.status === 'unread');
+                    $('#notification-badge').text(unreadNotifications.length);
+
+                    if (data.length > 0) {
+                        data.forEach(function (notification) {
+                            const notificationClass = notification.status === 'unread' ? 'unread' : '';
+                            $('#notification-menu').append(`
+                                <li class="notification-item ${notificationClass}" data-id="${notification.notification_id}">
+                                    <a href="${notification.link}">${notification.message}</a>
+                                </li>
+                            `);
+                        });
+                    } else {
+                        $('#notification-menu').append('<li>No new notifications</li>');
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.error('Error fetching notifications:', error);
+                }
+            });
+        }
+
+        // Fetch notifications on page load
+        fetchNotifications();
+
+        // Event delegation for dynamically added elements
+        $(document).on('click', '.notification-item', function (e) {
+            e.preventDefault(); // Prevent default link behavior
+            var notificationId = $(this).data('id'); // Get the ID of the clicked notification
+            var targetLink = $(this).find('a').attr('href');
+            // Mark notification as seen
+            $.ajax({
+                url: '/backend/mark_as_seen.php',
+                method: 'POST',
+                data: {
+                    notification_id: notificationId
+                },
+                success: function () {
+                    $(this).removeClass('unread'); // Update UI
+                    window.location.href = targetLink;
+                    fetchNotifications();         // Refresh notifications
+                },
+                error: function (xhr, status, error) {
+                    console.error('Error marking notification as seen:', error);
+                }
+            });
+        });
+
+        // Refresh notifications periodically
+        setInterval(fetchNotifications, 30000);
+    });
+
+</script>
