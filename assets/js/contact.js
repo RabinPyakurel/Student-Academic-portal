@@ -13,28 +13,38 @@ document
     });
   });
 
+// document
+//   .getElementById("contact-form")
+//   .addEventListener("submit", function (event) {
+//     event.preventDefault(); // Prevent default form submission
 
-// Select form and handle submission
-document.getElementById('contact-form').addEventListener('submit', function(event) {
-  event.preventDefault();  // Prevent default form submission
+//     // Collect form data
+//     const formData = {
+//       name: document.getElementById("name").value,
+//       email: document.getElementById("email").value,
+//       subject: document.getElementById("subject").value,
+//       message: document.getElementById("message").value,
+//     };
 
-  // Collect form data
-  const formData = {
-    name: document.getElementById('name').value,
-    email: document.getElementById('email').value,
-    subject: document.getElementById('subject').value,
-    message: document.getElementById('message').value,
-  };
-
-  
-  let contactData = JSON.parse(localStorage.getItem('contactData')) || [];
-  contactData.push(formData);
-  localStorage.setItem('contactData', JSON.stringify(contactData));
-
- 
-  document.getElementById('contact-form').reset();
-
-  alert('Your message has been submitted successfully!');
-
-  window.location.href = 'contactus.php';
-});
+//   // Send form data to the backend via fetch API
+//   fetch("contactus.php", {
+//     method: "POST",
+//     headers: { "Content-Type": "application/json" },
+//     body: JSON.stringify(formData),
+//   })
+//     .then((response) => response.json())
+//     .then((data) => {
+//       if (data.success) {
+//         alert(
+//           "Your message has been submitted successfully! We will get back to you soon."
+//         );
+//         document.getElementById("contact-form").reset();
+//       } else {
+//         alert("Something went wrong. Please try again.");
+//       }
+//     })
+//     .catch((error) => {
+//       console.error("Error:", error);
+//       alert("Failed to submit the form. Please try again later.");
+//     });
+// });

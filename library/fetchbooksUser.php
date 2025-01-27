@@ -17,7 +17,7 @@ if ($conn->connect_error) {
 $category = isset($_GET['category']) ? $_GET['category'] : '';
 
 // SQL query for a single category
-$sql = "SELECT title, author,book_id, category, book_image FROM library";
+$sql = "SELECT title, author,book_id, category, book_image FROM books";
 if ($category) {
     $sql .= " WHERE category = ?";
 }

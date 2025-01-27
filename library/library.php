@@ -1,12 +1,10 @@
-
 <?php
 session_start();
 if (!isset($_SESSION['user_id'])) {
     include 'not-found.htm';
     exit();
 }
-?>
-<?php
+
 // Database connection
 $servername = "localhost";
 $username = "root";
@@ -19,19 +17,51 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Query for Featured Books
-$sql = "SELECT book_id, title, author, category, book_image FROM books ORDER BY book_id DESC LIMIT 4";
-
-$result = $conn->query($sql);
-
+// Fetch Featured Books
 $featuredBooks = [];
-if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
+$featuredQuery = "SELECT book_id, title, author, category, book_image FROM books ORDER BY book_id DESC LIMIT 4";
+$featuredResult = $conn->query($featuredQuery);
+
+if ($featuredResult->num_rows > 0) {
+    while ($row = $featuredResult->fetch_assoc()) {
         $featuredBooks[] = $row;
     }
 }
 
-// Close the connection
+// Search and Filter
+$filter = $_GET['filter'] ?? 'all';
+$search = $_GET['search'] ?? '';
+
+$query = "SELECT * FROM books WHERE 1";
+
+$params = [];
+if ($filter !== 'all') {
+    $query .= " AND author = ?";
+    $params[] = $filter;
+}
+if (!empty($search)) {
+    $query .= " AND (title LIKE ? OR author LIKE ? OR category LIKE ?)";
+    $searchTerm = "%$search%";
+    array_push($params, $searchTerm, $searchTerm, $searchTerm);
+}
+
+// Prepare statement
+$stmt = $conn->prepare($query);
+if (!empty($params)) {
+    $stmt->bind_param(str_repeat("s", count($params)), ...$params);
+}
+
+$stmt->execute();
+$result = $stmt->get_result();
+
+$searchResults = [];
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $searchResults[] = $row;
+    }
+}
+
+$stmt->close();
 $conn->close();
 ?>
 <!DOCTYPE html>
@@ -54,28 +84,58 @@ $conn->close();
       <h1>Library</h1>
       <p>Endless Access to Knowledge from the Comfort of Your Home</p>
       <div class="search-bar">
-        <input type="text" placeholder="Search for books, authors, or categories...">
-        <button>Search</button>
+        <form method="GET" action="">
+          <input type="text" name="search" placeholder="Search for books, authors, or categories..."
+            value="<?php echo htmlspecialchars($search); ?>">
+          <button type="submit">Search</button>
+        </form>
       </div>
     </div>
   </section>
+
+  <!-- Search Results Section -->
+  <?php if (!empty($search)): ?>
+  <section id="search-results" class="search-results">
+    <div class="container">
+      <h2>Search Results for "<?php echo htmlspecialchars($search); ?>"</h2>
+      <div class="book-grid">
+        <?php if (count($searchResults) > 0): ?>
+        <?php foreach ($searchResults as $book): ?>
+        <div class="book-card">
+          <img class="book-img" src="<?php echo $book['book_image']; ?>"
+            alt="<?php echo htmlspecialchars($book['title']); ?>">
+          <h3><?php echo htmlspecialchars($book['title']); ?></h3>
+          <p>Author: <?php echo htmlspecialchars($book['author']); ?></p>
+          <p>Category: <?php echo htmlspecialchars($book['category']); ?></p>
+          <a href="checkavailability.php?book_id=<?php echo $book['book_id']; ?>">
+            <button class="action-button">Check Availability</button>
+          </a>
+        </div>
+        <?php endforeach; ?>
+        <?php else: ?>
+        <p>No books found matching your search.</p>
+        <?php endif; ?>
+      </div>
+    </div>
+  </section>
+  <?php endif; ?>
 
   <!-- Featured Books Section -->
   <section id="featured" class="featured">
     <div class="container">
       <h2>Featured Books</h2>
       <div class="book-grid" id="featured-grid">
-        <?php
-        foreach ($featuredBooks as $book) {
-          echo '<div class="book-card">';
-          echo '<img class="book-img" src="' . $book['book_image'] . '" alt="' . $book['title'] . '">';
-          echo '<h3>' . $book['title'] . '</h3>';
-          echo '<p>Author: ' . $book['author'] . '</p>';
-          echo '<p>Category: ' . $book['category'] . '</p>';
-          echo '<a href="checkavailability.php?book_id=' . $book['book_id'] . '"><button class="action-button">Check Availability</button></a>';
-          echo '</div>';
-        }
-        ?>
+        <?php foreach ($featuredBooks as $book): ?>
+        <div class="book-card">
+          <img class="book-img" src="<?php echo $book['book_image']; ?>" alt="<?php echo $book['title']; ?>">
+          <h3><?php echo $book['title']; ?></h3>
+          <p>Author: <?php echo $book['author']; ?></p>
+          <p>Category: <?php echo $book['category']; ?></p>
+          <a href="checkavailability.php?book_id=<?php echo $book['book_id']; ?>">
+            <button class="action-button">Check Availability</button>
+          </a>
+        </div>
+        <?php endforeach; ?>
       </div>
     </div>
   </section>
@@ -97,11 +157,7 @@ $conn->close();
       <!-- Books from selected category will be displayed here -->
     </div>
   </section>
-  
-  
 
-
-  
   <?php include "../layout/footer.htm"; ?>
 
   <script src="./library.js"></script>
